@@ -94,7 +94,7 @@ a.desc:after {
 @block-height: 450px;
 @poem-height: 340px;
 
-.block(){
+.block{
     border: 2px solid #FFCD25;    
     margin: 0 auto;
     background-color: #eee;
@@ -103,7 +103,7 @@ a.desc:after {
 }
 
 .bl-poem{
-    .block();
+    &:extend(.block);
     box-sizing: border-box;
     height: @block-height;
     z-index: 0;
@@ -129,3 +129,11 @@ a.desc:after {
     margin-bottom: 20px;
 }
 
+.modal-content{
+    &:extend(.block);
+}
+
+.ya-share2{
+    display: inline-block;
+    float: left;
+}
