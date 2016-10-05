@@ -89,3 +89,43 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
+/*  мой код   */
+@block-height: 450px;
+@poem-height: 340px;
+
+.block(){
+    border: 2px solid #FFCD25;    
+    margin: 0 auto;
+    background-color: #eee;
+    position: relative;
+    padding: 20px 10px;
+}
+
+.bl-poem{
+    .block();
+    box-sizing: border-box;
+    height: @block-height;
+    z-index: 0;
+    border-radius: 25px 0 25px 0;
+    background: #ffb60f;
+    background: radial-gradient(circle at 80px 40px, #F2DDA0, #EFD581, #F0CB50);
+}
+
+.poem{
+    position: relative;
+    z-index: 1;    
+    height: @poem-height;
+    overflow: hidden;
+    margin: 15px auto;
+}
+
+.blur-text{
+    color: transparent;
+    text-shadow: 0 0 5px #000;
+}
+
+.bl-post{
+    margin-bottom: 20px;
+}
+
