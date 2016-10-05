@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Poems;
 
 class SiteController extends Controller
 {
@@ -121,5 +122,14 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionPoems()
+    {
+        $model = new Poems();
+
+        return $this->render('poems',[
+            'model' => $model,
+        ]);
     }
 }
