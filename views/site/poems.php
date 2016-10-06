@@ -1,10 +1,13 @@
 <?php
+use yii\widgets\LinkPager;
 
 $this->title = 'Поэзия души и не только';
 $i = 0;
+$count = count($poems)-1;
+
 ?>
 
-<div class="container">
+<div id='main-container' class="container">
 	<?php foreach ($poems as $poem): ?>
 
 
@@ -15,13 +18,23 @@ $i = 0;
 			]) ?>
 
         <?php 
-        	if($i%3 === 2) echo '</div>';
+        	if($i%3 === 2 || $i==$count) echo '</div>';
         	$i++; 
         ?>
 	<?php endforeach; ?>
 
+	
 
 </div>
+
+
+	<button type="button" id="btn-more" class="btn btn-primary btn-lg active center-block">
+		<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>  Загрузить ещё
+	</button>
+
+	<?= LinkPager::widget(['pagination' => $pagination]) ?> 
+
+	<div id="ajaxreq"></div>
 
 <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

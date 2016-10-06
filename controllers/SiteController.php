@@ -11,6 +11,9 @@ use app\models\ContactForm;
 use app\models\PoemForm;
 use app\models\Poems;
 use yii\data\Pagination;
+use yii\web\Response;
+use yii\helpers\BaseJson;
+use yii\helpers\Json;
 
 class SiteController extends Controller
 {
@@ -156,7 +159,7 @@ class SiteController extends Controller
         }
     }
 
-    public function actionAddpoemAjax()
+    public function actionAddpoemajax()
     {
         $model = new PoemForm();
 
@@ -168,4 +171,26 @@ class SiteController extends Controller
             echo "Error";
         }
     }
+
+    public function actionPoemajax()
+    {
+        if (Yii::$app->request->get()){
+            $query = Poems::find()
+                ->from('poems');
+                //->all();
+            $pagination = new Pagination([
+                'defaultPageSize' => 9,
+                'totalCount' => $query->count(),
+            ]);
+            
+            $poems = $query
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+
+            echo \yii\helpers\Json::encode($poems);
+            
+        }
+    }
+
 }
