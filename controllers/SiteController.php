@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\PoemForm;
+use app\models\Poems;
+use yii\data\Pagination;
 
 class SiteController extends Controller
 {
@@ -61,7 +63,23 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Poems::find()
+            ->from('poems');
+            //->all();
+        $pagination = new Pagination([
+            'defaultPageSize' => 9,
+            'totalCount' => $query->count(),
+        ]);
+        
+        $poems = $query
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        
+        return $this->render('poems', [
+            'poems' => $poems,
+            'pagination' => $pagination,
+        ]);
     }
 
     /**
@@ -124,7 +142,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionPoems()
+    public function actionAddPoem()
     {
         $model = new PoemForm();
 
@@ -132,13 +150,13 @@ class SiteController extends Controller
             $poem = $model->add();
             print_r($poem);
         }else{
-            return $this->render('poems',[
+            return $this->render('addpoem',[
                 'model' => $model,
             ]);
         }
     }
 
-    public function actionAddpoem()
+    public function actionAddpoemAjax()
     {
         $model = new PoemForm();
 

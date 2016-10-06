@@ -56,7 +56,7 @@ class PoemForm extends \yii\base\Model
         $poem->title = $this->title;
         $poem->poem = $this->poem;
         $poem->autor = $this->autor;
-        $poem->date = date('U');
+        $poem->date = date('d.m.Y H:m');
         $poem->censor = $this->censor;
 
         $poem->save(false);
