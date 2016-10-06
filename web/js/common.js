@@ -18,4 +18,20 @@
     	console.log(title);
     	modal.modal('show');
     });
+    /*
+    $('#poem-form').submit(function(e){
+        e.preventDefault();
+        var str = $(this).serialize();
+        console.log(str);
+        $.ajax({
+            type: "POST",
+            url: "/poem/web/index.php?r=site%2Faddpoem",
+            data: str,
+            success: function(html){
+                $('#ajaxreq').html(html);
+            }
+        });
+        return false;
+    });
+    */
 }());

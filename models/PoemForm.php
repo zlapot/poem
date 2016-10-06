@@ -15,27 +15,21 @@ use Yii;
  * @property integer $date
  * @property integer $censor
  */
-class Poems extends \yii\db\ActiveRecord
+class PoemForm extends \yii\base\Model
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'poems';
-    }
+    public $title;
+    public $autor;
+    public $poem;
+    public $censor = false;
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['id_user', 'title', 'poem', 'autor', 'date', 'censor'], 'required', 
+            [['title', 'poem', 'autor'], 'required', 
                 'message'=>'Поле "{attribute}" не заполнено.'],
-            [['id_user', 'date', 'censor'], 'integer'],
             [['poem'], 'string'],
             [['title', 'autor'], 'string', 'max' => 100],
+            ['censor', 'safe'],
         ];
     }
 
@@ -55,6 +49,18 @@ class Poems extends \yii\db\ActiveRecord
         ];
     }
 
-      
+    public function add()
+    {
+        $poem = new Poems();
+        $poem->id_user = 1;
+        $poem->title = $this->title;
+        $poem->poem = $this->poem;
+        $poem->autor = $this->autor;
+        $poem->date = date('U');
+        $poem->censor = $this->censor;
+
+        $poem->save(false);
+        return $poem ? $poem : null;
+    } 
 
 }

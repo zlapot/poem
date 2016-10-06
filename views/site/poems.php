@@ -11,8 +11,9 @@ use yii\widgets\ActiveForm;
     <div class="col-md-8">
 
     <?php $form = ActiveForm::begin([
-    'id' => 'login-form',
+    'id' => 'poem-form',
     'options' => ['class' => 'form-horizontal'],
+    //'enableAjaxValidation'=>true,
     ]); ?>
         
         <?= $form->field($model, 'title', [
@@ -31,8 +32,12 @@ use yii\widgets\ActiveForm;
         ]) ?>
 
         <?= $form->field($model, 'censor', [
-            'template' => '<div class="col-sm-offset-2 col-sm-10"><div class="checkbox">{label}{input}</div></div>'
-        ])->checkbox() ?>
+            'template' => '<div class="col-sm-offset-2 col-sm-10"><div class="checkbox"><label>{input}{label}</label></div></div>',
+            'inputOptions' => [
+                'value' => 1,
+            ],
+            'labelOptions' => ['class' => ''],   
+        ])->checkbox(['value' => '1']) ?>
     
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -53,4 +58,6 @@ use yii\widgets\ActiveForm;
             <li class="item-rule">правило</li>
         </ul>
     </div>
+    <div id="ajaxreq"></div>
+
 </div><!-- poems -->

@@ -8,7 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\Poems;
+use app\models\PoemForm;
 
 class SiteController extends Controller
 {
@@ -126,10 +126,28 @@ class SiteController extends Controller
 
     public function actionPoems()
     {
-        $model = new Poems();
+        $model = new PoemForm();
 
-        return $this->render('poems',[
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            $poem = $model->add();
+            print_r($poem);
+        }else{
+            return $this->render('poems',[
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionAddpoem()
+    {
+        $model = new PoemForm();
+
+        if (Yii::$app->request->post()){                     
+            $r = (Yii::$app->request->post());
+
+            echo $r;
+        }else{
+            echo "Error";
+        }
     }
 }
