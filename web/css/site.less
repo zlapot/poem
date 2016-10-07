@@ -93,13 +93,15 @@ a.desc:after {
 /*  мой код   */
 @block-height: 450px;
 @poem-height: 340px;
+@anekdot-color-odd: #177245;
+@anekdot-color-even: #1faee9;
 
-.block{
+.block(){
     border: 2px solid #FFCD25;    
     margin: 0 auto;
     background-color: #eee;
     position: relative;
-    padding: 20px 10px;
+    
 }
 
 .bl-poem{
@@ -117,7 +119,7 @@ a.desc:after {
     z-index: 1;    
     height: @poem-height;
     overflow: hidden;
-    margin: 15px auto;
+    margin: 0 auto;
     white-space: pre-line;
 }
 
@@ -151,4 +153,48 @@ a.desc:after {
     margin: 20px auto;
     clear: both;
     display: table;
+}
+
+.poem, .poem-title, .poem-autor{
+    padding: 15px 20px;
+}
+
+.bl-poem div{
+    &:nth-of-type(odd){
+        padding-top:15px;
+        padding-bottom:15px;
+    } 
+    &:nth-of-type(even){
+        background-color: rgba(.8,.8,.8,0.05);
+    }
+}
+
+.block-quote div{    
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    color: #fff;
+    margin: 50px;
+
+    &:nth-of-type(odd){
+        background-color: @anekdot-color-odd;
+        &:after{
+            left: -30px; bottom: 10px;
+            border-right: 20px solid green; 
+        }
+    }
+
+    &:nth-of-type(even){
+        background-color: @anekdot-color-even;
+        &:after{
+            right: -30px; bottom: 10px;
+            border-left: 20px solid green; 
+        }
+    }
+
+    &:after{
+        content: ''; 
+        position: absolute;
+        border: 10px solid transparent; 
+    }
 }

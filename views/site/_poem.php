@@ -5,7 +5,7 @@ use yii\helpers\Html;
 ?>
 
 <?php
-$options = ['class' => 'poem blur-text'];
+$options = ['class' => 'poem']; //blur-text
 
 if ($poem->censor == 1){
     Html::addCssClass($options, 'censor');

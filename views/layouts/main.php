@@ -48,9 +48,9 @@ AppAsset::register($this);
             ],
             [
                 'label' => 'Добавить', 'items' => [
-                    ['label' => 'Стих', 'url' => ['/site/addpoem']],
-                    ['label' => 'Анекдот', 'url' => ['/moder/addanekdot']],
-                    ['label' => 'Хокку', 'url' => ['/moder/addhokky']],
+                    ['label' => 'Стих', 'url' => ['/moderator/addpoem']],
+                    ['label' => 'Анекдот', 'url' => ['/moderator/addanekdot']],
+                    ['label' => 'Хокку', 'url' => ['/moderator/addhokky']],
                 ],
             ],
             Yii::$app->user->isGuest ? (
