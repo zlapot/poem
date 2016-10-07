@@ -145,7 +145,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionAddPoem()
+    public function actionAddpoem()
     {
         $model = new PoemForm();
 
