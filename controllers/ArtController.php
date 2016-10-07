@@ -8,8 +8,9 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\PoemForm;
 use app\models\Poems;
+use app\models\Anekdots;
+use app\models\Hokkys;
 use yii\data\Pagination;
 use yii\web\Response;
 use yii\helpers\BaseJson;
@@ -88,10 +89,22 @@ class ArtController extends Controller
 
     public function actionAnekdots()
     {
+        $query = Anekdots::find()
+            ->from('anekdots');
+            //->all();
+        $pagination = new Pagination([
+            'defaultPageSize' => 9,
+            'totalCount' => $query->count(),
+        ]);
         
+        $anekdots = $query
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
         
         return $this->render('anekdots', [
-            
+            'anekdots' => $anekdots,
+            'pagination' => $pagination,
         ]);
     }
 

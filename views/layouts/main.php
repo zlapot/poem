@@ -37,6 +37,7 @@ AppAsset::register($this);
 
     echo '
         <form class="navbar-form navbar-right" action="/poem/web/index.php?r=search%2Fpublic" method="post">
+            <input type="hidden" name="_csrf" value="'.Yii::$app->request->getCsrfToken().'" />
             <input type="search" class="form-control" placeholder="Поиск..." name="public_search" maxlength="50">
             <button type="submit" class="btn btn-black">
                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -87,7 +88,7 @@ AppAsset::register($this);
 
     /*
     Html::beginForm(['order/update', 'class' => 'form-inline'], 'post');
-        Html::input('text', 'username', 'Huinya', ['class' => 'form-control']);
+        Html::input('text', 'username', 'DA', ['class' => 'form-control']);
     Html::endForm();
     */
     ?>

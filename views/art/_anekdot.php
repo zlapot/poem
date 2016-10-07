@@ -12,9 +12,7 @@ if ($anekdot->censor == 1){
 }
 ?>
 
-<div class="cblock-quote col-md-12">
-	<div class="bl-anekdot">
-		<?= Html::tag('div', Html::encode($anekdot->poem), $options) ?>
-		<?= Html::tag('div', Html::encode($anekdot->autor), ['class' => 'anekdot-autor']) ?>	
-	</div>  
+<div class="col-md-12 bl-anekdot " >
+	<?= Html::tag('p', Html::encode($anekdot->anekdot), $options) ?>
+	<?= Html::tag('p', "Автор: ".Html::encode($anekdot->autor), ['class' => 'anekdot-autor']) ?>		 
 </div>

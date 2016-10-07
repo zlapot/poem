@@ -1,29 +1,24 @@
 <?php
-
-/* @var $this yii\web\View */
+use yii\widgets\LinkPager;
 
 $this->title = 'My Yii Application';
 ?>
-<div class="site-index">
 
-    <div class="container">
-        <div class="block-quote">
-            <div class="col-md-12 anekdot">
-            В одной из частей Нью-Йорка, которую курирует полицейский участок, руководимый лейтенантом Возняком, преступность практически искоренена, но не самым законным методом — полиция просто прибрала под себя весь криминальный бизнес. «Крыша» прикрывает
-            </div>
-            <div class="col-md-12 anekdot">
-            В одной из частей Нью-Йорка, которую курирует полицейский участок, руководимый лейтенантом Возняком, преступность практически искоренена, но не самым законным методом — полиция просто прибрала под себя весь криминальный бизнес. «Крыша» прикрывает
-            </div>
-            <div class="col-md-12 anekdot">
-            В одной из частей Нью-Йорка, которую курирует полицейский участок, руководимый лейтенантом Возняком, преступность практически искоренена, но не самым законным методом — полиция просто прибрала под себя весь криминальный бизнес. «Крыша» прикрывает
-            </div>
-            <div class="col-md-12 anekdot">
-            В одной из частей Нью-Йорка, которую курирует полицейский участок, руководимый лейтенантом Возняком, преступность практически искоренена, но не самым законным методом — полиция просто прибрала под себя весь криминальный бизнес. «Крыша» прикрывает
-            </div>
-        </div>    
-        
-    </div>
 
-   
-    
+<div id='main-container' class="container  block-quote">
+
+    <?php foreach ($anekdots as $anekdot): ?>        
+            
+        <?= $this->render('_anekdot', [
+            'anekdot' => $anekdot,
+        ]) ?>
+
+    <?php endforeach; ?>    
+
 </div>
+
+<button type="button" id="btn-more-ank" class="btn btn-primary btn-lg active center-block">
+    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>  Загрузить ещё
+</button>
+
+<?= LinkPager::widget(['pagination' => $pagination]) ?> 

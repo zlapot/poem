@@ -67,7 +67,7 @@ class SearchController extends Controller
 
     public function actionPublic()
     {    
-        return $this->redirect(Url::to(['art/poems']), 302);
+        
     }
 
     
