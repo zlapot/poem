@@ -145,19 +145,7 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionAddpoem()
-    {
-        $model = new PoemForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()){
-            $poem = $model->add();
-            print_r($poem);
-        }else{
-            return $this->render('addpoem',[
-                'model' => $model,
-            ]);
-        }
-    }
+    
 
     public function actionAddpoemajax()
     {
@@ -174,7 +162,7 @@ class SiteController extends Controller
 
     public function actionPoemajax()
     {
-        if (Yii::$app->request->get()){
+        if (Yii::$app->request->post()){
             $query = Poems::find()
                 ->from('poems');
                 //->all();

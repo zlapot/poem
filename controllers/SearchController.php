@@ -6,10 +6,8 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
-use app\models\PoemForm;
 use app\models\Poems;
+use app\models\Search;
 use yii\data\Pagination;
 use yii\web\Response;
 use yii\helpers\BaseJson;
@@ -67,7 +65,26 @@ class SearchController extends Controller
 
     public function actionPublic()
     {    
+        $model = new Search();        
+        $search = Yii::$app->request->post();
+        $model->search=$search['public_search'];
+
+        $query = $model->Searching($model->search);
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 9,
+            'totalCount' => $query->count(),
+        ]);
         
+        $poems = $query
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        
+        return $this->render('/art/poems', [
+            'poems' => $poems,
+            'pagination' => $pagination,
+        ]);
     }
 
     
