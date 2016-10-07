@@ -174,13 +174,13 @@ a.desc:after {
     padding: 20px;
     position: relative;
     color: #fff;
-    margin: 50px;
-
+    margin-top: 20px;
+    
     &:nth-of-type(odd){
         background-color: @anekdot-color-odd;
         &:after{
             left: -30px; bottom: 10px;
-            border-right: 20px solid green; 
+            border-right: 20px solid @anekdot-color-odd; 
         }
     }
 
@@ -188,7 +188,7 @@ a.desc:after {
         background-color: @anekdot-color-even;
         &:after{
             right: -30px; bottom: 10px;
-            border-left: 20px solid green; 
+            border-left: 20px solid @anekdot-color-even; 
         }
     }
 
