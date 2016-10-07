@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Добавление стихотворения';
-$this->params['breadcrumbs'][] = ['label' => 'Стихотворения', 'url' => ['art/poems']];
+$this->title = 'Добавление хокку';
+$this->params['breadcrumbs'][] = ['label' => 'Хокку', 'url' => ['art/hokkys']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'labelOptions' => [ 'class' => 'col-sm-2 control-label' ]
         ]) ?>        
 
-        <?= $form->field($model, 'poem', [
+        <?= $form->field($model, 'hokky', [
             'template' => '{label} <div class="col-sm-10">{input}{error}{hint}</div>',
             'labelOptions' => [ 'class' => 'col-sm-2 control-label' ]
         ])->textarea(['rows' => 20, 'cols' => 5]) ?>

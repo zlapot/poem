@@ -4,17 +4,6 @@ namespace app\models;
 
 use Yii;
 
-/**
- * This is the model class for table "poems".
- *
- * @property integer $id
- * @property integer $id_user
- * @property string $title
- * @property string $poem
- * @property string $autor
- * @property integer $date
- * @property integer $censor
- */
 class PoemForm extends \yii\base\Model
 {
     public $title;

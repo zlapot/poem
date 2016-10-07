@@ -3,10 +3,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Добавление стихотворения';
-$this->params['breadcrumbs'][] = ['label' => 'Стихотворения', 'url' => ['art/poems']];
+$this->title = 'Добавление анекдота';
+$this->params['breadcrumbs'][] = ['label' => 'Анекдоты', 'url' => ['art/anekdots']];
 $this->params['breadcrumbs'][] = $this->title;
-
 ?>
 <div class="row">
     <div class="col-md-8">
@@ -16,13 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     'options' => ['class' => 'form-horizontal'],
     //'enableAjaxValidation'=>true,
     ]); ?>
-        
-        <?= $form->field($model, 'title', [
-            'template' => '{label} <div class="col-sm-10">{input}{error}{hint}</div>',
-            'labelOptions' => [ 'class' => 'col-sm-2 control-label' ]
-        ]) ?>        
-
-        <?= $form->field($model, 'poem', [
+                    
+        <?= $form->field($model, 'anekdot', [
             'template' => '{label} <div class="col-sm-10">{input}{error}{hint}</div>',
             'labelOptions' => [ 'class' => 'col-sm-2 control-label' ]
         ])->textarea(['rows' => 20, 'cols' => 5]) ?>

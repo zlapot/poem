@@ -9,11 +9,16 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\PoemForm;
+use app\models\AnekdotForm;
+use app\models\HokkyForm;
 use app\models\Poems;
+use app\models\Anekdots;
+use app\models\Hokkys;
 use yii\data\Pagination;
 use yii\web\Response;
 use yii\helpers\BaseJson;
 use yii\helpers\Json;
+use yii\helpers\Url;
 
 class ModeratorController extends Controller
 {
@@ -64,10 +69,50 @@ class ModeratorController extends Controller
         $model = new PoemForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
-            $poem = $model->add();
-            print_r($poem);
+            if($model->add()){
+                return $this->redirect(Url::to(['art/poems']), 302);
+            }else{
+
+            }
+
         }else{
             return $this->render('addpoem',[
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionAddanekdot()
+    {
+        $model = new AnekdotForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            if($model->add()){
+                return $this->redirect(Url::to(['art/anekdots']), 302);
+            }else{
+
+            }
+
+        }else{
+            return $this->render('addanekdot',[
+                'model' => $model,
+            ]);
+        }
+    }
+
+    public function actionAddhokky()
+    {
+        $model = new HokkyForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            if($model->add()){ 
+                return $this->redirect(Url::to(['art/hokkys']),302);
+            }else{
+
+            }
+            
+        }else{
+            return $this->render('addhokky',[
                 'model' => $model,
             ]);
         }
