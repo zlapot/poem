@@ -2,23 +2,25 @@
 
 use yii\db\Migration;
 
-class m161005_134652_create_table_comments extends Migration
+class m161007_154326_create_table_hokky extends Migration
 {
     public function up()
     {
-        $this->createTable('comments', [
-            'id' => $this->primaryKey(),
-            'id_poem' => $this->integer()->notNull(),
+        $this->createTable('hokkys', [
+            'id' => $this->primaryKey(),            
             'id_user' => $this->integer()->notNull(),
-            'comment' => $this->string(100)->notNull(),
+            'title' => $this->string(20),
+            'hokky' => $this->text()->notNull(),
+            'autor' => $this->string(100)->notNull(),
             'date' => $this->string(16)->notNull(),
             'utime' => $this->integer()->notNull(),
+            'censor' => $this->integer()->notNull(),
         ]);
     }
 
     public function down()
     {
-        $this->dropTable('comments');
+        $this->dropTable('hokkys');
     }
 
     /*

@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Бугагагагашки',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -36,12 +36,27 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Add', 'url' => ['/site/addpoem']],
+            ['label' => 'Главная', 'url' => ['/site/index']],
+            ['label' => 'Стихи', 'url' => ['/art/poems']],
+            ['label' => 'Анекдоты', 'url' => ['/art/anekdots']],
+            ['label' => 'Хокку', 'url' => ['/art/hokkys']],
+            [
+                'label' => 'О нас', 'items' => [
+                    ['label' => 'О нас', 'url' => ['/site/about']],
+                    ['label' => 'Связь', 'url' => ['/site/contact']],
+                ]
+            ],
+            [
+                'label' => 'Добавить', 'items' => [
+                    ['label' => 'Стих', 'url' => ['/site/addpoem']],
+                    ['label' => 'Анекдот', 'url' => ['/moder/addanekdot']],
+                    ['label' => 'Хокку', 'url' => ['/moder/addhokky']],
+                ],
+            ],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Войти', 'url' => ['/site/login'],
+                    'template' => '<a href="{url}" >{label}<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></button></a>'                                    
+                ]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
