@@ -12,11 +12,13 @@ if ($hokky->censor == 1){
 }
 ?>
 
-<div class="row">
+<div class="">
 	<div class="col-md-8 .hidden-xs"></div>	
-	<div class="col-md-4 bl-hokky" >
-		<?= Html::tag('p', Html::encode($hokky->hokky), $options) ?>
-		<?= Html::tag('p', "Автор: ".Html::encode($hokky->autor), ['class' => 'hokky-autor']) ?> 
+	<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="bl-hokky center-block">
+			<?= Html::tag('div', Html::encode($hokky->hokky), $options) ?>
+			<?= Html::tag('div', "Автор: ".Html::encode($hokky->autor), ['class' => 'hokky-autor']) ?> 
+		</div>
 	</div>
 </div>
 

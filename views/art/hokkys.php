@@ -1,7 +1,7 @@
 <?php
 use yii\widgets\LinkPager;
 
-$this->title = 'My Yii Application';
+$this->title = 'Хокку';
 ?>
 
 
@@ -22,3 +22,4 @@ $this->title = 'My Yii Application';
 </button>
 
 <?= LinkPager::widget(['pagination' => $pagination]) ?> 
+

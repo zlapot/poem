@@ -23,6 +23,7 @@
         init: function(){
             this.modalShow();
             this.showMore();
+            this.initStyle();
         },
 
         modalShow: function(){
@@ -98,6 +99,18 @@
             }
 
             return row;            
+        },
+
+        initStyle: function(){
+            var title = $('title').text();
+            console.log(title);
+            switch (title){
+                case 'Хокку':
+                    $('body').addClass('jap-theme');
+                    break;
+                default:
+                    break;
+            }
         },
 
     };
