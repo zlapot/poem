@@ -95,6 +95,7 @@ a.desc:after {
 @poem-height: 340px;
 @anekdot-color-odd: #177245;
 @anekdot-color-even: #1faee9;
+@tablet: 768px;
 
 .block(){
     border: 2px solid #FFCD25;    
@@ -214,4 +215,18 @@ a.desc:after {
 
 .anekdot-autor{
     text-align: right;
+}
+
+.hokky{
+    white-space: pre-line;
+}
+
+
+@media (min-width: @tablet) {
+    .hokky-container{
+        background: url('/poem/web/img/jap.gif');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 80vh;
+    }
 }

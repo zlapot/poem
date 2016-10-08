@@ -9,7 +9,6 @@ use Yii;
  *
  * @property integer $id
  * @property integer $id_user
- * @property string $title
  * @property string $hokky
  * @property string $autor
  * @property string $date
@@ -36,7 +35,6 @@ class Hokkys extends \yii\db\ActiveRecord
                 'message'=>'Поле "{attribute}" не заполнено.'],
             [['id_user', 'utime', 'censor'], 'integer'],
             [['hokky'], 'string'],
-            [['title'], 'string', 'max' => 20],
             [['autor'], 'string', 'max' => 100],
             [['date'], 'string', 'max' => 16],
             [['censor'], 'safe'],
@@ -51,7 +49,6 @@ class Hokkys extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_user' => 'Id User',
-            'title' => 'Название',
             'hokky' => 'Хокку',
             'autor' => 'Автор',
             'date' => 'Дата публикации',

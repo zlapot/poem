@@ -16,11 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'options' => ['class' => 'form-horizontal'],
     //'enableAjaxValidation'=>true,
     ]); ?>
-        
-        <?= $form->field($model, 'title', [
-            'template' => '{label} <div class="col-sm-10">{input}{error}{hint}</div>',
-            'labelOptions' => [ 'class' => 'col-sm-2 control-label' ]
-        ]) ?>        
+                
 
         <?= $form->field($model, 'hokky', [
             'template' => '{label} <div class="col-sm-10">{input}{error}{hint}</div>',

@@ -6,8 +6,7 @@ use Yii;
 
 
 class HokkyForm extends \yii\base\Model
-{
-    public $title;
+{    
     public $autor;
     public $hokky;
     public $censor = false;
@@ -19,7 +18,6 @@ class HokkyForm extends \yii\base\Model
                 'message'=>'Поле "{attribute}" не заполнено.'],
             [['censor'], 'integer'],
             [['hokky'], 'string'],
-            [['title'], 'string', 'max' => 20],
             [['autor'], 'string', 'max' => 100],
             [['censor'], 'safe'],
         ];
@@ -31,7 +29,6 @@ class HokkyForm extends \yii\base\Model
         return [
             'id' => 'ID',
             'id_user' => 'Id User',
-            'title' => 'Название',
             'hokky' => 'Хокку',
             'autor' => 'Автор',
             'date' => 'Дата публикации',
@@ -43,7 +40,6 @@ class HokkyForm extends \yii\base\Model
     {
         $hokky = new Hokkys();
         $hokky->id_user = 1;
-        $hokky->title = $this->title;
         $hokky->hokky = $this->hokky;
         $hokky->autor = $this->autor;
         $hokky->date = date('d.m.Y H:m');

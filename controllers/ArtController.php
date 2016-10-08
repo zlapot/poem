@@ -108,4 +108,25 @@ class ArtController extends Controller
         ]);
     }
 
+    public function actionHokkys()
+    {
+        $query = Hokkys::find()
+            ->from('hokkys');
+            //->all();
+        $pagination = new Pagination([
+            'defaultPageSize' => 9,
+            'totalCount' => $query->count(),
+        ]);
+        
+        $hokkys = $query
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        
+        return $this->render('hokkys', [
+            'hokkys' => $hokkys,
+            'pagination' => $pagination,
+        ]);
+    }
+
 }
