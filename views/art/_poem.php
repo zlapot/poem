@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 ?>
 
@@ -13,9 +14,12 @@ if ($poem->censor == 1){
 ?>
 
 <div class="col-md-4 bl-post">
-	<div class="bl-poem">
-		<?= Html::tag('div', Html::encode($poem->title), ['class' => 'poem-title']) ?>
-		<?= Html::tag('div', Html::encode($poem->poem), $options) ?>
-		<?= Html::tag('div', Html::encode($poem->autor), ['class' => 'poem-autor']) ?>	
-	</div>  
+	<?= Html::tag('div',
+			Html::tag('div',
+		 		Html::a(Html::encode($poem->title), Url::to(['art/poems', 'id' => $poem->id])),
+		 			['class' => 'poem-title']) .
+			Html::tag('div', Html::encode($poem->poem), $options) .
+			Html::tag('div', Html::encode($poem->autor), ['class' => 'poem-autor']),
+		['data-link' => Url::to(['art/poems', 'id' => $poem->id]), 'class' => 'bl-poem']
+	) ?> 
 </div>
