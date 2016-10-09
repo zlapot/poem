@@ -8,6 +8,8 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
+use app\models\Lang;
 
 
 AppAsset::register($this);
@@ -27,6 +29,14 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
+
+    $lang = new Lang();
+    $cookies = Yii::$app->request->cookies;
+    $language = $cookies->getValue('language', 'eng');
+
+    $lanID = $lang->getIndex($language) ? $lang->getIndex($language) : 0; 
+    //$lanID = 0;
+
     NavBar::begin([
         'brandLabel' => 'Бугагагагашки',
         'brandUrl' => Yii::$app->homeUrl,
@@ -48,32 +58,32 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Главная', 'url' => ['/site/index']],
-            ['label' => 'Стихи', 'url' => ['/art/poems']],
-            ['label' => 'Анекдоты', 'url' => ['/art/anekdots']],
-            ['label' => 'Хокку', 'url' => ['/art/hokkys']],
+            ['label' => $lang->home[$lanID], 'url' => ['/site/index']],
+            ['label' => $lang->poems[$lanID], 'url' => ['/art/poems']],
+            ['label' => $lang->anecdote[$lanID], 'url' => ['/art/anekdots']],
+            ['label' => $lang->haiku[$lanID], 'url' => ['/art/hokkys']],
             [
-                'label' => 'О нас', 'items' => [
-                    ['label' => 'О нас', 'url' => ['/site/about']],
-                    ['label' => 'Связь', 'url' => ['/site/contact']],
+                'label' => $lang->about[$lanID], 'items' => [
+                    ['label' => $lang->about[$lanID], 'url' => ['/site/about']],
+                    ['label' => $lang->connect[$lanID], 'url' => ['/site/contact']],
                 ]
             ],
             [
-                'label' => 'Добавить', 'items' => [
-                    ['label' => 'Стих', 'url' => ['/moderator/addpoem']],
-                    ['label' => 'Анекдот', 'url' => ['/moderator/addanekdot']],
-                    ['label' => 'Хокку', 'url' => ['/moderator/addhokky']],
+                'label' => $lang->add[$lanID], 'items' => [
+                    ['label' => $lang->addpoem[$lanID], 'url' => ['/moderator/addpoem']],
+                    ['label' => $lang->addanec[$lanID], 'url' => ['/moderator/addanekdot']],
+                    ['label' => $lang->addhaiku[$lanID], 'url' => ['/moderator/addhokky']],
                 ],
             ],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Войти', 'url' => ['/site/login'],
+                ['label' => $lang->login[$lanID], 'url' => ['/site/login'],
                     'template' => '<a href="{url}" >{label}<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></button></a>'                                    
                 ]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    $lang->logout[$lanID] .' (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
@@ -106,11 +116,12 @@ AppAsset::register($this);
 </div>
 
 <div class="lang">
-    <button type="button" class="btn btn-default">Rus</button>
-    <button type="button" class="btn btn-default">Eng</button>
-    <button type="button" class="btn btn-default">Anc</button>
-    <button type="button" class="btn btn-default">Bib</button>
+    <?= Html::a('Rus', Url::to(['site/lang', 'id' => 'ru']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+    <?= Html::a('Eng', Url::to(['site/lang', 'id' => 'eng']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+    <?= Html::a('Bib', Url::to(['site/lang', 'id' => 'bib']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
 </div>
+
+
 
 <footer class="footer">
     <div class="container">

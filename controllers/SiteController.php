@@ -14,6 +14,7 @@ use yii\data\Pagination;
 use yii\web\Response;
 use yii\helpers\BaseJson;
 use yii\helpers\Json;
+use yii\helpers\Url;
 
 class SiteController extends Controller
 {
@@ -181,4 +182,33 @@ class SiteController extends Controller
         }
     }
 
+    public function actionLang($id){
+        switch($id){
+            case 'ru' :
+                $cookies = Yii::$app->response->cookies;
+                $cookies->add(new \yii\web\Cookie([
+                    'name' => 'language',
+                    'value' => 'ru',
+                ]));
+                return $this->redirect(Url::to(['site/index']), 302);
+                break;
+            case 'eng' :
+                $cookies = Yii::$app->response->cookies;
+                $cookies->add(new \yii\web\Cookie([
+                    'name' => 'language',
+                    'value' => 'eng',
+                ]));
+                return $this->redirect(Url::to(['site/index']), 302);
+                break;
+            case 'bib' :
+                $cookies = Yii::$app->response->cookies;
+                $cookies->add(new \yii\web\Cookie([
+                    'name' => 'language',
+                    'value' => 'bib',
+                ]));
+                return $this->redirect(Url::to(['site/index']), 302);
+                break;
+            default: break;    
+        }
+    }
 }
