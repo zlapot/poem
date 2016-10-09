@@ -105,7 +105,12 @@ AppAsset::register($this);
     </div>
 </div>
 
-
+<div class="lang">
+    <button type="button" class="btn btn-default">Rus</button>
+    <button type="button" class="btn btn-default">Eng</button>
+    <button type="button" class="btn btn-default">Anc</button>
+    <button type="button" class="btn btn-default">Bib</button>
+</div>
 
 <footer class="footer">
     <div class="container">
