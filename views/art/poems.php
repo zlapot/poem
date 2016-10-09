@@ -1,6 +1,7 @@
 <?php
 use yii\widgets\LinkPager;
 
+
 $this->title = 'Поэзия души и не только';
 $i = 0;
 $count = count($poems)-1;
@@ -37,7 +38,7 @@ $count = count($poems)-1;
 	<div id="ajaxreq"></div>
 
 <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-link="/poem/web/index.php?r=art%2Fpoems">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -52,6 +53,7 @@ $count = count($poems)-1;
           <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
             <script src="//yastatic.net/share2/share.js"></script>
             <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,twitter"></div>
+            <a href="#" class="btn btn-default modal-link" role="button">Комментировать</a>
             <button type="button" class="btn btn-primary" data-dismiss="modal">Закрыть</button>
           </div>
         </div>

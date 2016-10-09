@@ -19,7 +19,7 @@ if ($hokky->censor == 1){
 		<?= Html::tag('div',
 				Html::tag('div', Html::encode($hokky->hokky), $options) .
 				Html::tag('div', "Автор: ".Html::encode($hokky->autor), ['class' => 'hokky-autor']),
-			['data-link' => Url::to(['art/hokkys', 'id' => $hokky->id]), 'class' => 'bl-hokky center-block']
+			['data-link' => Url::to(['art/hokky', 'id' => $hokky->id]), 'class' => 'bl-hokky center-block']
 		) ?>
 	</div>
 </div>

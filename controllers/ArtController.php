@@ -68,23 +68,25 @@ class ArtController extends Controller
 
     public function actionPoems()
     {
+        
         $query = Poems::find()
             ->from('poems');
-            //->all();
+                //->all();
         $pagination = new Pagination([
             'defaultPageSize' => 9,
             'totalCount' => $query->count(),
         ]);
-        
+
         $poems = $query
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-        
+
         return $this->render('poems', [
             'poems' => $poems,
             'pagination' => $pagination,
         ]);
+       
     }
 
     public function actionAnekdots()
@@ -126,6 +128,22 @@ class ArtController extends Controller
         return $this->render('hokkys', [
             'hokkys' => $hokkys,
             'pagination' => $pagination,
+        ]);
+    }
+
+    public function actionPoem($id)
+    {
+        $query = Poems::find()
+                ->from('poems')
+                ->where(['id' => $id])
+                ->one();
+
+        if(!$query){
+            return $this->render(error);
+        }
+
+        return $this->render('poem', [
+           'poem' => $query,
         ]);
     }
 

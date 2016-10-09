@@ -24,6 +24,7 @@
             this.modalShow();
             this.showMore();
             this.initStyle();
+            this.returnLink();
         },
 
         modalShow: function(){
@@ -43,6 +44,7 @@
                 modal.find('.modal-title').text(title);
                 modal.find('.modal-poem').html(poem);
                 modal.find('.modal-autor').text(autor);
+                modal.find('.modal-link').attr('href', url);
                 console.log(url);
                 app.changeLink(url);
                 modal.modal('show');
@@ -121,8 +123,15 @@
             if(url != window.location){
                 window.history.pushState(null, null, url);
             }
-        }
+        },
 
+        returnLink: function(){
+            $(modal).on('hidden.bs.modal', function (e) {
+                window.history.replaceState(null, null, modal.data('link'));
+                console.log("bugagaga");
+            });
+        },
+        
     };
 
     app.init();
