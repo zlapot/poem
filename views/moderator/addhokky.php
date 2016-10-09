@@ -45,16 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div>
 
-    <div class="col-md-4 offset-right blockquote-reverse">
-        Какие-то правила:
-        <ul class="poem-rule">
-            <li class="item-rule">правило</li>
-            <li class="item-rule">правило</li>
-            <li class="item-rule">правило</li>
-            <li class="item-rule">правило</li>
-            <li class="item-rule">правило</li>
-        </ul>
-    </div>
+    <?= $this->render('rules/rules') ?>
+    
     <div id="ajaxreq"></div>
 
 </div><!-- poems -->

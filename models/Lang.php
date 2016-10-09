@@ -23,7 +23,7 @@ class Lang extends \yii\base\Model
     public $addanec=['Анекдот','An anecdote', 'O anecdotă', 'Анекдот', 'Забавную исторію', 'نكتة', 'Анекдот', 'Eine Anekdote oder ein Witz', 'Une anecdote'];
     public $addhaiku=['Хокку','Haiku', 'Haiku', 'Хайку', 'Хайку', 'هايكو', 'Хайку', 'Haiku', 'Haїku'];
 
-    public function getIndex($lang)
+    public static function getIndex($lang)
     {
         switch($lang){
             case 'ru' :                
