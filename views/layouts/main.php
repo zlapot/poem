@@ -48,7 +48,7 @@ AppAsset::register($this);
     echo '
         <form class="navbar-form navbar-right" action="/poem/web/index.php?r=search%2Fpublic" method="post">
             <input type="hidden" name="_csrf" value="'.Yii::$app->request->getCsrfToken().'" />
-            <input type="search" class="form-control" placeholder="Поиск..." name="public_search" maxlength="50">
+            <input type="search" class="form-control" placeholder="'.$lang->search[$lanID].'...'.'" name="public_search" maxlength="50">
             <button type="submit" class="btn btn-black">
                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </button>

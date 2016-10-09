@@ -33,6 +33,9 @@
                     autor;
 
                 var jthis = $(this);
+
+                var url = jthis.find('.bl-poem').data('link');
+
                 title = jthis.find('.poem-title').text();
                 poem = jthis.find('.poem').html();
                 autor = jthis.find('.poem-autor').text();
@@ -40,7 +43,8 @@
                 modal.find('.modal-title').text(title);
                 modal.find('.modal-poem').html(poem);
                 modal.find('.modal-autor').text(autor);
-                console.log(title);
+                console.log(url);
+                app.changeLink(url);
                 modal.modal('show');
             });
         },
@@ -112,6 +116,12 @@
                     break;
             }
         },
+
+        changeLink: function(url){
+            if(url != window.location){
+                window.history.pushState(null, null, url);
+            }
+        }
 
     };
 
