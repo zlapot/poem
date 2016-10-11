@@ -32,4 +32,5 @@ phpunit.phar
 /config/db.php
 
 /web/img/*
->>>>>>>
+
+/config/db.php
