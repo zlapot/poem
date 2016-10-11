@@ -26,7 +26,6 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-
 /web/img/*
 
 /config/db.php
