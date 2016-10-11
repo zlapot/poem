@@ -8,6 +8,13 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\PoemForm;
+use app\models\Poems;
+use yii\data\Pagination;
+use yii\web\Response;
+use yii\helpers\BaseJson;
+use yii\helpers\Json;
+use yii\helpers\Url;
 
 class SiteController extends Controller
 {
@@ -60,7 +67,23 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Poems::find()
+            ->from('poems');
+            //->all();
+        $pagination = new Pagination([
+            'defaultPageSize' => 9,
+            'totalCount' => $query->count(),
+        ]);
+        
+        $poems = $query
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        
+        return $this->render('poems', [
+            'poems' => $poems,
+            'pagination' => $pagination,
+        ]);
     }
 
     /**
@@ -121,5 +144,71 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    
+
+    public function actionAddpoemajax()
+    {
+        $model = new PoemForm();
+
+        if (Yii::$app->request->post()){                     
+            $r = (Yii::$app->request->post());
+
+            echo $r;
+        }else{
+            echo "Error";
+        }
+    }
+
+    public function actionPoemajax()
+    {
+        if (Yii::$app->request->post()){
+            $query = Poems::find()
+                ->from('poems');
+                //->all();
+            $pagination = new Pagination([
+                'defaultPageSize' => 9,
+                'totalCount' => $query->count(),
+            ]);
+            
+            $poems = $query
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+
+            echo \yii\helpers\Json::encode($poems);
+            
+        }
+    }
+
+    public function actionLang($id){
+        switch($id){
+            case 'ru' :
+                $cookies = Yii::$app->response->cookies;
+                $cookies->add(new \yii\web\Cookie([
+                    'name' => 'language',
+                    'value' => 'ru',
+                ]));
+                return $this->redirect(Url::to(['site/index']), 302);
+                break;
+            case 'eng' :
+                $cookies = Yii::$app->response->cookies;
+                $cookies->add(new \yii\web\Cookie([
+                    'name' => 'language',
+                    'value' => 'eng',
+                ]));
+                return $this->redirect(Url::to(['site/index']), 302);
+                break;
+            case 'bib' :
+                $cookies = Yii::$app->response->cookies;
+                $cookies->add(new \yii\web\Cookie([
+                    'name' => 'language',
+                    'value' => 'bib',
+                ]));
+                return $this->redirect(Url::to(['site/index']), 302);
+                break;
+            default: break;    
+        }
     }
 }

@@ -93,13 +93,17 @@ a.desc:after {
 /*  мой код   */
 @block-height: 450px;
 @poem-height: 340px;
+@anekdot-color-odd: #177245;
+@anekdot-color-even: #1faee9;
+@tablet: 992px;
+@mobile: 768px;
 
-.block{
+.block(){
     border: 2px solid #FFCD25;    
     margin: 0 auto;
     background-color: #eee;
     position: relative;
-    padding: 20px 10px;
+    
 }
 
 .bl-poem{
@@ -117,7 +121,8 @@ a.desc:after {
     z-index: 1;    
     height: @poem-height;
     overflow: hidden;
-    margin: 15px auto;
+    margin: 0 auto;
+    white-space: pre-line;
 }
 
 .blur-text{
@@ -137,3 +142,133 @@ a.desc:after {
     display: inline-block;
     float: left;
 }
+
+.item-rule{
+    list-style-type: none;
+}
+
+.modal-poem{
+    white-space: pre-line;
+}
+
+.pagination{
+    margin: 20px auto;
+    clear: both;
+    display: table;
+}
+
+.poem, .poem-title, .poem-autor{
+    padding: 15px 20px;
+}
+
+.bl-poem div{
+    &:nth-of-type(odd){
+        padding-top:15px;
+        padding-bottom:15px;
+    } 
+    &:nth-of-type(even){
+        background-color: rgba(.8,.8,.8,0.05);
+    }
+}
+
+.block-quote div{    
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    color: #fff;
+    margin-bottom: 20px;
+
+    &:nth-of-type(odd){
+        background-color: @anekdot-color-odd;
+        &:after{
+            left: -30px; bottom: 10px;
+            border-right: 20px solid @anekdot-color-odd; 
+        }
+    }
+
+    &:nth-of-type(even){
+        background-color: @anekdot-color-even;
+        &:after{
+            right: -30px; bottom: 10px;
+            border-left: 20px solid @anekdot-color-even; 
+        }
+    }
+
+    &:after{
+        content: ''; 
+        position: absolute;
+        border: 10px solid transparent; 
+    }
+}
+
+.navbar-form{
+    float: right;
+}
+
+.btn-black{
+    background-color: #222;
+    color: #fff;
+}
+
+.bl-anekdot p {
+    display: block;
+}
+
+.anekdot-autor{
+    text-align: right;
+}
+
+.hokky, .bl-art{
+    white-space: pre-line;
+}
+
+
+@media (min-width: @tablet) {
+    .jap-theme{
+        background: url('/poem/web/img/jap2.jpg'), url('/poem/web/img/jap2xs.jpg');
+        background-repeat: no-repeat, repeat;
+        background-attachment: fixed, none;
+        background-size: 100%;
+        background-color: #f5f5f5;
+        //height: 85vh;
+    }
+}
+
+.bl-hokky{
+    border-bottom: 3px double #ccc;
+    text-align: center;
+    vertical-align: middle;
+    display: table;
+    width: 100%;
+    padding: 20px 0;
+}
+
+@media (min-width: @mobile) {
+    .bl-hokky{
+        border-bottom: 3px double #ccc;
+        text-align: center;
+        vertical-align: middle;
+        display: table-cell;        
+        width: 250px;
+        height: 200px;
+    }
+}
+
+#btn-more-hokky{
+    margin-top: 25px;
+}
+
+.lang{
+    position: fixed;
+    right: 20px;
+    top:60px;
+}
+
+#vk_groups, #vk_groups iframe, .fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
+
+.wcomments_head, ._wcomments_head{
+    background-color: #333 !important;
+}
+

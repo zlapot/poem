@@ -8,6 +8,9 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
+use app\models\Lang;
+
 
 AppAsset::register($this);
 ?>
@@ -26,26 +29,61 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
+
+    $lang = new Lang();
+    $cookies = Yii::$app->request->cookies;
+    $language = $cookies->getValue('language', 'eng');
+
+    $lanID = $lang->getIndex($language) ? $lang->getIndex($language) : 0; 
+    //$lanID = 0;
+
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Бугагагагашки',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+
+    echo '
+        <form class="navbar-form navbar-right" action="/poem/web/index.php?r=search%2Fpublic" method="post">
+            <input type="hidden" name="_csrf" value="'.Yii::$app->request->getCsrfToken().'" />
+            <input type="search" class="form-control" placeholder="'.$lang->search[$lanID].'...'.'" name="public_search" maxlength="50">
+            <button type="submit" class="btn btn-black">
+                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+        </form>
+    ';
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => $lang->home[$lanID], 'url' => ['/site/index']],
+            ['label' => $lang->poems[$lanID], 'url' => ['/art/poems']],
+            ['label' => $lang->anecdote[$lanID], 'url' => ['/art/anekdots']],
+            ['label' => $lang->haiku[$lanID], 'url' => ['/art/hokkys']],
+            [
+                'label' => $lang->about[$lanID], 'items' => [
+                    ['label' => $lang->about[$lanID], 'url' => ['/site/about']],
+                    ['label' => $lang->connect[$lanID], 'url' => ['/site/contact']],
+                ]
+            ],
+            [
+                'label' => $lang->add[$lanID], 'items' => [
+                    ['label' => $lang->addpoem[$lanID], 'url' => ['/moderator/addpoem']],
+                    ['label' => $lang->addanec[$lanID], 'url' => ['/moderator/addanekdot']],
+                    ['label' => $lang->addhaiku[$lanID], 'url' => ['/moderator/addhokky']],
+                ],
+            ],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => $lang->login[$lanID], 'url' => ['/site/login'],
+                    'template' => '<a href="{url}" >{label}<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></button></a>'                                    
+                ]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    $lang->logout[$lanID] .' (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
@@ -53,16 +91,37 @@ AppAsset::register($this);
             )
         ],
     ]);
+   
+    
+
     NavBar::end();
+
+    /*
+    Html::beginForm(['order/update', 'class' => 'form-inline'], 'post');
+        Html::input('text', 'username', 'DA', ['class' => 'form-control']);
+    Html::endForm();
+    */
     ?>
 
     <div class="container">
         <?= Breadcrumbs::widget([
+            'homeLink' => [
+                'label' => 'Главная',
+                'url' => Yii::$app->getHomeUrl()
+            ],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
     </div>
 </div>
+
+<div class="lang">
+    <?= Html::a('Rus', Url::to(['site/lang', 'id' => 'ru']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+    <?= Html::a('Eng', Url::to(['site/lang', 'id' => 'eng']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+    <?= Html::a('Bib', Url::to(['site/lang', 'id' => 'bib']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+</div>
+
+
 
 <footer class="footer">
     <div class="container">
