@@ -147,4 +147,36 @@ class ArtController extends Controller
         ]);
     }
 
+    public function actionHokky($id)
+    {
+        $query = Hokkys::find()
+                ->from('hokkys')
+                ->where(['id' => $id])
+                ->one();
+
+        if(!$query){
+            return $this->render(error);
+        }
+
+        return $this->render('hokky', [
+           'hokky' => $query,
+        ]);
+    }
+
+    public function actionAnekdot($id)
+    {
+        $query = Anekdots::find()
+                ->from('anekdots')
+                ->where(['id' => $id])
+                ->one();
+
+        if(!$query){
+            return $this->render(error);
+        }
+
+        return $this->render('anekdot', [
+           'anekdot' => $query,
+        ]);
+    }
+
 }
