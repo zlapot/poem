@@ -193,7 +193,28 @@ class SiteController extends Controller
             case 'bib' :
                 $this->checkLanguage('bib');
                 break;
-            default: break;    
+            case 'ukr' :
+                $this->checkLanguage('ukr');
+                break;
+            case 'imp' :
+                $this->checkLanguage('imp');
+                break;
+            case 'ar' :
+                $this->checkLanguage('ar');
+                break;
+            case 'bas' :
+                $this->checkLanguage('bas');
+                break;
+            case 'de' :
+                $this->checkLanguage('de');
+                break;
+            case 'fr' :
+                $this->checkLanguage('fr');
+                break;
+            default: 
+                $this->checkLanguage('ru');
+                break;  
+
         }
         
         return $this->redirect(Url::to(['site/index']), 302);
