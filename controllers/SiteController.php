@@ -185,30 +185,27 @@ class SiteController extends Controller
     public function actionLang($id){
         switch($id){
             case 'ru' :
-                $cookies = Yii::$app->response->cookies;
-                $cookies->add(new \yii\web\Cookie([
-                    'name' => 'language',
-                    'value' => 'ru',
-                ]));
-                return $this->redirect(Url::to(['site/index']), 302);
+                $this->checkLanguage('ru');
                 break;
             case 'eng' :
-                $cookies = Yii::$app->response->cookies;
-                $cookies->add(new \yii\web\Cookie([
-                    'name' => 'language',
-                    'value' => 'eng',
-                ]));
-                return $this->redirect(Url::to(['site/index']), 302);
+                $this->checkLanguage('eng');
                 break;
             case 'bib' :
-                $cookies = Yii::$app->response->cookies;
-                $cookies->add(new \yii\web\Cookie([
-                    'name' => 'language',
-                    'value' => 'bib',
-                ]));
-                return $this->redirect(Url::to(['site/index']), 302);
+                $this->checkLanguage('bib');
                 break;
             default: break;    
         }
+        
+        return $this->redirect(Url::to(['site/index']), 302);
+    }
+
+    private function checkLanguage($lang){
+        
+        $cookies = Yii::$app->response->cookies;
+        $cookies->add(new \yii\web\Cookie([
+            'name' => 'language',
+            'value' => $lang
+        ]));
+        
     }
 }
