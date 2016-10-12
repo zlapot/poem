@@ -23,7 +23,8 @@ if ($anekdot->censor == 1){
 
 		<div class="col-md-8">
 			<?= $this->render('comments', [
-					'id' => $anekdot->id,
+					'model' => $model,
+					'comments' => $comments,
 				]) ?>
 		</div>
 

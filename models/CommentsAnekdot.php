@@ -13,14 +13,14 @@ use Yii;
  * @property string $comment
  * @property integer $date
  */
-class Comments extends \yii\db\ActiveRecord
+class CommentsAnekdot extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'comments';
+        return 'comments_anekdot';
     }
 
     /**
@@ -29,8 +29,9 @@ class Comments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_poem', 'id_user', 'comment', 'date'], 'required'],
-            [['id_poem', 'id_user', 'date'], 'integer'],
+            [['id_poem', 'id_user', 'comment', 'date', 'utime'], 'required'],
+            [['id_poem', 'id_user', 'utime'], 'integer'],
+            [['date'], 'string', 'max' => 16],
             [['comment'], 'string', 'max' => 100],
         ];
     }

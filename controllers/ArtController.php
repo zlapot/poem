@@ -11,10 +11,12 @@ use app\models\ContactForm;
 use app\models\Poems;
 use app\models\Anekdots;
 use app\models\Hokkys;
+use app\models\CommentForm;
 use yii\data\Pagination;
 use yii\web\Response;
 use yii\helpers\BaseJson;
 use yii\helpers\Json;
+use yii\helpers\Url;
 
 class ArtController extends Controller
 {
@@ -133,6 +135,14 @@ class ArtController extends Controller
 
     public function actionPoem($id)
     {
+        $model = new CommentForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            if (!$model->addToPoem($id)){
+                //error
+            }
+        }
+
         $query = Poems::find()
                 ->from('poems')
                 ->where(['id' => $id])
@@ -142,13 +152,30 @@ class ArtController extends Controller
             return $this->render(error);
         }
 
+        $subQuery =  (new \yii\db\Query()) 
+            ->from('comments_poem')
+            ->where(['id_poem' => $id])
+            ->all();
+        //$comment = (new \yii\db\Query())
+            //->leftJoin(['u' => $subQuery], 'u.id_user = user.id');
+
         return $this->render('poem', [
-           'poem' => $query,
+            'model' => $model,
+            'poem' => $query,
+            'comments' => $subQuery,
         ]);
     }
 
     public function actionHokky($id)
     {
+        $model = new CommentForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            if (!$model->addToHokky($id)){
+                //error
+            }
+        }
+
         $query = Hokkys::find()
                 ->from('hokkys')
                 ->where(['id' => $id])
@@ -158,13 +185,30 @@ class ArtController extends Controller
             return $this->render(error);
         }
 
+         $subQuery =  (new \yii\db\Query()) 
+            ->from('comments_hokky')
+            ->where(['id_poem' => $id])
+            ->all();
+        //$comment = (new \yii\db\Query())
+            //->leftJoin(['u' => $subQuery], 'u.id_user = user.id');
+
         return $this->render('hokky', [
-           'hokky' => $query,
+            'model' => $model,
+            'hokky' => $query,
+            'comments' => $subQuery,
         ]);
     }
 
     public function actionAnekdot($id)
     {
+        $model = new CommentForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            if (!$model->addToAnekdot($id)){
+                //error
+            }
+        }
+
         $query = Anekdots::find()
                 ->from('anekdots')
                 ->where(['id' => $id])
@@ -174,8 +218,17 @@ class ArtController extends Controller
             return $this->render(error);
         }
 
+        $subQuery =  (new \yii\db\Query()) 
+            ->from('comments_anekdot')
+            ->where(['id_poem' => $id])
+            ->all();
+        //$comment = (new \yii\db\Query())
+            //->leftJoin(['u' => $subQuery], 'u.id_user = user.id');
+
         return $this->render('anekdot', [
-           'anekdot' => $query,
+            'model' => $model,
+            'anekdot' => $query,
+            'comments' => $subQuery,
         ]);
     }
 

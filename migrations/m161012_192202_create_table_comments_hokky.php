@@ -2,11 +2,11 @@
 
 use yii\db\Migration;
 
-class m161005_134652_create_table_comments extends Migration
+class m161012_192202_create_table_comments_hokky extends Migration
 {
     public function up()
     {
-        $this->createTable('comments_poem', [
+        $this->createTable('comments_hokky', [
             'id' => $this->primaryKey(),
             'id_poem' => $this->integer()->notNull(),
             'id_user' => $this->integer()->notNull(),
@@ -18,7 +18,7 @@ class m161005_134652_create_table_comments extends Migration
 
     public function down()
     {
-        $this->dropTable('comments_poem');
+        $this->dropTable('comments_hokky');
     }
 
     /*

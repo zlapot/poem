@@ -13,7 +13,10 @@ use yii\helpers\Html;
   <!-- Tab panes -->
  <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
-    	
+    	<?= $this->render('_comment', [
+    			'model' => $model,
+				'comments' => $comments,
+			]) ?>
     </div>
     <div role="tabpanel" class="tab-pane" id="vk">
     	<!-- Put this script tag to the <head> of your page -->

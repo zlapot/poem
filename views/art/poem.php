@@ -24,7 +24,8 @@ $this->title = $poem->title;
 
 		<div class="col-md-8">
 			<?= $this->render('comments', [
-					'id' => $poem->id,
+					'model' => $model,
+					'comments' => $comments,
 				]) ?>
 		</div>
 

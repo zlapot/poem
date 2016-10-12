@@ -23,7 +23,8 @@ if ($hokky->censor == 1){
 
 		<div class="col-md-8">
 			<?= $this->render('comments', [
-					'id' => $hokky->id,
+					'model' => $model,
+					'comments' => $comments,
 				]) ?>
 		</div>
 
