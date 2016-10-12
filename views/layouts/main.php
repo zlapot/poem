@@ -120,6 +120,16 @@ AppAsset::register($this);
     <?= Html::a('Eng', Url::to(['site/lang', 'id' => 'eng']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
     <?= Html::a('Bib', Url::to(['site/lang', 'id' => 'bib']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
 </div>
+<div class="lang1">
+    <?= Html::a('Ukr', Url::to(['site/lang', 'id' => 'ukr']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+    <?= Html::a('Imp', Url::to(['site/lang', 'id' => 'imp']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+    <?= Html::a('Ar', Url::to(['site/lang', 'id' => 'ar']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+</div>
+<div class="lang2">
+    <?= Html::a('De', Url::to(['site/lang', 'id' => 'de']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+    <?= Html::a('Fr', Url::to(['site/lang', 'id' => 'fr']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+    <?= Html::a('Bas', Url::to(['site/lang', 'id' => 'bas']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+</div>
 
 
 

@@ -35,6 +35,24 @@ class Lang extends \yii\base\Model
             case 'bib' :
                 return 2;
                 break;
+            case 'ukr' :
+                return 3;
+                break;
+            case 'imp' :
+                return 4;
+                break;
+            case 'ar' :
+                return 5;
+                break;
+            case 'bas' :
+                return 6;
+                break;
+            case 'de' :
+                return 7;
+                break;
+            case 'fr' :
+                return 8;
+                break;
             default: 
                 return null;
                 break;    
