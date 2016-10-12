@@ -44,16 +44,7 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-
-    echo '
-        <form class="navbar-form navbar-right" action="/poem/web/index.php?r=search%2Fpublic" method="post">
-            <input type="hidden" name="_csrf" value="'.Yii::$app->request->getCsrfToken().'" />
-            <input type="search" class="form-control" placeholder="'.$lang->search[$lanID].'...'.'" name="public_search" maxlength="50">
-            <button type="submit" class="btn btn-black">
-                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </button>
-        </form>
-    ';
+    
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
@@ -88,7 +79,18 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ),
+            '<li>'.
+                '
+                <form class="navbar-form navbar-right" action="/poem/web/index.php?r=search%2Fpublic" method="post">
+                    <input type="hidden" name="_csrf" value="'.Yii::$app->request->getCsrfToken().'" />
+                    <input type="search" class="form-control" placeholder="'.$lang->search[$lanID].'...'.'" name="public_search" maxlength="50">
+                    <button type="submit" class="btn btn-black">
+                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </form>
+                '.
+            '</li>'
         ],
     ]);
    
