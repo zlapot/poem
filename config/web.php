@@ -28,24 +28,38 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
+        'i18n' => [
+            'translations' => [
+                'eauth' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@eauth/messages',
+                ],
+            ],
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                    'logFile' => '@app/runtime/logs/eauth.log',
+                    'categories' => ['nodge\eauth\*'],
+                    'logVars' => [],
                 ],
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
+        'eauth' => require('eauth.php'),
+        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'login/<service:google|facebook|etc>' => 'site/login',
             ],
+
         ],
-        */
+        
     ],
     'params' => $params,
 ];

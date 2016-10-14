@@ -1,6 +1,12 @@
 <?php
+use app\models\Lang;
 use yii\widgets\LinkPager;
 
+$cookies = Yii::$app->request->cookies;
+$language = $cookies->getValue('language', 'eng');
+
+$lanID = Lang::getIndex($language) ? Lang::getIndex($language) : 0; 
+$rule = 'rules'.$lanID;
 
 $this->title = 'Поэзия души и не только';
 $i = 0;

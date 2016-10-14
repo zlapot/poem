@@ -29,3 +29,5 @@ phpunit.phar
 /web/img/*
 
 /config/db.php
+
+/config/eauth.php
