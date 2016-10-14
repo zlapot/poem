@@ -1,8 +1,8 @@
 <?php
-use Yii;
+
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\models\Lang;
+
 
 $options = ['class' => 'art']; //blur-text
 

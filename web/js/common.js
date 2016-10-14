@@ -55,7 +55,7 @@
             $('#btn-more').on('click', function(e){
                 var jthis = $(this);
                 jthis.attr('disabled','disabled');
-                var url = "/poem/web/index.php?r=site%2Fpoemajax&page="+page;
+                var url = "/poem/web/site/poemajax?page="+page;
                 $.ajax({
                     type: "POST",
                     url: (url),
