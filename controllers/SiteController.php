@@ -10,6 +10,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\PoemForm;
 use app\models\Poems;
+use app\models\User;
 use yii\data\Pagination;
 use yii\web\Response;
 use yii\helpers\BaseJson;
@@ -133,7 +134,7 @@ class SiteController extends Controller
                 $eauth->redirect($eauth->getCancelUrl());
             }
         }
-
+        
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {

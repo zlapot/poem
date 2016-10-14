@@ -1,4 +1,6 @@
 <?php
+
+
 use yii\widgets\LinkPager;
 
 $this->title = 'Поэзия души и не только';
@@ -33,6 +35,7 @@ $count = count($poems)-1;
 	</button>
 
 	<?= LinkPager::widget(['pagination' => $pagination]) ?> 
+
 
 	<div id="ajaxreq"></div>
 

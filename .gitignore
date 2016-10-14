@@ -31,3 +31,6 @@ phpunit.phar
 /config/db.php
 
 /config/eauth.php
+
+*.zip
+*.7z

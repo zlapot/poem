@@ -55,7 +55,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'login/<service:google|facebook|etc>' => 'site/login',
+                '' => 'site/index',
+                'login' => 'site/login',
+                'logout' => 'site/logout',
             ],
 
         ],

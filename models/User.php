@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Yii;
+
 class User extends \yii\base\Object implements \yii\web\IdentityInterface
 {
     public $id;
@@ -34,7 +36,13 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        if (Yii::$app->getSession()->has('user-'.$id)) {
+            return new self(Yii::$app->getSession()->get('user-'.$id));
+        }
+        else {
+            return isset(self::$users[$id]) ? new self(self::$users[$id]) : null;
+        }
+        //return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
     }
 
     /**
