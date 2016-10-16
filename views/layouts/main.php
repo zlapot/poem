@@ -125,30 +125,35 @@ AppAsset::register($this);
     </div>
 </div>
 
-<div class="lang">
-    <?= Html::a('Rus', Url::to(['site/lang', 'id' => 'ru']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-    <?= Html::a('Eng', Url::to(['site/lang', 'id' => 'eng']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-    <?= Html::a('Bib', Url::to(['site/lang', 'id' => 'bib']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-</div>
-<div class="lang1">
-    <?= Html::a('Ukr', Url::to(['site/lang', 'id' => 'ukr']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-    <?= Html::a('Imp', Url::to(['site/lang', 'id' => 'imp']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-    <?= Html::a('Ar', Url::to(['site/lang', 'id' => 'ar']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-</div>
-<div class="lang2">
-    <?= Html::a('De', Url::to(['site/lang', 'id' => 'de']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-    <?= Html::a('Fr', Url::to(['site/lang', 'id' => 'fr']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-    <?= Html::a('Bas', Url::to(['site/lang', 'id' => 'bas']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-</div>
 
 
 
 <footer class="footer">
-    <div class="container">
+    <div class="container">        
+        
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><?= Yii::powered() ?></p>       
+
     </div>
+        <div class="container">
+            <div class="lang lang1">
+                <?= Html::a('Rus', Url::to(['site/lang', 'id' => 'ru']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+                <?= Html::a('Eng', Url::to(['site/lang', 'id' => 'eng']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+                <?= Html::a('Bib', Url::to(['site/lang', 'id' => 'bib']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+            </div>
+            <div class="lang lang2">
+                <?= Html::a('Ukr', Url::to(['site/lang', 'id' => 'ukr']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+                <?= Html::a('Imp', Url::to(['site/lang', 'id' => 'imp']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+                <?= Html::a('Ar', Url::to(['site/lang', 'id' => 'ar']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+            </div>
+            <div class="lang lang3">
+                <?= Html::a('De', Url::to(['site/lang', 'id' => 'de']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+                <?= Html::a('Fr', Url::to(['site/lang', 'id' => 'fr']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+                <?= Html::a('Bas', Url::to(['site/lang', 'id' => 'bas']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
+            </div>
+        </div>
+
 </footer>
 
 <?php $this->endBody() ?>
