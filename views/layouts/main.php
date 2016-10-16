@@ -9,7 +9,6 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
-use yii\helpers\VarDumper;
 use app\models\Lang;
 
 
@@ -99,18 +98,14 @@ AppAsset::register($this);
 
     NavBar::end();
 
-    $identity = Yii::$app->getUser()->getIdentity();
-    if (isset($identity->profile)) {
-        echo '<div class="container">';
-        echo '<strong>EAuth profile:</strong><br/>';
-        VarDumper::dump($identity->profile, 10, true);
-        echo '</div>';
-    }
+
     /*
     Html::beginForm(['order/update', 'class' => 'form-inline'], 'post');
         Html::input('text', 'username', 'DA', ['class' => 'form-control']);
     Html::endForm();
     */
+    echo Yii::$app->user->id;
+
     ?>
 
     <div class="container">

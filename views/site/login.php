@@ -34,11 +34,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Войти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <?= Html::a('Регистрация', ['/user/reg'], ['class'=>'btn btn-primary']) ?>
             </div>
+            <?= Html::a('Забыли пароль?', ['/user/send-email'], ['class'=>'btn btn-primary']) ?>
         </div>
 
     <?php ActiveForm::end(); ?>
+
+
 
     <?php
         if (Yii::$app->getSession()->hasFlash('error')) {

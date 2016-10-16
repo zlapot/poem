@@ -103,6 +103,8 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
+        $model = new LoginForm();
+
         $serviceName = Yii::$app->getRequest()->getQueryParam('service');
         if (isset($serviceName)) {
             /** @var $eauth \nodge\eauth\ServiceBase */
@@ -115,7 +117,8 @@ class SiteController extends Controller
 //                  var_dump($eauth->getIsAuthenticated(), $eauth->getAttributes()); exit;
 
                     $identity = User::findByEAuth($eauth);
-                    Yii::$app->getUser()->login($identity);
+                    $user = $model->loginByOAuth($identity);
+                    Yii::$app->user->login($user);
 
                     // special redirect with closing popup window
                     $eauth->redirect();
@@ -133,10 +136,9 @@ class SiteController extends Controller
 //              $eauth->cancel();
                 $eauth->redirect($eauth->getCancelUrl());
             }
-        }
-        
+        }       
 
-        $model = new LoginForm();
+        
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }

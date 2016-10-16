@@ -15,10 +15,9 @@ class m161016_152248_create_table_user extends Migration
             'auth_key' => $this->string(32)->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
-            'secret_key' => $this->string()->notNull(),
+            'secret_key' => $this->string(),
             'service' => $this->string(),
             'service_id' => $this->string(),
-            'name' => $this->string(),
         ]);
     }
 
