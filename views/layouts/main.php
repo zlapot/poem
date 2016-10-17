@@ -136,7 +136,7 @@ AppAsset::register($this);
         $items = [
             'ru' => "Русский",
             'eng' => "English", 
-            'bib' => "Адептский",
+            'bib' => "Limba lui Biboran",
             'ukr' => 'Українська',
             'imp' => 'Дореволюционный',
             'ar' => 'Arab',
