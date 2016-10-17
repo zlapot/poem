@@ -93,8 +93,8 @@ a.desc:after {
 /*  мой код   */
 @block-height: 450px;
 @poem-height: 340px;
-@anekdot-color-odd: #177245;
-@anekdot-color-even: #1faee9;
+@anekdot-color-odd: #aaa; //#177245;
+@anekdot-color-even: #ccc; //#1faee9;
 @tablet: 992px;
 @mobile: 768px;
 @desktop: 1200px;
@@ -227,7 +227,7 @@ a.desc:after {
     .jap-theme{
         background: url('/poem/web/img/jap2.jpg'), url('/poem/web/img/jap2xs.jpg');
         background-repeat: no-repeat, repeat;
-        background-attachment: fixed, none;
+        background-attachment: local, none;
         background-size: 100%;
         background-color: #f5f5f5;
         //height: 85vh;
@@ -265,6 +265,8 @@ a.desc:after {
     padding: 20px 0;
 }
 
+
+
 @media (min-width: @mobile) {
     .bl-hokky{
         border-bottom: 3px double #ccc;
@@ -273,6 +275,13 @@ a.desc:after {
         display: table-cell;        
         width: 250px;
         height: 200px;
+    }
+    .bl-hokky .btn {
+    }
+    .bl-hokky .btn{
+    	&:hover{
+    		text-shadow: 1px 1px 2px #337AB7, 0 0 1em #337AB7;
+    	}
     }
 }
 

@@ -1,5 +1,11 @@
 <?php
 use yii\widgets\LinkPager;
+use yii\helpers\Html;
+
+if($pagination->pageCount > 1 && ($pagination->pageCount-1 != $pagination->page))
+  $options = ['type'=>"button", 'id'=>"btn-more", 'class'=>"btn btn-primary btn-lg active center-block", 'id'=>"btn-more-ank"];
+else
+  $options = ['type'=>"button", 'id'=>"btn-more", 'class'=>"btn btn-primary btn-lg active center-block", 'id'=>"btn-more-ank", 'disabled'=>'disabled'];
 
 $this->title = 'My Yii Application';
 ?>
@@ -17,8 +23,11 @@ $this->title = 'My Yii Application';
 
 </div>
 
-<button type="button" id="btn-more-ank" class="btn btn-primary btn-lg active center-block">
-    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>  Загрузить ещё
-</button>
+<?=
+    Html::button(
+        Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).'Загрузить ещё',
+        $options
+    )
+?>
 
 <?= LinkPager::widget(['pagination' => $pagination]) ?> 

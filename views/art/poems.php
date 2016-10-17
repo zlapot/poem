@@ -1,6 +1,7 @@
 <?php
 use app\models\Lang;
 use yii\widgets\LinkPager;
+use yii\helpers\Html;
 
 $cookies = Yii::$app->request->cookies;
 $language = $cookies->getValue('language', 'eng');
@@ -11,6 +12,12 @@ $rule = 'rules'.$lanID;
 $this->title = 'Поэзия души и не только';
 $i = 0;
 $count = count($poems)-1;
+
+
+if($pagination->pageCount > 1 && ($pagination->pageCount-1 != $pagination->page))
+  $options = ['type'=>"button", 'id'=>"btn-more", 'class'=>"btn btn-primary btn-lg active center-block"];
+else
+  $options = ['type'=>"button", 'id'=>"btn-more", 'class'=>"btn btn-primary btn-lg active center-block", 'disabled'=>'disabled'];
 
 ?>
 
@@ -34,10 +41,14 @@ $count = count($poems)-1;
 
 </div>
 
-
-	<button type="button" id="btn-more" class="btn btn-primary btn-lg active center-block">
-		<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>  Загрузить ещё
-	</button>
+  
+  <?=
+    Html::button(
+        Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).'Загрузить ещё',
+        $options
+      )
+  ?>
+	
 
 	<?= LinkPager::widget(['pagination' => $pagination]) ?> 
 
