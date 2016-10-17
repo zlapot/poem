@@ -103,8 +103,9 @@ class UserController extends Controller
                     echo "Что-то пошло не так";
                 endif;
             
+        }else{
+            echo "Кого вы пытаетесь обмануть?";
         }
-        echo "Кого вы пытаетесь обмануть?";
     }
 
 

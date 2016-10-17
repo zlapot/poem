@@ -1,5 +1,5 @@
-<div class="col-md-4 offset-right blockquote-reverse">
-	Regulile acestui site pentru tovarăși români:
+<div class="col-md-4 offset-right rule">
+	<p class="title-rule">Regulile acestui site pentru tovarăși români:</p>
 	<ul class="poem-rule">
 		<li class="item-rule">Nu utilisați cuvinte obscene</li>
 		<li class="item-rule">Nu-i insultați pe alți participanți</li>

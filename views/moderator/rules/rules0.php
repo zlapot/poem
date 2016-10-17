@@ -1,6 +1,6 @@
-<div class="col-md-4 offset-right blockquote-reverse">
-	Правила нашего сайта для граждан РФ,Израиля,Марса,постсоветского пространства
-	и другой виртуальной реальности:
+<div class="col-md-4 offset-right rule">
+	<p class="title-rule">Правила нашего сайта для граждан РФ,Израиля,Марса,постсоветского пространства
+	и другой виртуальной реальности:</p>
 	<ul class="poem-rule">
 		<li class="item-rule">Не материться</li>
 		<li class="item-rule">Не оскорблять других участников</li>

@@ -1,6 +1,6 @@
-<div class="col-md-4 offset-right blockquote-reverse">
-	Правила нашого сайту існують спеційно для тих,хто не знає,як поводитися на сайтах.
-	Тому уважно читайте:
+<div class="col-md-4 offset-right rule">
+	<p class="title-rule">Правила нашого сайту існують спеціально для тих,хто не знає,як поводитися на сайтах.
+	Тому уважно читайте:</p>
 		<ul class="poem-rule">
 		<li class="item-rule">Не лаятися матом</li>
 		<li class="item-rule">Не ображати інших учасників</li>

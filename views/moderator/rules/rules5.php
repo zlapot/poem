@@ -1,6 +1,6 @@
-<div class="col-md-4 offset-right blockquote-reverse">
-	Regulile acestui site pentru tovarăși romănești. Vă rog,mă scuzați,dacă veți
-	vedea greșeli
+<div class="col-md-4 offset-right rule">
+	<p class="title-rule">Regulile acestui site pentru tovarăși romănești. Vă rog,mă scuzați,dacă veți
+	vedea greșeli</p>
 	<ul class="poem-rule">
 		<li class="item-rule">Nu utilisați obsceni cuvânte</li>
 		<li class="item-rule">Nu-i insultați pe alți participanți</li>

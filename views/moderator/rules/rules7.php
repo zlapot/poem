@@ -1,6 +1,6 @@
-<div class="col-md-4 offset-right blockquote-reverse">
-	Wir bringen Ihnen die Regeln unsrer Seite (für deutschsprachige Genossen)
-	Wir bringen auch unsere Entschuldigungen für unsre Fehler in Deutsch
+<div class="col-md-4 offset-right rule">
+	<p class="title-rule">Wir bringen Ihnen die Regeln unsrer Seite (für deutschsprachige Genossen)
+	Wir bringen auch unsere Entschuldigungen für unsre Fehler in Deutsch</p>
 	<ul class="poem-rule">
 		<li class="item-rule">Keine Fluchen</li>
 		<li class="item-rule">Beschimpfen Sie nicht andere Teilnehmern!</li>

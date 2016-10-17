@@ -1,5 +1,5 @@
-<div class="col-md-4 offset-right blockquote-reverse">
-Les règles du site pour la monde francophonique:
+<div class="col-md-4 offset-right rule">
+	<p class="title-rule">Les règles du site pour la monde francophonique:</p>
 
 	<ul class="poem-rule">
 		<li class="item-rule">
