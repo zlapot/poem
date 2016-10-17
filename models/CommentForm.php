@@ -32,7 +32,7 @@ class CommentForm extends \yii\base\Model
 
     private function addComment($comment, $id)
     {
-        $comment->id_user = 1;
+        $comment->id_user = Yii::$app->user->id;
         $comment->id_poem = $id;
         $comment->date = date('d.m.Y H:m');
         $comment->utime = date('U');

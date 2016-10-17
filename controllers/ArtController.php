@@ -151,18 +151,24 @@ class ArtController extends Controller
         if(!$query){
             return $this->render(error);
         }
-
-        $subQuery =  (new \yii\db\Query()) 
+        
+        $comment = (new \yii\db\Query()) 
+            ->select([
+                'comments_poem.id_poem', 
+                'comments_poem.id',
+                'comments_poem.comment',
+                'comments_poem.date',
+                'user.username'
+                ])
+            ->where(['comments_poem.id_poem' => $id])
             ->from('comments_poem')
-            ->where(['id_poem' => $id])
+            ->leftJoin('user', 'comments_poem.id_user = user.id')
             ->all();
-        //$comment = (new \yii\db\Query())
-            //->leftJoin(['u' => $subQuery], 'u.id_user = user.id');
 
         return $this->render('poem', [
             'model' => $model,
             'poem' => $query,
-            'comments' => $subQuery,
+            'comments' => $comment,
         ]);
     }
 
@@ -185,17 +191,23 @@ class ArtController extends Controller
             return $this->render(error);
         }
 
-         $subQuery =  (new \yii\db\Query()) 
+        $comment = (new \yii\db\Query()) 
+            ->select([
+                'comments_hokky.id_poem', 
+                'comments_hokky.id',
+                'comments_hokky.comment',
+                'comments_hokky.date',
+                'user.username'
+                ])
+            ->where(['comments_hokky.id_poem' => $id])
             ->from('comments_hokky')
-            ->where(['id_poem' => $id])
+            ->leftJoin('user', 'comments_hokky.id_user = user.id')
             ->all();
-        //$comment = (new \yii\db\Query())
-            //->leftJoin(['u' => $subQuery], 'u.id_user = user.id');
 
         return $this->render('hokky', [
             'model' => $model,
             'hokky' => $query,
-            'comments' => $subQuery,
+            'comments' => $comment,
         ]);
     }
 
@@ -218,17 +230,23 @@ class ArtController extends Controller
             return $this->render(error);
         }
 
-        $subQuery =  (new \yii\db\Query()) 
+        $comment = (new \yii\db\Query()) 
+            ->select([
+                'comments_anekdot.id_poem', 
+                'comments_anekdot.id',
+                'comments_anekdot.comment',
+                'comments_anekdot.date',
+                'user.username'
+                ])
+            ->where(['comments_anekdot.id_poem' => $id])
             ->from('comments_anekdot')
-            ->where(['id_poem' => $id])
+            ->leftJoin('user', 'comments_anekdot.id_user = user.id')
             ->all();
-        //$comment = (new \yii\db\Query())
-            //->leftJoin(['u' => $subQuery], 'u.id_user = user.id');
 
         return $this->render('anekdot', [
             'model' => $model,
             'anekdot' => $query,
-            'comments' => $subQuery,
+            'comments' => $comment,
         ]);
     }
 
