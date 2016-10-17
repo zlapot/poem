@@ -24,7 +24,7 @@ class SendEmailForm extends Model
     public function attributeLabels()
     {
         return [
-            'email' => 'Емайл'
+            'email' => 'Эл. почта'
         ];
     }
     public function sendEmail()

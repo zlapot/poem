@@ -73,7 +73,7 @@ class UserController extends Controller
 
 
     public function actionSendEmail()
-    {
+    {        
         $model = new SendEmailForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
@@ -85,10 +85,28 @@ class UserController extends Controller
                 endif;
             }
         }
+
         return $this->render('sendEmail', [
             'model' => $model,
         ]);
     }
+
+    public function actionSendEmailAjax()
+    {        
+        $model = new SendEmailForm();
+        if ((Yii::$app->request->post())) {
+                $post = Yii::$app->request->post('SendEmailForm');
+                $model->email = $post['email'];            
+                if($model->sendEmail()):
+                    echo "Проверьте свой электронный ящик";
+                else:
+                    echo "Что-то пошло не так";
+                endif;
+            
+        }
+        echo "Кого вы пытаетесь обмануть?";
+    }
+
 
 
     public function actionResetPassword($key)

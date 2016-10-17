@@ -7,6 +7,8 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\RegForm;
+use app\models\SendEmailForm;
 use app\models\ContactForm;
 use app\models\PoemForm;
 use app\models\Poems;
@@ -142,8 +144,14 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
+
+        $reg = new RegForm();
+        $reset = new SendEmailForm();
+
         return $this->render('login', [
             'model' => $model,
+            'reg' => $reg,
+            'reset' => $reset,
         ]);
     }
 

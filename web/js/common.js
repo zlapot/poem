@@ -114,6 +114,9 @@
                 case 'Хокку':
                     $('body').addClass('jap-theme');
                     break;
+                case 'Login':
+                    $('body').addClass('login-theme');
+                    break;
                 default:
                     break;
             }
