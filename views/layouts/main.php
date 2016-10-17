@@ -125,29 +125,38 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">        
-        
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <div class="row">
+            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>       
-
-    </div>
-        <div class="container">
-            <div class="lang lang1">
-                <?= Html::a('Rus', Url::to(['site/lang', 'id' => 'ru']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-                <?= Html::a('Eng', Url::to(['site/lang', 'id' => 'eng']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-                <?= Html::a('Bib', Url::to(['site/lang', 'id' => 'bib']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-            </div>
-            <div class="lang lang2">
-                <?= Html::a('Ukr', Url::to(['site/lang', 'id' => 'ukr']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-                <?= Html::a('Imp', Url::to(['site/lang', 'id' => 'imp']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-                <?= Html::a('Ar', Url::to(['site/lang', 'id' => 'ar']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-            </div>
-            <div class="lang lang3">
-                <?= Html::a('De', Url::to(['site/lang', 'id' => 'de']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-                <?= Html::a('Fr', Url::to(['site/lang', 'id' => 'fr']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-                <?= Html::a('Bas', Url::to(['site/lang', 'id' => 'bas']), ['class' => 'btn btn-default', 'role' => 'button']) ?>
-            </div>
+            <p class="pull-right"><?= Yii::powered() ?></p>       
         </div>
+
+        <div class="row lang-row">
+        <?php
+        $items = [
+            'ru' => "Русский",
+            'eng' => "English", 
+            'bib' => "Адептский",
+            'ukr' => 'Українська',
+            'imp' => 'Дореволюционный',
+            'ar' => 'Arab',
+            'de' => 'German',
+            'fr' => 'French',
+            'bas' => 'Башкирский'
+        ];
+
+        echo Html::beginForm(['site/lang', 'id' => 'form'], 'get', ['class' => 'lang-form']);
+        echo Html::tag('div',        
+                Html::tag('div', Html::dropDownList('id', null, $items, []), ['class' => 'styled-select black rounded lang']).
+                Html::submitButton('Выбрать', ['class' => 'btn btn-default lang']),
+            ['class' => 'form-group']);        
+        echo Html::endForm();
+        ?> 
+        
+        </div>
+    </div>
+
+           
 
 </footer>
 
