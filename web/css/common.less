@@ -1,3 +1,11 @@
+@color-body: linear-gradient(45deg, #ffa726, #ffb74d, #ffcc80);//#e0e0e0;
+@color-border: #bbb;
+@color-wrap:  rgba(241,241,241, 0.9);
+@color-section: rgba(55,55,55,0.2);
+@color-sh-black: rgba(0,0,0,0.5);
+@color-sh-section: rgba(251,138,0,1);
+
+
 .main-page-aside{
 	padding-left: 5px;
 	border-radius: 10px;
@@ -21,25 +29,21 @@
 	text-align: justify;
 }
 
-.main-page-title{
-	display: block;
-	padding-left: 20px;
-	//border-bottom: 2px solid #aaa;
-
+.main-page-title, .main-page-more{
 	border-radius: 5px;
-	background-color: #f1f1f1;
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	background-color: @color-wrap;
+	box-shadow: 0 0 10px @color-sh-black;	
+	padding-left: 20px;
 }
 
 .main-page-more{
 	display: inline-block;
-	padding-left: 20px;
-	//border-top: 2px solid #aaa;
-	width: 100%;
+	width: 100%;	
+}
 
-	border-radius: 5px;
-	background-color: #f1f1f1;
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+.main-page-title{	
+	display: block;
+	margin-top: 25px;	
 }
 
 .poems-row{
@@ -51,19 +55,22 @@
 .main-page-post, .aside-block{
 	border-radius: 10px;
 	padding: 10px;
-	background-color: #333;
+	background-color: @color-section;
 	
 	margin-bottom: 15px;
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	//box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	
+	box-shadow: inset 0px 0px 7px 0px @color-sh-section;
 }
 
 .poem-wrap, .hokky-wrap, .anekdot-wrap{
 	margin: 4px;
 	border-radius: 5px;
-	background-color: #f1f1f1;
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	background-color: @color-wrap;
+	box-shadow: 0 0 10px @color-sh-black;
 	margin-bottom: 10px;
 	padding: 10px;
+	box-shadow: inset 0px 0px 5px 0px @color-sh-section;
 }
 
 .main-page-post article{
@@ -87,11 +94,13 @@
 }
 
 body{
-	background-color: #e0e0e0;
+	background: @color-body;
+	background-attachment: fixed;
 }
 
+
 .poem-header, .poem-body, .hokky-body, .anekdot-body{
-	border-bottom: 1px solid #bbb;
+	border-bottom: 1px solid @color-border;
 }
 
 .btn-comment{
