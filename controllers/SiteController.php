@@ -86,10 +86,10 @@ class SiteController extends Controller
         $poems = $query
             ->offset($pagination->offset)
             ->limit($pagination->limit)
-            ->all();
+            ->one();
         
-        return $this->render('poems', [
-            'poems' => $poems,
+        return $this->render('index', [
+            'poem' => $poems,
             'pagination' => $pagination,
         ]);
     }
