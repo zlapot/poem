@@ -1,9 +1,10 @@
-@color-body: linear-gradient(45deg, #ffa726, #ffb74d, #ffcc80);//#e0e0e0;
+@color-body: #ffcc80;//linear-gradient(45deg, #ffa726, #ffb74d, #ffcc80 );//#e0e0e0;
 @color-border: #bbb;
 @color-wrap:  rgba(241,241,241, 0.9);
-@color-section: rgba(245,245,55,0.1);
+@color-section: @color-aside;//rgba(245,245,55,0.1);
 @color-sh-black: rgba(0,0,0,0.5);
 @color-sh-section: rgba(251,138,0,1);
+@color-aside: #FEC560;
 
 
 .main-page-aside{
@@ -96,6 +97,7 @@
 body{
 	background: @color-body;
 	background-attachment: fixed;
+	.dotted();
 }
 
 
@@ -124,3 +126,14 @@ body{
 		transition: 1s;
 	}
 }
+
+.dotted() {
+  //padding: 2.25em 1.6875em;
+  background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-image: -ms-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-image: repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  -webkit-background-size: 3px 3px;
+  -moz-background-size: 3px 3px;
+  background-size: 3px 3px;
+  }
