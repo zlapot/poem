@@ -13,7 +13,7 @@ if ($hokky->censor == 1){
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 bl-post">
+		<div class="col-md-4 bl-post circle-border">
 			<?= Html::tag('div',
 					Html::tag('div', Html::encode($hokky->hokky), $options) .
 					Html::tag('div', 'Автор: '.Html::encode($hokky->autor), ['class' => 'art-autor']),
@@ -21,7 +21,7 @@ if ($hokky->censor == 1){
 			) ?> 
 		</div>
 
-		<div class="col-md-8">
+		<div class="col-md-8 circle-border">
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,

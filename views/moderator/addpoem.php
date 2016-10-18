@@ -8,8 +8,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Стихотворения', 'url'
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="row">
-    <div class="col-md-8">
+<section class="row">
+    <div class="col-md-8 add-form circle-border">
 
     <?php $form = ActiveForm::begin([
     'id' => 'poem-form',
@@ -53,4 +53,4 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <div id="ajaxreq"></div>
 
-</div><!-- poems -->
+</section><!-- poems -->

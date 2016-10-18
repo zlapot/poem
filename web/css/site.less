@@ -98,6 +98,7 @@ a.desc:after {
 @tablet: 992px;
 @mobile: 768px;
 @desktop: 1200px;
+@color-bg: rgba(241,241,241,0.9);
 
 .block(){
     border: 2px solid #FFCD25;    
@@ -146,6 +147,11 @@ a.desc:after {
 
 .item-rule{
     list-style-type: none;
+    background: @color-bg;
+}
+
+.add-form{
+    padding-top: 25px;	
 }
 
 .modal-poem{
@@ -354,7 +360,8 @@ a.desc:after {
 .title-rule{
 	.poem-ruleC(red);
 	border-right: 10px solid red;
-	border-left: 15px solid red;
+	border-left: 15px solid red;	
+	background: @color-bg;
 }
 
 .poem-ruleC(@color){
@@ -403,4 +410,8 @@ transition: 0.3s all linear;
 }
 .comment-body div span{
 	font-weight: bold;
+}
+
+.site-contact{
+	padding: 10px;
 }

@@ -1,7 +1,7 @@
 @color-body: linear-gradient(45deg, #ffa726, #ffb74d, #ffcc80);//#e0e0e0;
 @color-border: #bbb;
 @color-wrap:  rgba(241,241,241, 0.9);
-@color-section: rgba(55,55,55,0.2);
+@color-section: rgba(245,245,55,0.1);
 @color-sh-black: rgba(0,0,0,0.5);
 @color-sh-section: rgba(251,138,0,1);
 
@@ -105,4 +105,22 @@ body{
 
 .btn-comment{
 	padding-left: 0;
+}
+
+.circle-border{
+	background: @color-wrap;
+	border-radius: 5px;	
+	box-shadow: inset 0px 0px 10px 0px @color-sh-section;
+	padding: 10px;
+	//box-shadow: 0 0 10px @color-sh-black;	
+}
+
+.eauth-service-link{
+	filter: grayscale(100%);
+}
+.eauth-service-link{
+	&:hover{
+		filter: grayscale(0%);
+		transition: 1s;
+	}
 }

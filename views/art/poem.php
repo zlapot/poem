@@ -15,7 +15,7 @@ $this->title = $poem->title;
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 bl-post">
+		<div class="col-md-4 bl-post circle-border">
 			<?= Html::tag('div',
 					Html::tag('div', 'Название: '.Html::encode($poem->title), ['class' => 'art-title']) .
 					Html::tag('div', Html::encode($poem->poem), $options) .
@@ -24,7 +24,7 @@ $this->title = $poem->title;
 			) ?> 
 		</div>
 
-		<div class="col-md-8">
+		<div class="col-md-8 circle-border">
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,
