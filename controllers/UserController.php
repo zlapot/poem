@@ -129,6 +129,12 @@ class UserController extends Controller
         ]);
     }
 
+    public function actionProfile(){
+        return $this->render('profile', [
+            
+        ]);
+    }
+
 
 
 }

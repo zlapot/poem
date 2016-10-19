@@ -143,28 +143,36 @@ AppAsset::register($this);
             <p class="pull-right"><?= Yii::powered() ?></p>       
         </div>
 
-        <div class="row lang-row">
-        <?php
-        $items = [
-            'ru' => "Русский",
-            'eng' => "English", 
-            'bib' => "Limba lui Biboran",
-            'ukr' => 'Українська',
-            'imp' => 'Дореволюционный',
-            'ar' => 'Arab',
-            'de' => 'German',
-            'fr' => 'French',
-            'bas' => 'Башкирский'
-        ];
+        <div class="row">
+            <div class="lang-row">
+            <?php
+            $items = [
+                'ru' => "Русский",
+                'eng' => "English", 
+                'bib' => "Limba lui Biboran",
+                'ukr' => 'Українська',
+                'imp' => 'Дореволюционный',
+                'ar' => 'Arab',
+                'de' => 'German',
+                'fr' => 'French',
+                'bas' => 'Башкирский'
+            ];
 
-        echo Html::beginForm(['site/lang', 'id' => 'form'], 'get', ['class' => 'lang-form']);
-        echo Html::tag('div',        
-                Html::tag('div', Html::dropDownList('id', null, $items, []), ['class' => 'styled-select black rounded lang']).
-                Html::submitButton('Выбрать', ['class' => 'btn btn-default lang']),
-            ['class' => 'form-group']);        
-        echo Html::endForm();
-        ?> 
-        
+            echo Html::beginForm(['site/lang', 'id' => 'form'], 'get', ['class' => 'lang-form']);
+            echo Html::tag('div',        
+                    Html::tag('div', Html::dropDownList('id', null, $items, []), ['class' => 'styled-select black rounded lang']).
+                    Html::submitButton('Выбрать', ['class' => 'btn btn-default lang']),
+                ['class' => 'form-group']);        
+            echo Html::endForm();
+            ?> 
+                   
+            </div>
+            <div class="copy">Сopyright © 2016 Все права защищены
+                Права на все материалы, представленные здесь, принадлежат их авторам
+                Ваши вопросы и предложения можете направлять на 
+                <a href="mailto:zlapot@yandex.ru">zlapot@yandex.ru</a>
+            </div>
+
         </div>
     </div>
 
