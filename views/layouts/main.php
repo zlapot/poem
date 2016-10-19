@@ -50,22 +50,30 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => $lang->home[$lanID], 'url' => ['/site/index']],
-            ['label' => $lang->poems[$lanID], 'url' => ['/art/poems']],
-            ['label' => $lang->anecdote[$lanID], 'url' => ['/art/anekdots']],
-            ['label' => $lang->haiku[$lanID], 'url' => ['/art/hokkys']],
+            [
+                'label' => 'Категории', 'items' => [
+                    ['label' => $lang->poems[$lanID], 'url' => ['/art/poems']],
+                    ['label' => $lang->anecdote[$lanID], 'url' => ['/art/anekdots']],
+                    ['label' => $lang->haiku[$lanID], 'url' => ['/art/hokkys']],
+                ]
+            ],
             [
                 'label' => $lang->about[$lanID], 'items' => [
                     ['label' => $lang->about[$lanID], 'url' => ['/site/about']],
                     ['label' => $lang->connect[$lanID], 'url' => ['/site/contact']],
                 ]
             ],
+            isset(Yii::$app->user->getIdentity()['role']) ? (
             [
                 'label' => $lang->add[$lanID], 'items' => [
                     ['label' => $lang->addpoem[$lanID], 'url' => ['/moderator/addpoem']],
                     ['label' => $lang->addanec[$lanID], 'url' => ['/moderator/addanekdot']],
                     ['label' => $lang->addhaiku[$lanID], 'url' => ['/moderator/addhokky']],
                 ],
-            ],
+            ]) : (
+                ['label' => 'Профиль', 'url' => ['/user/profile']]
+            ),            
+
             Yii::$app->user->isGuest ? (
                 ['label' => $lang->login[$lanID], 'url' => ['/site/login'],
                     'template' => '<a href="{url}" >{label}<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></button></a>'                                    
