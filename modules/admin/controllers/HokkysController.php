@@ -8,11 +8,12 @@ use app\modules\admin\models\HokkysSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\admin\controllers\BehaviorsController;
 
 /**
  * HokkysController implements the CRUD actions for Hokkys model.
  */
-class HokkysController extends Controller
+class HokkysController extends BehaviorsController
 {
     /**
      * @inheritdoc

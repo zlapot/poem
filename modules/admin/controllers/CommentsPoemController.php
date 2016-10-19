@@ -8,11 +8,11 @@ use app\modules\admin\models\CommentsPoemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\modules\admin\controllers\BehaviorsController;
 /**
  * CommentsPoemController implements the CRUD actions for CommentsPoem model.
  */
-class CommentsPoemController extends Controller
+class CommentsPoemController extends BehaviorsController
 {
     /**
      * @inheritdoc

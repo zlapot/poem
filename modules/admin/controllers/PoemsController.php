@@ -8,11 +8,12 @@ use app\modules\admin\models\PoemsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\admin\controllers\BehaviorsController;
 
 /**
  * PoemsController implements the CRUD actions for Poems model.
  */
-class PoemsController extends Controller
+class PoemsController extends BehaviorsController
 {
     /**
      * @inheritdoc

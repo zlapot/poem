@@ -55,7 +55,11 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'eauth' => require('eauth.php'),
-        
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',            
+            //'class' => 'yii\rbac\DbManager',
+            
+        ],        
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

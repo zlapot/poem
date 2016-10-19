@@ -11,6 +11,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_NOT_ACTIVE = 1;
     const STATUS_ACTIVE = 10;
+    const ROLE_ADMIN = 20;
     
         
     public $authKey;
@@ -34,6 +35,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             [['email'], 'string', 'max' => 100],
             [['password_hash', 'secret_key', 'service', 'service_id', 'name'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
+            ['role', 'in', 'range' => [self::ROLE_USER, self::ROLE_ADMIN]],
         ];
     }
     
@@ -198,5 +200,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->authKey === $authKey;
     }  
     
+    public static function isUserAdmin($id)
+    {
+        if (static::findOne(['id' => $id, 'role' => self::ROLE_ADMIN]))
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
 }
