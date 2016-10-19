@@ -81,7 +81,7 @@ AppAsset::register($this);
                 . '</li>'
             ),
 '<li>'.'
-    <form class="navbar-form navbar-right search-bar-form form-inline" action="/poem/web/index.php?r=search%2Fpublic" method="post">
+    <form class="navbar-form  search-bar-form " action="/poem/web/index.php?r=search%2Fpublic" method="post">
         <div class="form-group">
             <input type="hidden" name="_csrf" value="'.Yii::$app->request->getCsrfToken().'" />
             <div class="search-bar-panel">
