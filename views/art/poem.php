@@ -15,7 +15,7 @@ $this->title = $poem->title;
 
 <main class="main-page-post">
 	<div class="row poems-row">
-		<section class="col-md-4">
+		<section class="col-md-4 comment-section">
 			<article class="post-poem">
 				<div class="poem-wrap">
 					<header class="poem-header">

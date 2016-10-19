@@ -13,7 +13,7 @@ if ($hokky->censor == 1){
 }
 ?>
 
-<div class="">
+<article class="">
 	<div class="col-md-8 .hidden-xs"></div>	
 	<div class="col-md-4 col-sm-4 col-xs-12">
 		<?= Html::tag('div',
@@ -24,6 +24,6 @@ if ($hokky->censor == 1){
 			['data-link' => Url::to(['art/hokky', 'id' => $hokky->id]), 'class' => 'bl-hokky center-block']
 		) ?>
 	</div>
-</div>
+</article>
 
 

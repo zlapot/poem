@@ -1,11 +1,11 @@
 @color-body: #bbb;//#1565c0;//linear-gradient(45deg, #ffa726, #ffb74d, #ffcc80 );//#e0e0e0;
 @color-border: #bbb;
 @color-wrap:  rgba(251,251,251, 0.99);
-@color-section: rgba(21, 101, 192, 1);//rgba(21, 101, 192, 1);//rgba(230,230,230, 0.95);//rgba(245,245,55,0.1);
+@color-section: #800909;//rgba(21, 101, 192, 1);//rgba(21, 101, 192, 1);//rgba(230,230,230, 0.95);//rgba(245,245,55,0.1);
 @color-sh-black: rgba(0,0,0,0.5);
 @color-sh-section: rgba(0,0,0,0.5);//rgba(227,242,253,1);
 @color-aside: #FEC560;
-@color-sh-hover: rgba(21, 101, 192, 0.8);
+@color-sh-hover: rgba(89, 1, 1, 1);//rgba(21, 101, 192, 0.8);//
 @color-border-radius: rgba(0,0,0,0);
 
 @tablet: 992px;
@@ -78,7 +78,7 @@
 // Poem, hokky, anekdot wrap 
 
 .poem-wrap, .hokky-wrap, .anekdot-wrap{
-	margin: 4px;
+	margin: 3px;
 	border-radius: 5px;
 	background-color: @color-wrap;
 	box-shadow: 0 0 10px @color-sh-black;
@@ -198,8 +198,33 @@ body{
 
 .poems-row .poem-wrap{
 	&:hover{
-		box-shadow: inset 0px 0px 15px 1px @color-sh-hover;
+		box-shadow: inset 0px 0px 15px 5px @color-sh-hover;
+		border-top-right-radius: 50px;
 	}
 }
 
 // Poems style END
+
+
+// Comment aling
+
+.comment-section{
+	padding-left: 0;
+	margin-top: -3px; 
+}
+
+// Comment aling END
+
+// Backgroud for desktop
+
+@media (min-width: @desktop)
+{
+	body{
+		background: url(/poem/web/img/bg.gif);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		//background-size: 100%;
+	}
+}
+
+// Backgroud for desktop END

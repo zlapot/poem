@@ -75,7 +75,7 @@ class ArtController extends Controller
             ->from('poems');
                 //->all();
         $pagination = new Pagination([
-            'defaultPageSize' => 9,
+            'defaultPageSize' => 10,
             'totalCount' => $query->count(),
         ]);
 

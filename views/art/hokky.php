@@ -11,14 +11,12 @@ if ($hokky->censor == 1){
 //$this->title = "title";
 ?>
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-4 bl-post circle-border">
-			<?= Html::tag('div',
-					Html::tag('div', Html::encode($hokky->hokky), $options) .
-					Html::tag('div', 'Автор: '.Html::encode($hokky->autor), ['class' => 'art-autor']),
-				['class' => 'bl-art']
-			) ?> 
+<main class="main-page-post">
+	<div class="row poems-row">
+		<div class="col-md-4 comment-section">
+			 <?= $this->render('_hokky2', [
+	            'hokky' => $hokky,
+	        ]) ?>
 		</div>
 
 		<div class="col-md-8 circle-border">
@@ -29,4 +27,4 @@ if ($hokky->censor == 1){
 		</div>
 
 	</div>
-</div>
+</main>
