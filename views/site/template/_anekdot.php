@@ -5,7 +5,7 @@
 ?>
 
 <article class="post-anekdot col-md-12">
-	<div class="hokky-wrap">	
+	<div class="anekdot-wrap">	
 		<div class="anekdot-body">
 			<?= Html::tag('div', Html::encode($anekdot->anekdot), ['class' => 'anekdot-anekdot']) ?>	
 			<?= Html::a('Комментировать', Url::to(['art/anekdot', 'id'=>$anekdot->id]), ['class' => 'btn btn-dafault btn-comment']) ?>			

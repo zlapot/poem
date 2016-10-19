@@ -35,10 +35,10 @@
 
                 var jthis = $(this);
 
-                var url = jthis.find('.bl-poem').data('link');
+                var url = jthis.find('.btn-comment').attr('href');
 
                 title = jthis.find('.poem-title').text();
-                poem = jthis.find('.poem').html();
+                poem = jthis.find('.poem-poem').html();
                 autor = jthis.find('.poem-autor').text();
                      
                 modal.find('.modal-title').text(title);

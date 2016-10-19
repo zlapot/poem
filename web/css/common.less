@@ -1,17 +1,20 @@
-@color-body: #bbb;//linear-gradient(45deg, #ffa726, #ffb74d, #ffcc80 );//#e0e0e0;
+@color-body: #bbb;//#1565c0;//linear-gradient(45deg, #ffa726, #ffb74d, #ffcc80 );//#e0e0e0;
 @color-border: #bbb;
-@color-wrap:  rgba(241,241,241, 0.9);
-@color-section: #1565c0;//rgba(245,245,55,0.1);
+@color-wrap:  rgba(251,251,251, 0.99);
+@color-section: rgba(21, 101, 192, 1);//rgba(21, 101, 192, 1);//rgba(230,230,230, 0.95);//rgba(245,245,55,0.1);
 @color-sh-black: rgba(0,0,0,0.5);
-@color-sh-section: rgba(227,242,253,1);
+@color-sh-section: rgba(0,0,0,0.5);//rgba(227,242,253,1);
 @color-aside: #FEC560;
+@color-sh-hover: rgba(21, 101, 192, 0.8);
+@color-border-radius: rgba(0,0,0,0);
 
 @tablet: 992px;
 @mobile: 768px;
 @desktop: 1200px;
 	
 
-.main-page-aside{
+// Siderbar and sideblock
+.sidebar{
 	padding-left: 5px;
 	border-radius: 10px;
 	height: 85vh;
@@ -20,12 +23,14 @@
 
 .aside-block{
 	height: 85vh;
-	position: relative;
+	position: relative;	
 }
 
+// Sidebar and side block END
 .main-page-content{
 }
 
+// Poem, hokky, anekdot content
 .poem-poem, .hokky-hokky{
 	white-space: pre-wrap;
 }
@@ -33,6 +38,8 @@
 .anekdot-anekdot{
 	text-align: justify;
 }
+
+// Poem, hokky, anekdot content END
 
 .main-page-title, .main-page-more{
 	border-radius: 5px;
@@ -65,8 +72,10 @@
 	margin-bottom: 15px;
 	//box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	
-	box-shadow: inset 0px 0px 7px 0px @color-sh-section;
+	box-shadow: inset 0px 0px 7px 2px @color-sh-section;
 }
+
+// Poem, hokky, anekdot wrap 
 
 .poem-wrap, .hokky-wrap, .anekdot-wrap{
 	margin: 4px;
@@ -74,9 +83,11 @@
 	background-color: @color-wrap;
 	box-shadow: 0 0 10px @color-sh-black;
 	margin-bottom: 10px;
-	padding: 10px;
-	box-shadow: inset 0px 0px 5px 0px @color-sh-section;
+	padding: 15px;
+	box-shadow: inset 0px 0px 10px 2px @color-sh-section;
 }
+
+// Poem, hokky, anekdot wrap END
 
 .main-page-post article{
 	padding: 0;
@@ -89,20 +100,9 @@
 	margin-bottom: 10px;	
 }
 
-.poems-row{
-	//margin: -10px;
-	//box-sizing: border-box;
-	//padding: 5px;
-	//background-color: #aaa;
-	//border-radius: 10px;
-	//box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
 
-body{
-	background: @color-body;
-	background-attachment: fixed;
-	.dotted();
-}
+
+
 
 
 .poem-header, .poem-body, .hokky-body, .anekdot-body{
@@ -116,10 +116,12 @@ body{
 .circle-border{
 	background: @color-wrap;
 	border-radius: 5px;	
-	box-shadow: inset 0px 0px 10px 0px @color-sh-section;
+	box-shadow: inset 0px 0px 10px 2px @color-sh-section;
 	padding: 10px;
 	//box-shadow: 0 0 10px @color-sh-black;	
 }
+
+//EAuth style
 
 .eauth-service-link{
 	filter: grayscale(100%);
@@ -131,6 +133,16 @@ body{
 	}
 }
 
+//EAuth style END
+
+// Body style
+
+body{
+	background: @color-body;
+	background-attachment: fixed;
+	.dotted();
+}
+
 .dotted() {
   //padding: 2.25em 1.6875em;
   background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
@@ -140,7 +152,9 @@ body{
   -webkit-background-size: 3px 3px;
   -moz-background-size: 3px 3px;
   background-size: 3px 3px;
-  }
+ }
+
+// Body style END
 
 
 //Поисковая панель
@@ -176,3 +190,16 @@ body{
 }
 
 //Поисковая панель конец
+
+// Poems style
+.poem-poem{
+	height: 180px;
+}
+
+.poems-row .poem-wrap{
+	&:hover{
+		box-shadow: inset 0px 0px 15px 1px @color-sh-hover;
+	}
+}
+
+// Poems style END

@@ -15,47 +15,54 @@ $count = count($poems)-1;
 
 
 if($pagination->pageCount > 1 && ($pagination->pageCount-1 != $pagination->page))
-  $options = ['type'=>"button", 'id'=>"btn-more", 'class'=>"btn btn-primary btn-lg active center-block"];
+  $options = ['type'=>"button", 'id'=>"btn-more", 'class'=>"btn btn-default btn-lg active center-block"];
 else
   $options = ['type'=>"button", 'id'=>"btn-more", 'class'=>"btn btn-primary btn-lg active center-block", 'disabled'=>'disabled'];
 
 ?>
 
-<div id='main-container' class="container">
+<main id='main-container' class="main-page-post col-md-9">
+<?= Html::tag('h2', "Поэзия трех дней" , ['class' => 'main-page-title']) ?>
+
 	<?php foreach ($poems as $poem): ?>
 
 
-		<?php if($i%3 === 0) echo '<div class="row">' ?>
+		<?php if($i%2 === 0) echo '<div class="row poems-row">' ?>
 			
 			<?= $this->render('_poem', [
 				'poem' => $poem,
 			]) ?>
 
         <?php 
-        	if($i%3 === 2 || $i==$count) echo '</div>';
+        	if($i%2 === 1 || $i==$count) echo '</div>';
         	$i++; 
         ?>
 	<?php endforeach; ?>
 
-	
-
-</div>
-
-  
-  <?=
+	<?=
     Html::button(
         Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).'Загрузить ещё',
         $options
       )
   ?>
+  <?= LinkPager::widget(['pagination' => $pagination]) ?> 
+
+</main>
+
+  
+<div class="aside sidebar col-md-3">
+  <aside class="aside-block">
+
+  </aside>
+</div>  
 	
 
-	<?= LinkPager::widget(['pagination' => $pagination]) ?> 
+	
 
 	<div id="ajaxreq"></div>
 
 <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-link="/poem/web/index.php?r=art%2Fpoems">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-link="/poem/web/art/poems">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

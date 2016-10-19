@@ -82,6 +82,9 @@ class ArtController extends Controller
         $poems = $query
             ->offset($pagination->offset)
             ->limit($pagination->limit)
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
             ->all();
 
         return $this->render('poems', [
@@ -104,6 +107,9 @@ class ArtController extends Controller
         $anekdots = $query
             ->offset($pagination->offset)
             ->limit($pagination->limit)
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
             ->all();
         
         return $this->render('anekdots', [
@@ -125,6 +131,9 @@ class ArtController extends Controller
         $hokkys = $query
             ->offset($pagination->offset)
             ->limit($pagination->limit)
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
             ->all();
         
         return $this->render('hokkys', [

@@ -40,7 +40,7 @@ use yii\helpers\Url;
 	</section>
 </main>
 
-<div class="aside main-page-aside col-md-3">
+<div class="aside sidebar col-md-3">
 	<aside class="aside-block">
 
 	</aside>
