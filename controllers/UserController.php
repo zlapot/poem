@@ -14,7 +14,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\AccountActivation;
 use app\models\ChangePasswordForm;
-
+use app\models\UploadForm;
+use yii\web\UploadedFile;
 
 class UserController extends Controller
 {
@@ -133,10 +134,34 @@ class UserController extends Controller
     public function actionProfile(){
 
         $changePassword = new ChangePasswordForm();
+        $load = new UploadForm();
 
+        if ($changePassword->load(Yii::$app->request->post()) && $changePassword->validate())
+        {
+            $$change = $changePassword->cahangePassword();
+            if (!$change)
+            {
+                Yii::$app->session->setFlash('error', 'Ошибка при валидации');
+                Yii::error('Ошибка при валидации');
+                return $this->goHome();
+            }
+        }
+
+        if (Yii::$app->request->isPost)
+        {
+            $load->imageFile = UploadedFile::getInstance($load, 'imageFile');
+           
+            if (!$load->upload())
+            {
+                Yii::$app->session->setFlash('error', 'Ошибка при валидации');
+                Yii::error('Ошибка при валидации');
+                return $this->goHome();
+            }
+        }
 
         return $this->render('profile', [
             'password' => $changePassword,
+            'load' =>$load,
         ]);
     }
 

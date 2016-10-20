@@ -57,7 +57,17 @@
 
 	    <?php ActiveForm::end(); ?>
 
-			
+
+	</section>
+
+	<section class="main-page-post">
+		<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+
+		    <?= $form->field($load, 'imageFile')->fileInput() ?>
+
+		    <button>Submit</button>
+
+		<?php ActiveForm::end() ?>
 	</section>
 	
 </main>

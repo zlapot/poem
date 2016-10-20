@@ -19,7 +19,7 @@ class m161016_152248_create_table_user extends Migration
             'service' => $this->string(),
             'service_id' => $this->string(),
             'role' => $this->integer(2),
-            'img' => $this->string(10),
+            'img' => $this->string(20),
         ]);
     }
 

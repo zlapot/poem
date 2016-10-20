@@ -71,6 +71,9 @@ $config = [
             ],
 
         ],
+        'image' => [
+            'class' => 'yii2mod\image\ImageComponent',
+        ],
         
     ],
     'params' => $params,
