@@ -13,6 +13,7 @@ use yii\web\BadRequestHttpException;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use app\models\AccountActivation;
+use app\models\ChangePasswordForm;
 
 
 class UserController extends Controller
@@ -130,8 +131,12 @@ class UserController extends Controller
     }
 
     public function actionProfile(){
+
+        $changePassword = new ChangePasswordForm();
+
+
         return $this->render('profile', [
-            
+            'password' => $changePassword,
         ]);
     }
 
