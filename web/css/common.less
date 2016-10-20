@@ -1,0 +1,242 @@
+@color-body: #bbb;//#1565c0;//linear-gradient(45deg, #ffa726, #ffb74d, #ffcc80 );//#e0e0e0;
+@color-border: #bbb;
+@color-wrap:  rgba(251,251,251, 0.99);
+@color-section: #800909;//rgba(21, 101, 192, 1);//rgba(21, 101, 192, 1);//rgba(230,230,230, 0.95);//rgba(245,245,55,0.1);
+@color-sh-black: rgba(0,0,0,0.5);
+@color-sh-section: rgba(0,0,0,0.5);//rgba(227,242,253,1);
+@color-aside: #FEC560;
+@color-sh-hover: rgba(89, 1, 1, 1);//rgba(21, 101, 192, 0.8);//
+@color-border-radius: rgba(0,0,0,0);
+
+@tablet: 992px;
+@mobile: 768px;
+@desktop: 1200px;
+	
+
+// Siderbar and sideblock
+.sidebar{
+	padding-left: 5px;
+	border-radius: 10px;
+	height: 85vh;
+	box-sizing: border-box;
+}
+
+.aside-block{
+	height: 85vh;
+	position: relative;	
+}
+
+// Sidebar and side block END
+.main-page-content{
+}
+
+// Poem, hokky, anekdot content
+.poem-poem, .hokky-hokky{
+	white-space: pre-wrap;
+}
+
+.anekdot-anekdot{
+	text-align: justify;
+}
+
+// Poem, hokky, anekdot content END
+
+.main-page-title, .main-page-more{
+	border-radius: 5px;
+	background-color: @color-wrap;
+	box-shadow: 0 0 10px @color-sh-black;	
+	padding-left: 20px;
+}
+
+.main-page-more{
+	display: inline-block;
+	width: 100%;	
+}
+
+.main-page-title{	
+	display: block;
+	margin-top: 25px;	
+}
+
+.poems-row{
+	position: relative;
+	margin-right: 0;
+    margin-left: 0;
+}
+
+.main-page-post, .aside-block{
+	border-radius: 10px;
+	padding: 10px;
+	background-color: @color-section;
+	
+	margin-bottom: 15px;
+	//box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	
+	box-shadow: inset 0px 0px 7px 2px @color-sh-section;
+}
+
+// Poem, hokky, anekdot wrap 
+
+.poem-wrap, .hokky-wrap, .anekdot-wrap{
+	margin: 3px;
+	border-radius: 5px;
+	background-color: @color-wrap;
+	box-shadow: 0 0 10px @color-sh-black;
+	margin-bottom: 10px;
+	padding: 15px;
+	box-shadow: inset 0px 0px 10px 2px @color-sh-section;
+}
+
+// Poem, hokky, anekdot wrap END
+
+.main-page-post article{
+	padding: 0;
+}
+
+
+.post-hokky, .post-poem{
+	//border-left: 10px solid #ffc107;
+	border-radius: 5px;
+	margin-bottom: 10px;	
+}
+
+
+
+
+
+
+.poem-header, .poem-body, .hokky-body, .anekdot-body{
+	border-bottom: 1px solid @color-border;
+}
+
+.btn-comment{
+	padding-left: 0;
+}
+
+.circle-border{
+	background: @color-wrap;
+	border-radius: 5px;	
+	box-shadow: inset 0px 0px 10px 2px @color-sh-section;
+	padding: 10px;
+	//box-shadow: 0 0 10px @color-sh-black;	
+}
+
+//EAuth style
+
+.eauth-service-link{
+	filter: grayscale(100%);
+}
+.eauth-service-link{
+	&:hover{
+		filter: grayscale(0%);
+		transition: 1s;
+	}
+}
+
+//EAuth style END
+
+// Body style
+
+body{
+	background: @color-body;
+	background-attachment: fixed;
+	.dotted();
+}
+
+.dotted() {
+  //padding: 2.25em 1.6875em;
+  background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-image: -moz-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-image: -ms-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-image: repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  -webkit-background-size: 3px 3px;
+  -moz-background-size: 3px 3px;
+  background-size: 3px 3px;
+ }
+
+// Body style END
+
+
+//Поисковая панель
+.navbar-collapse li .search-bar-form {	
+	max-width: 100%;
+	box-sizing: border-box;
+	border-color: #222222;
+	padding-left: 10px;
+}
+.search-bar-panel {
+	display: inline-block;
+	float: left;
+	box-sizing: border-box;
+}
+.search-bar-form button{
+	display: inline-block;
+}
+.search-bar-panel .input-group{
+	float: left;
+	border-radius: 10px;
+}
+.search-bar-panel .input-group .search-input{
+	vertical-align: middle;	
+	border-radius: 5px;
+}
+
+@media (max-width: @mobile){
+	.navbar-collapse li .search-bar-form {	
+		max-width: 100%;
+		height: 55px;
+		margin: 10px;
+	}
+}
+
+//Поисковая панель конец
+
+// Poems style
+.poem-poem{
+	height: 180px;
+}
+
+.poems-row .poem-wrap{
+	&:hover{
+		box-shadow: inset 0px 0px 15px 5px @color-sh-hover;
+		border-top-right-radius: 50px;
+	}
+}
+
+// Poems style END
+
+
+// Comment aling
+
+.comment-section{
+	padding-left: 0;
+	margin-top: -3px; 
+}
+
+// Comment aling END
+
+// Backgroud for desktop
+
+@media (min-width: @desktop)
+{
+	body{
+		background: url(/poem/web/img/bg.gif);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		//background-size: 100%;
+	}
+}
+
+// Backgroud for desktop END
+
+
+// for admin
+
+.detail-view{
+	background: #ccc;
+}
+.table-bordered{
+	background: #ccc;
+}
+
+// for admin END

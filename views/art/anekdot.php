@@ -11,22 +11,20 @@ if ($anekdot->censor == 1){
 //$this->title = "title";
 ?>
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-4 bl-post">
-			<?= Html::tag('div',
-					Html::tag('div', Html::encode($anekdot->anekdot), $options) .
-					Html::tag('div', 'Автор: '.Html::encode($anekdot->autor), ['class' => 'art-autor']),
-				['class' => 'bl-art']
-			) ?> 
-		</div>
+<main class="main-page-post">
+	<div class="row poems-row">
+		<section class="col-md-4 comment-section">			      
+	        <?= $this->render('_anekdot', [
+	            'anekdot' => $anekdot,
+	        ]) ?>
+		</section>
 
-		<div class="col-md-8">
+		<section class="col-md-8 circle-border">
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,
 				]) ?>
-		</div>
+		</section>
 
 	</div>
-</div>
+</main>

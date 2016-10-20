@@ -8,11 +8,12 @@ use app\modules\admin\models\CommentsHokkySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\admin\controllers\BehaviorsController;
 
 /**
  * CommentsHokkyController implements the CRUD actions for CommentsHokky model.
  */
-class CommentsHokkyController extends Controller
+class CommentsHokkyController extends BehaviorsController
 {
     /**
      * @inheritdoc

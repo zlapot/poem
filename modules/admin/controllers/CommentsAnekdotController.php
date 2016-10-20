@@ -8,11 +8,12 @@ use app\modules\admin\models\CommentsAnekdotSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\admin\controllers\BehaviorsController;
 
 /**
  * CommentsAnekdotController implements the CRUD actions for CommentsAnekdot model.
  */
-class CommentsAnekdotController extends Controller
+class CommentsAnekdotController extends BehaviorsController
 {
     /**
      * @inheritdoc

@@ -12,6 +12,8 @@ use app\models\SendEmailForm;
 use app\models\ContactForm;
 use app\models\PoemForm;
 use app\models\Poems;
+use app\models\Hokkys;
+use app\models\Anekdots;
 use app\models\User;
 use yii\data\Pagination;
 use yii\web\Response;
@@ -77,20 +79,35 @@ class SiteController extends Controller
     {
         $query = Poems::find()
             ->from('poems');
-            //->all();
-        $pagination = new Pagination([
-            'defaultPageSize' => 9,
-            'totalCount' => $query->count(),
-        ]);
-        
         $poems = $query
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
+            ->limit(2)
+            ->all();
+
+        $query = Hokkys::find()
+            ->from('hokkys');
+        $hokkys = $query
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
+            ->limit(3)
+            ->all();
+
+        $query = Anekdots::find()
+            ->from('anekdots');
+        $anekdots = $query
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
+            ->limit(3)
             ->all();
         
-        return $this->render('poems', [
+        return $this->render('index', [
             'poems' => $poems,
-            'pagination' => $pagination,
+            'hokkys' => $hokkys,
+            'anekdots' => $anekdots,
         ]);
     }
 

@@ -8,11 +8,12 @@ use app\modules\admin\models\AnekdotsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\admin\controllers\BehaviorsController;
 
 /**
  * AnekdotsController implements the CRUD actions for Anekdots model.
  */
-class AnekdotsController extends Controller
+class AnekdotsController extends BehaviorsController
 {
     /**
      * @inheritdoc

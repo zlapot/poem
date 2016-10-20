@@ -75,13 +75,16 @@ class ArtController extends Controller
             ->from('poems');
                 //->all();
         $pagination = new Pagination([
-            'defaultPageSize' => 9,
+            'defaultPageSize' => 10,
             'totalCount' => $query->count(),
         ]);
 
         $poems = $query
             ->offset($pagination->offset)
             ->limit($pagination->limit)
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
             ->all();
 
         return $this->render('poems', [
@@ -104,6 +107,9 @@ class ArtController extends Controller
         $anekdots = $query
             ->offset($pagination->offset)
             ->limit($pagination->limit)
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
             ->all();
         
         return $this->render('anekdots', [
@@ -125,6 +131,9 @@ class ArtController extends Controller
         $hokkys = $query
             ->offset($pagination->offset)
             ->limit($pagination->limit)
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
             ->all();
         
         return $this->render('hokkys', [
@@ -163,6 +172,9 @@ class ArtController extends Controller
             ->where(['comments_poem.id_poem' => $id])
             ->from('comments_poem')
             ->leftJoin('user', 'comments_poem.id_user = user.id')
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
             ->all();
 
         return $this->render('poem', [
@@ -202,6 +214,9 @@ class ArtController extends Controller
             ->where(['comments_hokky.id_poem' => $id])
             ->from('comments_hokky')
             ->leftJoin('user', 'comments_hokky.id_user = user.id')
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
             ->all();
 
         return $this->render('hokky', [
@@ -241,6 +256,9 @@ class ArtController extends Controller
             ->where(['comments_anekdot.id_poem' => $id])
             ->from('comments_anekdot')
             ->leftJoin('user', 'comments_anekdot.id_user = user.id')
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
             ->all();
 
         return $this->render('anekdot', [

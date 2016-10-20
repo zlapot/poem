@@ -1,19 +1,11 @@
 <?php
+	use yii\helpers\html;
+	use yii\helpers\Url;
+	use app\models\Poems;
 
-use yii\helpers\Html;
-use yii\helpers\Url;
-use app\models\Poems;
 ?>
 
-<?php
-$options = ['class' => 'poem']; //blur-text
-
-if ($poem->censor == 1){
-    Html::addCssClass($options, 'censor');
-}
-?>
-
-<article class="col-md-6 post-poem bl-post">
+<article class="post-poem col-md-6">
 	<div class="poem-wrap">
 		<header class="poem-header">
 			<?= Html::tag('h3',  Html::encode($poem->title), ['class' => 'poem-title']) ?>
@@ -28,4 +20,3 @@ if ($poem->censor == 1){
 		</footer>
 	</div>
 </article>
-

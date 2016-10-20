@@ -55,6 +55,15 @@ class Poems extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function cutStr($str, $count)
+    {
+        $str = strip_tags($str);
+        $str = substr($str, 0, $count);
+        $str = rtrim($str, "!,.-");
+        $str = substr($str, 0, strrpos($str, ' '));
+        return $str."… ";
+    } 
+
       
 
 }

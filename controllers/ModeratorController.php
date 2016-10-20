@@ -19,6 +19,7 @@ use yii\web\Response;
 use yii\helpers\BaseJson;
 use yii\helpers\Json;
 use yii\helpers\Url;
+use app\models\User;
 
 class ModeratorController extends Controller
 {
@@ -30,12 +31,19 @@ class ModeratorController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'addpoem', 'addanekdot', 'addhokky'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['addpoem', 'addanekdot', 'addhokky'],
+                        'allow' => true,
+                        'matchCallback' => function ($rule, $action) {
+                           return  User::isUserAdmin(Yii::$app->user->id);
+                        }
                     ],
                 ],
             ],
@@ -66,6 +74,7 @@ class ModeratorController extends Controller
 
     public function actionAddpoem()
     {
+
         $model = new PoemForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()){

@@ -1,22 +1,10 @@
 <?php
-
-use yii\helpers\Html;
-use yii\helpers\Url;
+	use yii\helpers\html;
+	use yii\helpers\Url;
 
 ?>
 
-<?php
-$options = ['class' => 'anekdot']; //blur-text
-
-if ($anekdot->censor == 1){
-    Html::addCssClass($options, 'censor');
-}
-?>
-
-
-
-
-<article class="post-anekdot col-md-12 poems-row">
+<article class="post-anekdot col-md-12">
 	<div class="anekdot-wrap">	
 		<div class="anekdot-body">
 			<?= Html::tag('div', Html::encode($anekdot->anekdot), ['class' => 'anekdot-anekdot']) ?>	
