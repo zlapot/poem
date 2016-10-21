@@ -68,7 +68,7 @@
                     var template = Handlebars.compile(source);
                     var html    = template(data);
 
-                     $(html).insertBefore('#btn-more');
+                     $(html).insertBefore('#insert');
                 });
                 
             });

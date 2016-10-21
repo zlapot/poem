@@ -13,6 +13,7 @@ $this->title = 'My Yii Application';
 
 <main class="main-page-post col-md-9">
 
+<section class="row">
 	<?= Html::tag('h2', "Новые анекдоты" , ['class' => 'main-page-title']) ?>
     
     <?php foreach ($anekdots as $anekdot): ?>        
@@ -31,7 +32,7 @@ $this->title = 'My Yii Application';
 	?>
 
 	<?= LinkPager::widget(['pagination' => $pagination]) ?> 
-
+</section>
 </main>
 
 
