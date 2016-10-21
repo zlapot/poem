@@ -149,13 +149,11 @@ AppAsset::register($this);
             $items = [
                 'ru' => "Русский",
                 'eng' => "English", 
-                'bib' => "Limba lui Biboran",
+                'bib' => "Română",
                 'ukr' => 'Українська',
-                'imp' => 'Дореволюционный',
-                'ar' => 'Arab',
+                'imp' => 'Дореволюционный',                
                 'de' => 'German',
-                'fr' => 'French',
-                'bas' => 'Башкирский'
+                'fr' => 'French',                
             ];
 
             echo Html::beginForm(['site/lang', 'id' => 'form'], 'get', ['class' => 'lang-form']);
