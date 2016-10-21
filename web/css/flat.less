@@ -1,0 +1,229 @@
+@color-bg: rgba(218, 218, 218, 1);
+@color-post-odd: rgba(10, 181, 159, 1);//rgba(250, 250, 250, 1);
+@color-post-even: rgba(10, 181, 159, 1);    //rgba(255, 255, 255, 1);//rgba(247, 92, 70, 1);//
+@color-border-title: rgba(0, 0, 0, .8);
+@color-sh-main: rgba(0, 0, 0, .3);
+@color-font-btn: rgba(250, 250, 250, 1);
+
+@color-poem-odd: rgba(255, 255, 255, 1);
+@color-poem-even: rgba(85, 85, 85, 1);
+@color-anek-odd: rgba(255, 255, 255, 1);
+@color-anek-even: rgba(85, 85, 85, 1);
+@color-hokky-odd: rgba(255, 255, 255, 1);
+@color-hokky-even: rgba(85, 85, 85, 1);
+@color-font-even: rgba(238, 238, 238, 1);
+
+@margin-from-title: 15px;
+@margin-from-post: 35px;
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: @color-bg;
+}
+
+// Main section
+.main-page-content{
+   //box-shadow: 0 0 10px 2px @color-sh-main;
+}
+// Main section END
+
+// Section with post
+
+.main-page-post{
+    box-shadow: 0 0 10px 2px @color-sh-main;
+    margin-bottom: @margin-from-post;
+    &:nth-of-type(odd){
+         background: @color-post-odd;
+    }
+    &:nth-of-type(even){
+         background: @color-post-even;
+    }
+}
+
+// Section with post END
+
+// Titles
+.main-page-title{
+    text-align: center;
+    padding: 10px 0;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+// Titles END
+
+// Post body
+
+.poem-poem, .hokky-hokky, .poem-poem-without{
+    //text-align: center;
+    white-space: pre;
+}
+
+.anekdot-anekdot{
+    text-align: center;
+}
+
+// Post body end
+
+// Post poem 
+
+.post-poem{   
+    text-align: center;
+    &:nth-of-type(odd){
+        background: @color-poem-odd;
+    }
+    &:nth-of-type(even){
+        background:@color-poem-even;
+        color: @color-font-even;
+    }
+    .poem-poem{
+         height: 180px;
+    }
+    padding-bottom: @margin-from-title;
+}
+
+// Post poem END
+
+// Post anekdot 
+
+.post-anekdot{
+    padding:  @margin-from-title; 
+    text-align: center;
+    &:nth-of-type(odd){
+        background: @color-anek-odd;
+    }
+    &:nth-of-type(even){
+        background: @color-anek-even;        
+        color: @color-font-even;
+    }
+}
+
+// Post anekdot END
+
+// Post hokky 
+
+.post-hokky{
+    padding:  @margin-from-title 0;   
+    text-align: center;
+    &:nth-of-type(odd){
+        background: @color-hokky-odd;
+    }
+    &:nth-of-type(even){
+        background: @color-hokky-even;        
+        color: @color-font-even;
+    }
+}
+
+// Post hokky END
+
+// Button more
+
+.main-page-more{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0;
+    color: @color-font-btn;
+    //box-shadow: inset 0 0 5px 0 @color-sh-main;
+}
+
+#btn-more, #btn-more-ank{
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    border: 0; 
+}
+
+// Buttom more END
+
+// Comment poem 
+
+.comment-section{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+.comment-section .poem-title{
+    margin-top: 0;
+    padding-top: @margin-from-title;
+}
+
+.comment-tab{
+    background-color: @color-anek-even;
+    margin-right: -20px;
+}
+
+.flat-tabs li a{
+    border-radius: 0;
+}
+
+#fb{
+    background: @color-anek-odd;
+}
+
+.comment{
+    background: @color-anek-odd;
+}
+
+// Comment poem END
+
+// Profile
+
+.profile-post{
+    &:nth-of-type(odd){
+        background: @color-hokky-odd;
+    }
+    &:nth-of-type(even){
+        background: @color-hokky-even;        
+        color: @color-font-even;
+    }
+}
+
+.body-image{
+    margin: 0 auto;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: space-around;
+    -webkit-flex-flow: row wrap;
+}
+
+.ava-img{
+    float: left;
+    margin: 5px;
+}
+
+.body-profile{
+    padding: @margin-from-title;
+    width: 100%;
+    display: inline-block;
+
+    span{
+        font-weight: bold;
+    }
+
+    img{
+        width: 160px;
+    }
+}
+
+.profile-left{
+    float: left;
+}
+
+.profile-right{
+    float: right;
+}
+
+#change-form, #upload-form{
+    padding: @margin-from-title;
+    background: @color-anek-even;
+}
+
+// Profile END

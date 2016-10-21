@@ -16,7 +16,7 @@ if ($anekdot->censor == 1){
 
 
 
-<article class="post-anekdot col-md-12 poems-row">
+<article class="post-anekdot col-md-12">
 	<div class="anekdot-wrap">	
 		<div class="anekdot-body">
 			<?= Html::tag('div', Html::encode($anekdot->anekdot), ['class' => 'anekdot-anekdot']) ?>	

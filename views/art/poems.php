@@ -40,10 +40,12 @@ else
 	<?php endforeach; ?>
 
 	<?=
-    Html::button(
-        Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).'Загрузить ещё',
-        $options
-      )
+    Html::tag('div',
+      Html::button(
+          Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).'Загрузить ещё',
+          $options
+        ),
+      ['class' => 'row', 'id' => 'insert'])
   ?>
   <?= LinkPager::widget(['pagination' => $pagination]) ?> 
 

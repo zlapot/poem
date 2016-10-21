@@ -13,8 +13,8 @@ if ($poem->censor == 1){
 $this->title = $poem->title;
 ?>
 
-<main class="main-page-post">
-	<div class="row poems-row">
+<main class="main-page-post row ">
+	<div class="poems-row">
 		<section class="col-md-4 comment-section">
 			<article class="post-poem">
 				<div class="poem-wrap">
@@ -33,7 +33,7 @@ $this->title = $poem->title;
 			</article>
 		</section>
 
-		<section class="col-md-8 circle-border">
+		<section class="col-md-8 comment-tab circle-border">
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,
