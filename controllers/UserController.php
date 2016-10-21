@@ -19,7 +19,27 @@ use yii\web\UploadedFile;
 
 class UserController extends Controller
 {
-
+     public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['profile', 'reg'],
+                'rules' => [
+                    [
+                        'actions' => ['profile'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['reg'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                ],
+            ],            
+        ];
+    }
 
     public function actionReg()
     {
@@ -138,12 +158,12 @@ class UserController extends Controller
 
         if ($changePassword->load(Yii::$app->request->post()) && $changePassword->validate())
         {
-            $$change = $changePassword->cahangePassword();
+            $change = $changePassword->changePassword();
             if (!$change)
             {
                 Yii::$app->session->setFlash('error', 'Ошибка при валидации');
                 Yii::error('Ошибка при валидации');
-                return $this->goHome();
+                //return $this->goHome();
             }
         }
 
@@ -155,13 +175,17 @@ class UserController extends Controller
             {
                 Yii::$app->session->setFlash('error', 'Ошибка при валидации');
                 Yii::error('Ошибка при валидации');
-                return $this->goHome();
+                //return $this->goHome();
             }
         }
 
+
+        $user = User::findIdentity(Yii::$app->user->id);
+        
         return $this->render('profile', [
             'password' => $changePassword,
-            'load' =>$load,
+            'load' => $load,
+            'user' => $user,
         ]);
     }
 

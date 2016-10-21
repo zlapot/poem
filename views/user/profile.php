@@ -2,35 +2,46 @@
 	use yii\helpers\html;
 	use yii\helpers\Url;	
 	use yii\bootstrap\ActiveForm;
+	use kartik\file\FileInput;
 
 ?>
 <main class="main-page-content col-md-9">
 	
+	
 	<section class="main-page-post row">		
 		<?= Html::tag('h2', "Профиль пользователя" , ['class' => 'main-page-title']) ?>
-		<div class="row poems-row">
-			
-		</div>
 		<article>
-		<head>
-			<?= Html::tag('h3', "Выберите аватар" , ['class' => 'main-page-title']) ?>
-		</head>
-		<div class="col-sm-1"></div>
-		<div class="body-image col-sm-10">
-			<?php
-				for($i=1; $i<21; $i++){
-					echo '<div class="ava-img">
-							<img src="/poem/web/img/avatar/'.$i.'.jpg" class="avatar"
-							</div';
-				}
+			<head>
+				<?= Html::tag('h3', "Информация о пользователе:" , ['class' => 'main-page-title']) ?>
+			</head>
+			<div class="body-profile">
+				<?= Html::tag('div', "<span>Логин: </span>".Html::encode($user->username), ['class'=>'profile-usermane']) ?>
+				<?= Html::tag('div', "<span>Дата регистрации: </span>".gmdate("Y-m-d H:i:s", Html::encode($user->created_at)), ['class'=>'profile-date']) ?>
+				<?= Html::img(Url::home().$user->img, ['class' => 'profile-img']) ?>
+			</div>
+		</article>
+		<article>
+			<head>
+				<?= Html::tag('h3', "Выберите аватар" , ['class' => 'main-page-title']) ?>
+			</head>
+			<div class="col-sm-1"></div>
+			<div class="body-image col-sm-10">
+				<?php
+					for($i=1; $i<21; $i++){
+						$path = Url::home().'img/avatar/'.$i.'.jpg';
+						echo '<div class="ava-img">
+								<img src="'.$path.'" class="avatar"
+								</div';
+					}
 
-			?>
-		</div>
-		<div class="col-sm-1"></div>
+				?>
+			</div>
+			<div class="col-sm-1"></div>
 		</article>
 
 	</section>
 
+	<?php if(!$user->service) : ?>
 	<section class="main-page-post">
 
 		<?php $form = ActiveForm::begin([
@@ -59,15 +70,24 @@
 
 
 	</section>
-
+	
+	<?php endif; ?> 
+	
 	<section class="main-page-post">
 		<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
-		    <?= $form->field($load, 'imageFile')->fileInput() ?>
+		    
+
+		    <?= $form->field($load, 'imageFile')->widget(FileInput::classname(), [
+				    'options' => ['accept' => 'image/*'],
+				    'resizeImages' => true,
+				]) ?>
 
 		    <button>Submit</button>
 
 		<?php ActiveForm::end() ?>
+
+
 	</section>
 	
 </main>

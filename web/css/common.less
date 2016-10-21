@@ -252,7 +252,21 @@ body{
 // Image foe avaatar
 
 .avatar{
+	max-width: 120px;
 	float: left;
+	margin: 5px;
+	box-sizing: border-box;
+	&:hover{	
+		box-shadow: outset 0px 0px 10px 5px @color-sh-section;	
+	}
+
+}
+
+.checked-ava{
+	&:after{
+		background: #ccc;
+		//background-image: (poem/web/img/check_yes.png);
+	}
 }
 
 // Image foe avaatar END

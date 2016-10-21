@@ -55,24 +55,22 @@
             $('#btn-more').on('click', function(e){
                 var jthis = $(this);
                 jthis.attr('disabled','disabled');
-                var url = "/poem/web/site/poemajax?page="+page;
+                var url = "/poem/web/api/poem-ajax-json?page="+page;
+                data: url,
                 $.ajax({
-                    type: "POST",
-                    url: (url),
-                    data: url,
-                    success: function(html){
-                        var json = jQuery.parseJSON(html);
-                        var row = app.buildTree(json);
+                    type: 'POST',
+                    url: url,
+                }).done(function(data){
+                    // var json = jQuery.parseJSON(data);
+                    console.log(data);
 
-                        $('#main-container').append(row[0], row[1], row[2]);
-                        
-                        page++;
-                        //TODO
-                        if(json.lenght===9){
-                            jthis.removeAttr('disabled');
-                        }
-                    }
+                    var source   = $("#entry-template").html();
+                    var template = Handlebars.compile(source);
+                    var html    = template(data);
+
+                     $(html).insertBefore('#btn-more');
                 });
+                
             });
         },
 
@@ -88,24 +86,7 @@
             return el;
         },
 
-        buildTree: function(jsonOb){
-            var cont, row = [], col = [],
-                createEl = app.createElem;
-            console.log(jsonOb[0].autor);
-            for(var i=0; i < jsonOb.length ;i++){
-                col[i] = createEl('div', 'col-md-4 bl-post', 
-                                        createEl('div', 'bl-poem', [
-                                            createEl('div', 'poem-title', jsonOb[i].title),
-                                            createEl('div', 'poem', jsonOb[i].poem),
-                                            createEl('div', 'poem-autor', jsonOb[i].autor)]));
-                                       
-            }
-            for(var i=0; i < jsonOb.length/3; i++ ){
-                row[i] = createEl('div', 'row', [col[i*3+0], col[i*3+1], col[i*3+2]])
-            }
-
-            return row;            
-        },
+        
 
         initStyle: function(){
             var title = $('title').text();

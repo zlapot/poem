@@ -9,7 +9,6 @@ class ChangePasswordForm extends Model
 {
     public $password;
     public $newpassword;
-    private $_user;
 
     public function rules()
     {
@@ -32,16 +31,17 @@ class ChangePasswordForm extends Model
     public function changePassword()
     {
         /* @var $user User */
-        $this->_user = User::findIdentity(Yii::$app->user->id);
-        if(!$this->_user)
+        $_user = User::findIdentity(Yii::$app->user->id);
+        if(!$_user)
             throw new InvalidParamException('Что-то пошло не так...');
 
-        $user = $this->_user;
+        $user = $_user;
         if($user->validatePassword($this->password)){
             $user->setPassword($this->newpassword);
-            return $user->save(false);
+            $user->save(false);
+            return true;
         }else{
-            throw new InvalidParamException('Неверный пароль'); 
+            return false;
         }      
         
     }

@@ -23,7 +23,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/common.js',
-        'js/login.js'
+        'js/login.js',
+        'js/handlebars.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

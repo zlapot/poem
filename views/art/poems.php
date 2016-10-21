@@ -83,3 +83,27 @@ else
         </div>
       </div>
     </div>
+
+<script id="entry-template" type="text/x-handlebars-template">
+  <div class="row poems-row">   
+  {{#each data}}
+    <article class="post-poem col-md-6">
+      <div class="poem-wrap">
+        
+        <header class="poem-header">
+          <h3 class="poem-title">{{title}}</h3> 
+        </header>
+        <div class="poem-body">
+          <div class="poem-poem">{{poem}}</div>  
+          <a class="btn btn-dafault btn-comment" href="/poem/web/art/poem?id={{id}}">Показать полностью...</a>      
+        </div>
+        <footer class="poem-footer">
+          <div class="poem-autor"><span>Автор: </span>{{autor}}</div> 
+          <time class="poem-date"><span>Дата публикации: </span>{{date}}</time> 
+        </footer>
+        
+      </div>     
+    </article>    
+  {{/each}}
+  </div>
+</script>
