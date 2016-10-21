@@ -9,13 +9,13 @@ use yii\helpers\Url;
 	
 	<section class="main-page-post row">		
 		<?= Html::tag('h2', "Новые стихи" , ['class' => 'main-page-title']) ?>
-		
+		<div class="row poems-row">
 			<?php foreach ($poems as $poem): ?>
 				<?= $this->render('template/_poem', [
 					'poem' => $poem,
 				])?>		
 			<?php endforeach; ?>
-		
+		</div>
 		<?= Html::a('Больше стихов...', Url::to(['art/poems']), ['class' => 'btn btn-dafault main-page-more']) ?>
 	</section>
 

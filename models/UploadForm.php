@@ -22,12 +22,6 @@ class UploadForm extends Model
         ];
     }
 
-    public function attributeLabels()
-    {
-        return [
-            'imageFile' => '',
-            ];
-    }
     
     public function upload()
     {

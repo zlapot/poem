@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 ?>
 
-<ul class="nav nav-tabs flat-tabs" role="tablist">
+<ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">На сайте</a></li>
     <li role="presentation"><a href="#vk" aria-controls="vk" role="tab" data-toggle="tab">Вконтакте</a></li>
     <li role="presentation"><a href="#fb" aria-controls="fb" role="tab" data-toggle="tab">Facebook</a></li>
