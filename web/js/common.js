@@ -211,16 +211,19 @@
                     data: str,
                     success: function(data){
                         if(data === 'fail'){
-
+                            $('.msg').html("Произошла ошибка");
                         }else{
-                            console.log(data);
+                            console.log("добавил");
                             var source   = $("#entry-template").html();
                             var template = Handlebars.compile(source);
                             var html    = template(data);
-                            jthis.find('textarea').val('');
-                            jthis.find('#commentBtn').removeAttr('disabled');
 
-                             $(html).insertAfter('#insert');
+                            jthis.find('#commentBtn').removeAttr('disabled');
+                            jthis.find('textarea').val('');
+
+                            $(html).insertAfter('#insert');
+
+                            app.commentDelete();
                         }
                     }
                 });
@@ -259,8 +262,10 @@
                     success: function(data){
                         if(data == 'ok'){
                             str = 'article[id="'+idpost+'"]';
+                            console.log("Удаляю");
                             $(str).remove();
                         }else{
+                            $('.msg').html("Произошла ошибка");
                         }
                     }
                 });

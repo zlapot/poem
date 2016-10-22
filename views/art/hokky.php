@@ -23,6 +23,7 @@ if ($hokky->censor == 1){
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,
+					'id_poem' => $hokky->id,
 				]) ?>
 		</div>
 

@@ -23,6 +23,7 @@ if ($anekdot->censor == 1){
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,
+					'id_poem' => $anekdot->id,
 				]) ?>
 		</section>
 
