@@ -66,8 +66,6 @@ class ApiController extends Controller
                     'pagination' => $pagination,
                 ]));
 
-            echo "hjhjhj";
-            
        // }
     }
 
@@ -78,7 +76,7 @@ class ApiController extends Controller
                 ->from('poems');
                 //->all();
             $pagination = new Pagination([
-                'defaultPageSize' => 9,
+                'defaultPageSize' => 10,
                 'totalCount' => $query->count(),
             ]);
             
@@ -101,5 +99,56 @@ class ApiController extends Controller
         }
     }
 
+    public function actionAnekdotAjaxJson()
+    {
+        if (Yii::$app->request->isPost){
+            $query = Anekdots::find()
+                ->from('anekdots');
+                //->all();
+            $pagination = new Pagination([
+                'defaultPageSize' => 9,
+                'totalCount' => $query->count(),
+            ]);
+            
+            $poems = $query
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+            
+            //echo \yii\helpers\Json::encode($poems);
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            //return $poems;
+            return ['data' => $poems];
+
+        }else{
+            echo 'You should use POST response';
+        }
+    }
+
+    public function actionHokkyAjaxJson()
+    {
+        if (Yii::$app->request->isPost){
+            $query = Hokkys::find()
+                ->from('hokkys');
+                //->all();
+            $pagination = new Pagination([
+                'defaultPageSize' => 9,
+                'totalCount' => $query->count(),
+            ]);
+            
+            $poems = $query
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+            
+            //echo \yii\helpers\Json::encode($poems);
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            //return $poems;
+            return ['data' => $poems];
+
+        }else{
+            echo 'You should use POST response';
+        }
+    }
     
 }

@@ -157,39 +157,6 @@ body{
 // Body style END
 
 
-//Поисковая панель
-.navbar-collapse li .search-bar-form {	
-	max-width: 100%;
-	box-sizing: border-box;
-	border-color: #222222;
-	padding-left: 10px;
-}
-.search-bar-panel {
-	display: inline-block;
-	float: left;
-	box-sizing: border-box;
-}
-.search-bar-form button{
-	display: inline-block;
-}
-.search-bar-panel .input-group{
-	float: left;
-	border-radius: 10px;
-}
-.search-bar-panel .input-group .search-input{
-	vertical-align: middle;	
-	border-radius: 5px;
-}
-
-@media (max-width: @mobile){
-	.navbar-collapse li .search-bar-form {	
-		max-width: 100%;
-		height: 55px;
-		margin: 10px;
-	}
-}
-
-//Поисковая панель конец
 
 // Poems style
 .poem-poem{
@@ -211,6 +178,10 @@ body{
 .comment-section{
 	padding-left: 0;
 	margin-top: -3px; 
+}
+
+.comment-container{
+	min-height: 350px;
 }
 
 // Comment aling END
@@ -241,13 +212,6 @@ body{
 
 // for admin END
 
-//Copyright
-
-.copy {
-	margin-top: 10px;
-}
-
-//Copyright END
 
 // Image foe avaatar
 
@@ -308,3 +272,132 @@ body{
 }
 
 // Profile end
+
+
+/// alls
+
+@block-height: 450px;
+@poem-height: 340px;
+@anekdot-color-odd: #aaa; //#177245;
+@anekdot-color-even: #ccc; //#1faee9;
+@tablet: 992px;
+@mobile: 768px;
+@desktop: 1200px;
+@color-bg: rgba(241,241,241,0.9);
+
+.navbar-form{
+}
+
+
+
+
+.hokky, .bl-art{
+    white-space: pre-line;
+}
+
+
+@media (min-width: @tablet) {
+    .jap-theme{
+        background: url('/poem/web/img/jap2.jpg'), url('/poem/web/img/jap2xs.jpg');
+        background-repeat: no-repeat, repeat;
+        background-attachment: local, none;
+        background-size: 100%;
+        background-color: #f5f5f5;
+        //height: 85vh;
+    }
+}
+
+@media (min-width: @desktop) {
+    .login-theme{
+        background: url('/poem/web/img/login2.gif');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+       	background-position: right, bottom; 
+    }
+    @font-face {
+    	font-family: Pushkin;
+    	//src: url(/poem/web/fonts/10112.otf);
+    	src: url(/poem/web/fonts/9540.ttf);
+    }
+    .site-login  {
+    	font-family: Pushkin;
+    	font-size: 1.5em;
+    	font-weight: bold;
+    }
+    .site-login .btn, input{
+    	font-family: "Helvetica Neue", Helvetica;
+    }
+}
+
+.bl-hokky{
+    border-bottom: 3px double #ccc;
+    text-align: center;
+    vertical-align: middle;
+    display: table;
+    width: 100%;
+    padding: 20px 0;
+}
+
+
+
+@media (min-width: @mobile) {
+    .bl-hokky{
+        border-bottom: 3px double #ccc;
+        text-align: center;
+        vertical-align: middle;
+        display: table-cell;        
+        width: 250px;
+        height: 200px;
+    }
+    .bl-hokky .btn {
+    }
+    .bl-hokky .btn{
+    	&:hover{
+    		text-shadow: 1px 1px 2px #337AB7, 0 0 1em #337AB7;
+    	}
+    }
+}
+
+.block(){
+    border: 2px solid #FFCD25;    
+    margin: 0 auto;
+    background-color: #eee;
+    position: relative;
+    
+}
+
+.bl-poem{
+    &:extend(.block);
+    box-sizing: border-box;
+    height: @block-height;
+    z-index: 0;
+    border-radius: 25px 0 25px 0;
+    background: #ffb60f;
+    background: radial-gradient(circle at 80px 40px, #F2DDA0, #EFD581, #F0CB50);
+}
+
+.poem{
+    position: relative;
+    z-index: 1;    
+    height: @poem-height;
+    overflow: hidden;
+    margin: 0 auto;
+    white-space: pre-line;
+}
+
+// fix button
+
+#insert{
+	width: 100%;
+	display: inline-block;
+}
+
+//Login
+
+.site-login{
+	background: @color-wrap;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+//Login End

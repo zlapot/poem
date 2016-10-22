@@ -111,13 +111,6 @@ AppAsset::register($this);
     NavBar::end();
 
 
-    /*
-    Html::beginForm(['order/update', 'class' => 'form-inline'], 'post');
-        Html::input('text', 'username', 'DA', ['class' => 'form-control']);
-    Html::endForm();
-    */
-    echo Yii::$app->user->id;
-
     ?>
 
     <div class="container">
@@ -133,6 +126,11 @@ AppAsset::register($this);
 </div>
 
 
+<?= Html::tag('div', 
+        Html::button('', ['class'=>'flat', 'data-css' => Url::home().'css/commonflat.css']).
+        Html::button('', ['class'=>'red', 'data-css' => Url::home().'css/common.css']),
+    ['id' => 'cssCheched'])
+?>
 
 
 <footer class="footer">

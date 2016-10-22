@@ -1,29 +1,21 @@
 <?php
+	use yii\helpers\html;
+	use yii\helpers\Url;
 
-use yii\helpers\Html;
-use yii\helpers\Url;
 
+if (isset($opt))
+	echo '<article class="post-hokky col-md-4">';
+else	
+	echo '<article class="post-hokky">';
 ?>
-
-<?php
-$options = ['class' => 'hokky']; //blur-text
-
-if ($hokky->censor == 1){
-    Html::addCssClass($options, 'censor');
-}
-?>
-
-<article class="">
-	<div class="col-md-8 .hidden-xs"></div>	
-	<div class="col-md-4 col-sm-4 col-xs-12">
-		<?= Html::tag('div',
-				Html::tag('div', Html::encode($hokky->hokky), $options) .
-				Html::tag('div', "Автор: ".Html::encode($hokky->autor), ['class' => 'hokky-autor']).
-				Html::a('Комментировать', Url::to(['art/hokky', 'id' => $hokky->id]), ['class' => 'btn btn-dafault'])
-				,
-			['data-link' => Url::to(['art/hokky', 'id' => $hokky->id]), 'class' => 'bl-hokky center-block']
-		) ?>
+	<div class="hokky-wrap">
+		<div class="hokky-body">
+			<?= Html::tag('div', Html::encode($hokky->hokky), ['class' => 'hokky-hokky']) ?>	
+			<?= Html::a('Коммментировать', Url::to(['art/hokky', 'id'=>$hokky->id]), ['class' => 'btn btn-dafault btn-comment']) ?>			
+		</div>
+		<footer class="hokky-footer">
+			<?= Html::tag('div','<span>Автор: </span>'. Html::encode($hokky->autor), ['class' => 'hokky-autor']) ?>	
+			<?= Html::tag('time','<span>Дата публикации: </span>'. Html::encode($hokky->date), ['class' => 'hokky-date']) ?>
+		</footer>
 	</div>
 </article>
-
-

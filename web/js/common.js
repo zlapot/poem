@@ -1,30 +1,20 @@
 (function(){
 
 	var modal = $('#myModal');
-    var page = 2;
-    /*
-    $('#poem-form').submit(function(e){
-        e.preventDefault();
-        var str = $(this).serialize();
-        console.log(str);
-        $.ajax({
-            type: "POST",
-            url: "/poem/web/index.php?r=site%2Faddpoem",
-            data: str,
-            success: function(html){
-                $('#ajaxreq').html(html);
-            }
-        });
-        return false;
-    });
-    */
+    var pageP = 2,
+        pageA = 2,
+        pageH = 2;
+    
 
     var app = {
         init: function(){
             this.modalShow();
             this.showMore();
+            this.showMoreAnk();
+            this.showMoreHok();
             this.initStyle();
             this.returnLink();
+            this.switchStyle();
         },
 
         modalShow: function(){
@@ -55,13 +45,54 @@
             $('#btn-more').on('click', function(e){
                 var jthis = $(this);
                 jthis.attr('disabled','disabled');
-                var url = "/poem/web/api/poem-ajax-json?page="+page;
+                var url = "/poem/web/api/poem-ajax-json?page="+pageP;
                 data: url,
                 $.ajax({
                     type: 'POST',
                     url: url,
                 }).done(function(data){
-                    // var json = jQuery.parseJSON(data);
+                    //console.log(data);
+
+                    var source   = $("#entry-template").html();
+                    var template = Handlebars.compile(source);
+                    var html    = template(data);
+
+                     $(html).insertBefore('#insert');
+                });
+                
+            });
+        },
+        showMoreAnk: function(){
+            $('#btn-more-ank').on('click', function(e){
+                var jthis = $(this);
+                jthis.attr('disabled','disabled');
+                var url = "/poem/web/api/anekdot-ajax-json?page="+pageA;
+                data: url,
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                }).done(function(data){
+                    console.log(data);
+
+                    var source   = $("#entry-template").html();
+                    var template = Handlebars.compile(source);
+                    var html    = template(data);
+
+                     $(html).insertBefore('#btn-more-ank');
+                });
+                
+            });
+        },
+        showMoreHok: function(){
+            $('#btn-more-hokky').on('click', function(e){
+                var jthis = $(this);
+                jthis.attr('disabled','disabled');
+                var url = "/poem/web/api/hokky-ajax-json?page="+pageH;
+                data: url,
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                }).done(function(data){
                     console.log(data);
 
                     var source   = $("#entry-template").html();
@@ -113,6 +144,12 @@
             $(modal).on('hidden.bs.modal', function (e) {
                 window.history.replaceState(null, null, modal.data('link'));
                 console.log("bugagaga");
+            });
+        },
+
+        switchStyle: function(){
+            $('#cssCheched').on('click', function(e){
+                $('link[href*="common"]').attr('href', $(e.target).data('css'));                
             });
         },
         

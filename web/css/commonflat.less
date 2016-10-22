@@ -1,6 +1,7 @@
 @color-bg: rgba(218, 218, 218, 1);
 @color-post-odd: rgba(10, 181, 159, 1);//rgba(250, 250, 250, 1);
-@color-post-even: rgba(10, 181, 159, 1);    //rgba(255, 255, 255, 1);//rgba(247, 92, 70, 1);//
+@color-post-even: rgba(10, 181, 159, 1);   
+@color-sidebar: rgba(10, 181, 159, 1);   //rgba(255, 255, 255, 1);//rgba(247, 92, 70, 1);//
 @color-border-title: rgba(0, 0, 0, .8);
 @color-sh-main: rgba(0, 0, 0, .3);
 @color-font-btn: rgba(250, 250, 250, 1);
@@ -130,7 +131,7 @@ body{
     //box-shadow: inset 0 0 5px 0 @color-sh-main;
 }
 
-#btn-more, #btn-more-ank{
+#btn-more, #btn-more-ank, #btn-more-hokky{
     width: 100%;
     border-radius: 0;
     box-shadow: none;
@@ -227,3 +228,34 @@ body{
 }
 
 // Profile END
+
+// Side bar 
+
+.sidebar{
+    height: 85vh;
+    padding: 0 10px;   
+}
+
+.aside-block{
+    height: 85vh;
+    background: @color-sidebar;
+    box-shadow: 0 0 10px 2px @color-sh-main;
+}
+// Side bar END
+
+// Site login
+
+.site-login{
+    background: @color-anek-even;
+    padding: @margin-from-title;
+    color: @color-font-even;
+    a{
+        color: @color-font-btn;
+        &:hover{
+            filter: grayscale(100%);
+            transition: 2s;
+        }
+    } 
+}
+
+// Site login END

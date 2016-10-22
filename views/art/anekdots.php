@@ -13,15 +13,13 @@ $this->title = 'My Yii Application';
 
 <main class="main-page-post col-md-9">
 
-<section class="row">
+<section class="row poems-row">
 	<?= Html::tag('h2', "Новые анекдоты" , ['class' => 'main-page-title']) ?>
     
-    <?php foreach ($anekdots as $anekdot): ?>        
-            
+    <?php foreach ($anekdots as $anekdot): ?>                   
         <?= $this->render('_anekdot', [
             'anekdot' => $anekdot,
         ]) ?>
-
     <?php endforeach; ?>    
 
     <?=
@@ -42,3 +40,20 @@ $this->title = 'My Yii Application';
 
 	</aside>
 </div>
+
+
+<script id="entry-template" type="text/x-handlebars-template">
+{{#each data}}
+  <article class="post-anekdot col-md-12">
+    <div class="anekdot-wrap">  
+      <div class="anekdot-body">
+        <div class="anekdot-anekdot">{{anekdot}}</div> 
+        <a class="btn btn-dafault btn-comment" href="/poem/web/art/anekdot?id=11">Комментировать</a>      
+      </div>
+      <footer class="anekdot-footer">
+        <div class="anekdot-autor"><span>Автор: </span>{{autor}}</div> 
+        <time class="anekdot-date"><span>Дата публикации: </span>{{date}}</time>    </footer>
+    </div>
+  </article>
+{{/each}}
+</script>

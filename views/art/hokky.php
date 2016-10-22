@@ -11,10 +11,10 @@ if ($hokky->censor == 1){
 //$this->title = "title";
 ?>
 
-<main class="main-page-post row ">
+<main class="main-page-post row comment-container">
 	<div class="poems-row">
 		<div class="col-md-4 comment-section">
-			 <?= $this->render('_hokky2', [
+			 <?= $this->render('_hokky', [
 	            'hokky' => $hokky,
 	        ]) ?>
 		</div>

@@ -9,55 +9,68 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
 ?>
-<section class="site-login row">
 
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<main id='main-container' class="main-page-post col-md-9">
 
-    <p>Please fill out the following fields to login:</p>
+    <h1 class="main-page-title"><?= Html::encode($this->title) ?></h1>
+    <section class="site-login row poems-row post-form">       
+        
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'options' => ['class' => 'form-horizontal'],
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+        <p>Please fill out the following fields to login:</p>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+        <?php $form = ActiveForm::begin([
+            'id' => 'login-form',
+            'options' => ['class' => 'form-horizontal'],
+            'fieldConfig' => [
+                'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
+                'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            ],
+        ]); ?>
 
-        <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
+            <?= $form->field($model, 'password')->passwordInput() ?>
 
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Войти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                <?= Html::button('Регистрация', ['class'=>'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#modalReg', 'type' => 'button']) ?>
+            <?= $form->field($model, 'rememberMe')->checkbox([
+                'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+            ]) ?>
 
-                <?= Html::button('Забыли пароль?', ['class'=>'btn btn-link', 'data-toggle' => 'modal', 'data-target' => '#modalReset', 'type' => 'button']) ?>
+            <div class="form-group">
+                <div class="col-lg-offset-1 col-lg-11">
+                    <?= Html::submitButton('Войти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::button('Регистрация', ['class'=>'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#modalReg', 'type' => 'button']) ?>
+
+                    <?= Html::button('Забыли пароль?', ['class'=>'btn btn-link', 'data-toggle' => 'modal', 'data-target' => '#modalReset', 'type' => 'button']) ?>
+                </div>
+               
             </div>
-           
-        </div>
 
-    <?php ActiveForm::end(); ?>
+        <?php ActiveForm::end(); ?>
 
 
 
-    <?php
-        if (Yii::$app->getSession()->hasFlash('error')) {
-            echo '<div class="alert alert-danger">'.Yii::$app->getSession()->getFlash('error').'</div>';
-        }
-    ?>
+        <?php
+            if (Yii::$app->getSession()->hasFlash('error')) {
+                echo '<div class="alert alert-danger">'.Yii::$app->getSession()->getFlash('error').'</div>';
+            }
+        ?>
 
-    <p class="lead">Аторизация через социальные сети:</p>
-    <?php echo \nodge\eauth\Widget::widget(['action' => 'site/login']); ?>
+        <p class="lead">Аторизация через социальные сети:</p>
+        <?php echo \nodge\eauth\Widget::widget(['action' => 'site/login']); ?>
 
+        
+    </section>
+</main>
+
+  
+<div class="aside sidebar col-md-3">
+  <aside class="aside-block">
+
+  </aside>
+</div>  
     
-</section>
+
 
 <div id="modalReg" class="modal fade site-login" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
