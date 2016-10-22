@@ -16,6 +16,8 @@
             this.returnLink();
             this.switchStyle();
             this.checkImg();
+            this.commentAdd();
+            this.commentDelete();
         },
 
         modalShow: function(){
@@ -51,7 +53,7 @@
                     type: 'POST',
                     url: url,
                 }).done(function(data){
-                    //console.log(data);
+                    console.log(data);
 
                     var source   = $("#entry-template").html();
                     var template = Handlebars.compile(source);
@@ -179,6 +181,94 @@
             });
         },
         
+        commentAdd: function(){
+            $('#comment-form').on('submit', function(e){
+                e.preventDefault();
+
+                var contr = $('.comment-tab').attr('id'),
+                    url;
+                switch(contr){
+                    case 'poem':
+                        url = '/poem/web/api/comment-poem-ajax';
+                        break;
+                    case 'hokky':
+                        url = '/poem/web/api/comment-hokky-ajax';
+                        break;
+                    case 'anekdot':
+                        url = '/poem/web/api/comment-anekdot-ajax';
+                        break;
+                }
+
+                console.log(url);
+                var str = $(this).serialize(),
+                    jthis = $(this),
+                    idpost = jthis.data('id');                
+                jthis.find('#commentBtn').attr('disabled','disabled');
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: str,
+                    success: function(data){
+                        if(data === 'fail'){
+
+                        }else{
+                            console.log(data);
+                            var source   = $("#entry-template").html();
+                            var template = Handlebars.compile(source);
+                            var html    = template(data);
+                            jthis.find('textarea').val('');
+                            jthis.find('#commentBtn').removeAttr('disabled');
+
+                             $(html).insertAfter('#insert');
+                        }
+                    }
+                });
+
+            });
+        },
+
+        commentDelete: function(){
+            $('.daeleteBtn').on('click', function(e){
+                e.preventDefault();
+
+                var contr = $('.comment-tab').attr('id'),
+                    url = '/poem/web/api/delete-comment-ajax',
+                    category;
+                switch(contr){
+                    case 'poem':
+                        category = 'poem';
+                        break;
+                    case 'hokky':
+                        category = 'hokky';
+                        break;
+                    case 'anekdot':
+                        category = 'anekdot';
+                        break;
+                }
+
+                console.log(url);
+                var jthis = $(this),
+                    idpost = jthis.data('id');                
+                $(e.target).attr('disabled','disabled');
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {'category':category, 'id':idpost},
+                    success: function(data){
+                        if(data == 'ok'){
+                            str = 'article[id="'+idpost+'"]';
+                            $(str).remove();
+                        }else{
+                        }
+                    }
+                });
+
+            });
+        },
+
+
     };
 
     app.init();

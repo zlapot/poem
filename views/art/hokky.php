@@ -19,7 +19,7 @@ if ($hokky->censor == 1){
 	        ]) ?>
 		</div>
 
-		<div class="col-md-8 comment-tab  circle-border">
+		<div class="col-md-8 comment-tab  circle-border" id="hokky">
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,

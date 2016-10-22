@@ -19,7 +19,7 @@ if ($anekdot->censor == 1){
 	        ]) ?>
 		</section>
 
-		<section class="col-md-8 comment-tab circle-border">
+		<section class="col-md-8 comment-tab circle-border" id="anekdot">
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,

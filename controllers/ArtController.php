@@ -167,7 +167,8 @@ class ArtController extends Controller
                 'comments_poem.id',
                 'comments_poem.comment',
                 'comments_poem.date',
-                'user.username'
+                'user.username',
+                'user.img',
                 ])
             ->where(['comments_poem.id_poem' => $id])
             ->from('comments_poem')
@@ -209,7 +210,8 @@ class ArtController extends Controller
                 'comments_hokky.id',
                 'comments_hokky.comment',
                 'comments_hokky.date',
-                'user.username'
+                'user.username',
+                'user.img',
                 ])
             ->where(['comments_hokky.id_poem' => $id])
             ->from('comments_hokky')
@@ -251,7 +253,8 @@ class ArtController extends Controller
                 'comments_anekdot.id',
                 'comments_anekdot.comment',
                 'comments_anekdot.date',
-                'user.username'
+                'user.username',
+                'user.img',
                 ])
             ->where(['comments_anekdot.id_poem' => $id])
             ->from('comments_anekdot')

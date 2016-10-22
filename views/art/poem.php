@@ -22,8 +22,7 @@ $this->title = $poem->title;
 						<?= Html::tag('h3',  Html::encode($poem->title), ['class' => 'poem-title']) ?>
 					</header>
 					<div class="poem-body">
-						<?= Html::tag('div', Html::encode($poem->poem), ['class' => 'poem-poem-without']) ?>	
-						<?= Html::a('Показать полностью...', Url::to(['art/poem', 'id'=>$poem->id]), ['class' => 'btn btn-dafault btn-comment']) ?>			
+						<?= Html::tag('div', Html::encode($poem->poem), ['class' => 'poem-poem-without']) ?>						
 					</div>
 					<footer class="poem-footer">
 						<?= Html::tag('div','<span>Автор: </span>'. Html::encode($poem->autor), ['class' => 'poem-autor']) ?>	
@@ -33,10 +32,11 @@ $this->title = $poem->title;
 			</article>
 		</section>
 
-		<section class="col-md-8 comment-tab circle-border">
+		<section class="col-md-8 comment-tab circle-border" id="poem">
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,
+					'id_poem' => $poem->id,
 				]) ?>
 		</section>
 

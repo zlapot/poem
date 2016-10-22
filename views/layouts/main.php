@@ -63,7 +63,7 @@ AppAsset::register($this);
                     ['label' => $lang->connect[$lanID], 'url' => ['/site/contact']],
                 ]
             ],
-            isset(Yii::$app->user->getIdentity()['role']) ? (
+            (Yii::$app->user->getIdentity()['role']==20) ? (
             [
                 'label' => $lang->add[$lanID], 'items' => [
                     ['label' => $lang->addpoem[$lanID], 'url' => ['/moderator/addpoem']],

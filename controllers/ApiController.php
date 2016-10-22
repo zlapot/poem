@@ -10,6 +10,7 @@ use app\models\Poems;
 use app\models\Hokkys;
 use app\models\Anekdots;
 use app\models\User;
+use app\models\CommentForm;
 use yii\data\Pagination;
 use yii\web\Response;
 use yii\helpers\BaseJson;
@@ -172,5 +173,143 @@ class ApiController extends Controller
             echo 'You should use POST response';
         }
     }
+
+    private function doneCommentJson($data)
+    {
+        $ident = Yii::$app->user->identity;
+        return [[
+            'id' => $data->id,
+            'comment' => $data->comment,
+            'date' => $data->date,
+            'username' => $ident->username,
+            'img' => Url::home().$ident->img,
+        ]];
+    }
+
+    public function actionCommentPoemAjax()
+    {
+        if(!Yii::$app->user->isGuest){
+            if (Yii::$app->request->isPost){
+                $post = Yii::$app->request->post('CommentForm');
+                $comment = new CommentForm();    
+
+                $comment->comment = $post['comment'];
+                if($comment->comment != '')
+                {
+                    $data = $comment->addToPoem($post['idpost']);
+                    if($data){                          
+                        $json = $this->doneCommentJson($data);
+                        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                        return ['data' => $json];
+                    }else{
+                        echo "fail";
+                    }
+                }else{
+                    echo 'fail';
+                }
+                
+            }
+        }
+        else{
+            echo "You're guest!!";
+        }
+    }
+
+    public function actionCommentHokkyAjax()
+    {
+        if(!Yii::$app->user->isGuest){
+            if (Yii::$app->request->isPost){
+                $post = Yii::$app->request->post('CommentForm');
+                $comment = new CommentForm();    
+
+                $comment->comment = $post['comment'];
+                if($comment->comment != '')
+                {
+                    $data = $comment->addToHokky($post['idpost']);
+                    if($data){
+                        $json = $this->doneCommentJson($data);
+                        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                        return ['data' => $json];
+                    }else{
+                        echo "fail";
+                    }
+                }else{
+                    echo 'fail';
+                }
+                
+            }
+        }
+        else{
+            echo "You're guest!!";
+        }
+    }
+
+    public function actionCommentAnekdotAjax()
+    {
+        if(!Yii::$app->user->isGuest){
+            if (Yii::$app->request->isPost){
+                $post = Yii::$app->request->post('CommentForm');
+                $comment = new CommentForm();    
+
+                $comment->comment = $post['comment'];
+                if($comment->comment != '')
+                {
+                    $data = $comment->addToAnekdot($post['idpost']);
+                    if($data){
+                        $json = $this->doneCommentJson($data);
+                        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                        return $json;
+                    }else{
+                        echo "fail";
+                    }
+                }else{
+                    echo 'fail';
+                }
+                
+            }
+        }
+        else{
+            echo "You're guest!!";
+        }
+    }    
+
+    public function actionDeleteCommentAjax()
+    {
+        if(!Yii::$app->user->isGuest){
+            if (Yii::$app->request->isPost){
+                $post = Yii::$app->request->post();
+                if(isset($post)){
+                    $flag = false;
+                    $comment = new CommentForm(); 
+                    switch ($post['category']) {
+                        case 'poem':
+                            $flag = $comment->delFromPoem($post['id']);
+                            break;
+
+                        case 'hokky':
+                            $flag = $comment->delFromHokky($post['id']);
+                            break;
+
+                        case 'anekdot':
+                            $flag = $comment->delFromAnekdot($post['id']);
+                            break;
+                        
+                        default:
+                            break;
+                    }
+                    
+                    if($flag){
+                        echo 'ok';
+                    }else{
+                        echo "fail";
+                    }
+                }
+
+            }
+        }
+        else{
+            echo "You're guest!!";
+        }
+    }    
     
 }

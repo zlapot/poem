@@ -7,12 +7,14 @@ use Yii;
 class CommentForm extends \yii\base\Model
 {
     public $comment;
+    public $idpost;
 
     public function rules()
     {
         return [
             [['comment'], 'required'],
             [['comment'], 'string', 'max' => 100],
+            [['idpost'], 'safe'],
         ];
     }
 
@@ -58,6 +60,37 @@ class CommentForm extends \yii\base\Model
     {
         $comment = new CommentsAnekdot();
         return $this->addComment($comment, $id);
+    }
+
+    // 
+
+    private function del($comment, $id)
+    {     
+            
+        if($comment){
+            $comment->delete(false);   
+            return true; 
+        }else{
+            return false;
+        }
+    }
+
+    public function delFromPoem($id)
+    {
+        $comment = CommentsPoem::findOne(['id' => $id, 'id_user' => Yii::$app->user->id]);
+        return $this->del($comment, $id);
+    }
+
+    public function delFromHokky($id)
+    {
+        $comment = CommentsHokky::findOne(['id' => $id, 'id_user' => Yii::$app->user->id]);
+        return $this->del($comment, $id);
+    }
+
+    public function delFromAnekdot($id)
+    {
+        $comment = CommentsAnekdot::findOne(['id' => $id, 'id_user' => Yii::$app->user->id]);
+        return $this->del($comment, $id);
     }
 
 }

@@ -16,6 +16,7 @@ use yii\helpers\Html;
     	<?= $this->render('_comment', [
     			'model' => $model,
 				'comments' => $comments,
+				'id_poem' => $id_poem,
 			]) ?>
     </div>
     <div role="tabpanel" class="tab-pane" id="vk">
@@ -44,3 +45,21 @@ use yii\helpers\Html;
 		<div class="fb-comments" data-href="http://localhost/poem" data-numposts="5"></div>
     </div>
 </div>
+
+<script id="entry-template" type="text/x-handlebars-template">
+{{#each data}}
+<article class="comment" id="{{id}}">
+	<div class="comment-img">
+		<img src="{{img}}" alt="...">     
+	</div>
+	<div class="comment-body">
+		<div class="comment-title">
+			<div class="comment-username"><span>Написал: </span>{{username}}</div>             
+			<div class="comment-date"><span>Дата: </span>{{date}}</div>      
+			<button type="button" class="daeleteBtn" data-id="{{id}}">X</button>      
+		</div>
+		<div class="comment-text">{{comment}}</div>    
+	</div>
+</article>
+{{/each}}
+</script>
