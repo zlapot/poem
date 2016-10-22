@@ -1,10 +1,13 @@
 @color-bg: rgba(218, 218, 218, 1);
+@color-bg-active: rgba(75, 75, 75, 1);
 @color-post-odd: rgba(10, 181, 159, 1);//rgba(250, 250, 250, 1);
 @color-post-even: rgba(10, 181, 159, 1);   
 @color-sidebar: rgba(10, 181, 159, 1);   //rgba(255, 255, 255, 1);//rgba(247, 92, 70, 1);//
 @color-border-title: rgba(0, 0, 0, .8);
+@color-border-link: rgba(255, 255, 255, .4);
 @color-sh-main: rgba(0, 0, 0, .3);
 @color-font-btn: rgba(250, 250, 250, 1);
+@color-black: rgba(0, 0, 0, 95);
 
 @color-poem-odd: rgba(255, 255, 255, 1);
 @color-poem-even: rgba(85, 85, 85, 1);
@@ -259,3 +262,71 @@ body{
 }
 
 // Site login END
+
+// Navbar
+
+.navbar{
+    background: @color-post-odd;
+    filter: contrast(0.9);
+    ul .dropdown{
+        color: @color-black;
+    }
+    .btn-black{
+        background: inherit;
+    }
+    .navbar-nav{
+        .dropdown{
+            color: @color-black;
+            a{
+                color: @color-black;
+                &:hover{           
+                    filter: contrast(0.8);
+                }
+            }
+        }
+        .active {
+            background:  @color-post-odd;            
+            a{                
+                color: @color-black;
+                background: inherit;
+                filter: contrast(0.9);
+                &:hover{                    
+                    box-sizing: border-box;
+                    background: inherit;
+                    border-right: 1px solid @color-border-link;
+                    border-left:  1px solid @color-border-link;
+                    filter: contrast(0.8);
+                }
+            }
+        }
+        a {
+            background:  @color-post-odd; 
+            border-right: 1px solid @color-post-odd;
+            border-left: 1px solid @color-post-odd;
+            &:hover{                    
+                box-sizing: border-box;
+                background: inherit;
+                border-color: @color-border-link;
+                filter: contrast(0.8);
+            }
+        }
+    }
+}
+
+.navbar-inverse{
+    border: none;
+    .btn-link{
+        color: @color-black;
+        &:hover{        
+            box-sizing: border-box;
+            border-right: 1px solid @color-border-link;
+            border-left:  1px solid @color-border-link;
+            filter: contrast(0.8);
+        }
+    }
+}
+
+.navbar-inverse .navbar-nav > li > a{
+    color: @color-black;
+}
+// Navbar END

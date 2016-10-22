@@ -92,7 +92,8 @@
 
 		<?php ActiveForm::end() ?>
 
-
+		<?= Html::button('fds', ['id' => 'btn1']) ?>
+		<div id="txt"></div>
 	</section>
 	
 </main>

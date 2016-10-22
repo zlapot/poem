@@ -15,6 +15,7 @@
             this.initStyle();
             this.returnLink();
             this.switchStyle();
+            this.checkImg();
         },
 
         modalShow: function(){
@@ -46,7 +47,6 @@
                 var jthis = $(this);
                 jthis.attr('disabled','disabled');
                 var url = "/poem/web/api/poem-ajax-json?page="+pageP;
-                data: url,
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -66,8 +66,7 @@
             $('#btn-more-ank').on('click', function(e){
                 var jthis = $(this);
                 jthis.attr('disabled','disabled');
-                var url = "/poem/web/api/anekdot-ajax-json?page="+pageA;
-                data: url,
+                var url = "/poem/web/api/anekdot-ajax-json?page="+pageA;                
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -88,7 +87,6 @@
                 var jthis = $(this);
                 jthis.attr('disabled','disabled');
                 var url = "/poem/web/api/hokky-ajax-json?page="+pageH;
-                data: url,
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -150,6 +148,28 @@
         switchStyle: function(){
             $('#cssCheched').on('click', function(e){
                 $('link[href*="common"]').attr('href', $(e.target).data('css'));                
+            });
+        },
+
+        checkImg: function(){
+            $('#btn1').on('click', function(e){
+                var jthis = $(this);
+                //jthis.attr('disabled','disabled');
+                var url = "/poem/web/api/install-image";
+                var data = new Object();
+                data.img = "sgsd.dsg";
+                var str = $(data).serialize();
+                console.log(str);
+                
+                $.ajax({
+                    type: 'POST',                    
+                    data: str,
+                    url: url,
+                }).done(function(data){
+                    console.log(data);
+
+                });
+                
             });
         },
         

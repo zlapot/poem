@@ -150,5 +150,20 @@ class ApiController extends Controller
             echo 'You should use POST response';
         }
     }
+
+    public function actionInstallImage()
+    {
+        if (Yii::$app->request->isPost){
+            
+            //$post-> $_POST['img'];
+            
+                echo "pzdc";
+            
+
+
+        }else{
+            echo 'You should use POST response';
+        }
+    }
     
 }
