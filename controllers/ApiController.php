@@ -155,12 +155,19 @@ class ApiController extends Controller
     {
         if (Yii::$app->request->isPost){
             
-            //$post-> $_POST['img'];
+            $post = Yii::$app->request->post();           
             
-                echo "pzdc";
-            
-
-
+            if(isset($post['img'])){
+                if($post['img']>=0 && $post['img']<21){
+                    $user = User::findIdentity(Yii::$app->user->id);
+                    $user->img = 'img/avatar/'.$post['img'].'.jpg';
+                    $user->save(false);
+                    echo  'ok';
+                }
+                else{
+                    echo "fail";
+                }
+            }
         }else{
             echo 'You should use POST response';
         }

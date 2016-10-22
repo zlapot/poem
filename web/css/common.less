@@ -215,10 +215,11 @@ body{
 
 // Image foe avaatar
 
-.avatar{
+.profile-img{
 	max-width: 120px;
 	float: left;
 	margin: 5px;
+	margin-right: 35px;
 	box-sizing: border-box;
 	&:hover{	
 		box-shadow: outset 0px 0px 10px 5px @color-sh-section;	
@@ -244,6 +245,10 @@ body{
     justify-content: space-around;
 }
 
+.checked-img{
+	filter: grayscale(100%);
+}
+
 // Image foe avaatar END
 
 
@@ -265,10 +270,19 @@ body{
 
 .profile-left{
     float: left;
+    span{
+    	font-weight: bold;
+    	margin-left: 15px;
+    }
 }
 
 .profile-right{
     float: right;
+}
+
+#change-form{
+	margin-top: 20px;
+	margin-left: 20px;
 }
 
 // Profile end

@@ -152,23 +152,29 @@
         },
 
         checkImg: function(){
-            $('#btn1').on('click', function(e){
-                var jthis = $(this);
-                //jthis.attr('disabled','disabled');
-                var url = "/poem/web/api/install-image";
-                var data = new Object();
-                data.img = "sgsd.dsg";
-                var str = $(data).serialize();
-                console.log(str);
-                
-                $.ajax({
-                    type: 'POST',                    
-                    data: str,
-                    url: url,
-                }).done(function(data){
-                    console.log(data);
-
-                });
+            $('.body-image').on('click', function(e){
+                var jthis = $(this),
+                    url = "/poem/web/api/install-image",
+                    data = new Object(),
+                    path = '/poem/web/img/avatar/'+ $(e.target).data('image') +'.jpg';
+                data.img = $(e.target).data('image');
+                if(data.img){
+                    $.ajax({
+                        type: 'POST',                    
+                        data: data,
+                        url: url,
+                    }).done(function(data){
+                        console.log(data);
+                        if(data === "ok"){
+                            $('.checked-img').removeClass('checked-img');
+                            $(e.target).addClass('checked-img');
+                            $('#error').html('Аватар успешно установлен!')
+                            $('.profile-img').attr('src', path);
+                        }else{
+                            $('#error').html('Что-то пошло не так...');
+                        }
+                    });
+                }
                 
             });
         },

@@ -34,11 +34,12 @@
 					for($i=1; $i<21; $i++){
 						$path = Url::home().'img/avatar/'.$i.'.jpg';
 						echo '<div class="ava-img">
-								<img src="'.$path.'" class="avatar"/>
+								<img src="'.$path.'" class="avatar" data-image="'.$i.'"/>
 								</div>';
 					}
 
 				?>
+				<p id="error"></p>
 			</div>
 			<div class="col-sm-1"></div>
 		</article>
@@ -54,7 +55,7 @@
 		        'options' => ['class' => 'form-horizontal'],
 		        'fieldConfig' => [
 		            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-		            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+		            'labelOptions' => ['class' => 'col-lg-2 control-label'],
 		        ],
 		    ]); ?>
 		        
@@ -65,7 +66,7 @@
 	        
 
 	        <div class="form-group">
-	            <div class="col-lg-offset-1 col-lg-11">
+	            <div class="col-lg-offset-2 col-lg-10">
 	                <?= Html::submitButton('Изменить пароль', ['class' => 'btn btn-primary', 'name' => 'change-password-button']) ?>	                
 	            </div>
 	           
@@ -91,8 +92,7 @@
 		   
 
 		<?php ActiveForm::end() ?>
-
-		<?= Html::button('fds', ['id' => 'btn1']) ?>
+		
 		<div id="txt"></div>
 	</section>
 	
