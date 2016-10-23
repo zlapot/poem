@@ -17,6 +17,7 @@ use yii\helpers\Html;
     			'model' => $model,
 				'comments' => $comments,
 				'id_post' => $id_post,
+				'count' => $count,
 			]) ?>
     </div>
     <div role="tabpanel" class="tab-pane" id="vk">

@@ -24,6 +24,7 @@ if ($post->censor == 1){
 					'model' => $model,
 					'comments' => $comments,
 					'id_post' => $post->id,
+					'count' => $count,
 				]) ?>
 		</section>
 

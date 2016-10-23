@@ -11,6 +11,9 @@ use app\models\Hokkys;
 use app\models\Anekdots;
 use app\models\User;
 use app\models\CommentForm;
+use app\models\CommentsPoem;
+use app\models\CommentsHokky;
+use app\models\CommentsAnekdot;
 use yii\data\Pagination;
 use yii\web\Response;
 use yii\helpers\BaseJson;
@@ -186,7 +189,14 @@ class ApiController extends Controller
         ]];
     }
 
-    public function actionCommentPoemAjax()
+    private function responseData($data){
+        if($data){                          
+            $json = $this->doneCommentJson($data);
+            return ['data' => $json];
+        }
+    }
+
+    private function commentPostAjax($addTo)
     {
         if(!Yii::$app->user->isGuest){
             if (Yii::$app->request->isPost){
@@ -196,14 +206,25 @@ class ApiController extends Controller
                 $comment->comment = $post['comment'];
                 if($comment->comment != '')
                 {
-                    $data = $comment->addToPoem($post['idpost']);
-                    if($data){                          
-                        $json = $this->doneCommentJson($data);
-                        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                        return ['data' => $json];
-                    }else{
-                        echo "fail";
-                    }
+                    switch ($addTo) {
+                        case 'poem':
+                            $data = $comment->addToPoem($post['idpost']);
+                            return $this->responseData($data);
+                            break;
+                        case 'hokky':
+                            $data = $comment->addToHokky($post['idpost']);
+                            return $this->responseData($data);
+                            break;
+                        case 'anekdot':
+                            $data = $comment->addToAnekdot($post['idpost']);
+                            return $this->responseData($data);
+                            break;
+                        
+                        default:
+                        echo 'fail';
+                            break;
+                    }                   
+                   
                 }else{
                     echo 'fail';
                 }
@@ -213,64 +234,24 @@ class ApiController extends Controller
         else{
             echo "You're guest!!";
         }
+    }
+
+    public function actionCommentPoemAjax()
+    {                            
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $this->commentPostAjax('poem');
     }
 
     public function actionCommentHokkyAjax()
     {
-        if(!Yii::$app->user->isGuest){
-            if (Yii::$app->request->isPost){
-                $post = Yii::$app->request->post('CommentForm');
-                $comment = new CommentForm();    
-
-                $comment->comment = $post['comment'];
-                if($comment->comment != '')
-                {
-                    $data = $comment->addToHokky($post['idpost']);
-                    if($data){
-                        $json = $this->doneCommentJson($data);
-                        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                        return ['data' => $json];
-                    }else{
-                        echo "fail";
-                    }
-                }else{
-                    echo 'fail';
-                }
-                
-            }
-        }
-        else{
-            echo "You're guest!!";
-        }
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $this->commentPostAjax('hokky');
     }
 
     public function actionCommentAnekdotAjax()
-    {
-        if(!Yii::$app->user->isGuest){
-            if (Yii::$app->request->isPost){
-                $post = Yii::$app->request->post('CommentForm');
-                $comment = new CommentForm();    
-
-                $comment->comment = $post['comment'];
-                if($comment->comment != '')
-                {
-                    $data = $comment->addToAnekdot($post['idpost']);
-                    if($data){
-                        $json = $this->doneCommentJson($data);
-                        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                        return ['data' => $json];
-                    }else{
-                        echo "fail";
-                    }
-                }else{
-                    echo 'fail';
-                }
-                
-            }
-        }
-        else{
-            echo "You're guest!!";
-        }
+    {   
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $this->commentPostAjax('anekdot');
     }    
 
     public function actionDeleteCommentAjax()
@@ -310,6 +291,64 @@ class ApiController extends Controller
         else{
             echo "You're guest!!";
         }
-    }    
+    }   
+
+    private function showComment($idPost, $commentTableObject, $commentTableName, $limit, $offset)
+    {                
+        
+        $comment = (new \yii\db\Query()) 
+            ->select([
+                $commentTableName.'.id_poem', 
+                $commentTableName.'.id',
+                $commentTableName.'.comment',
+                $commentTableName.'.date',
+                'user.username',
+                'user.img',
+                ])
+            ->where([$commentTableName.'.id_poem' => $idPost])
+            ->from($commentTableName)
+            ->leftJoin('user', $commentTableName.'.id_user = user.id')
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
+            ->offset($offset)
+            ->limit($limit)
+            ->all();  
+        
+        //$json = \yii\helpers\Json::encode(['data' => $comment]);
+        //\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ['data' => $comment];//$json;
+    }
+
+    public function actionShowCommentAjax()
+    {
+        if(!Yii::$app->user->isGuest){
+            if (Yii::$app->request->isPost){
+                $post = Yii::$app->request->post();
+                if(isset($post)){
+                    $comment = new CommentForm(); 
+                    switch ($post['category']) {
+                        case 'poem':
+                            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                            return $this->showComment($post['idPost'], new CommentsPoem(), "comments_poem", 10, $post['offset']);
+                            break;
+
+                        case 'hokky':
+                            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                            return $this->showComment($post['idPost'], new CommentsHokky(), "comments_hokky", 10, $post['offset']);
+                            break;
+
+                        case 'anekdot':
+                            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                            return $this->showComment($post['idPost'], new CommentsAnekdot(), "comments_anekdot", 10, $post['offset']);
+                            break;
+                        
+                        default:
+                            break;
+                    }                    
+                }
+            }
+        }
+    } 
     
 }

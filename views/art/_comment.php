@@ -11,7 +11,11 @@ if(Yii::$app->user->isGuest)
 else
     $options = ['class' => 'btn btn-primary', 'id' => 'commentBtn'];
 
+$optionsBtn =['id' => 'btn-comment', 'class' => 'btn btn-default btn-lg center-block' ];
+if($count['current'] == $count['all'])
+    $optionsBtn =['id' => 'btn-comment', 'class' => 'btn btn-default btn-lg center-block', 'disabled' => 'disabled'];
 ?>
+
 
 
 
@@ -59,9 +63,7 @@ else
 
 
 <?= Html::tag('div',
-        Html::button(
-            Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).'Загрузить ещё',
-            []
-            ),
+        Html::button('<span class="current">'.$count['current'].'</span> из <span class="count-all">'.$count['all'].'</span> комметариев', $optionsBtn ),
     ['id' => 'insertComment'])
 ?>
+

@@ -18,6 +18,7 @@
             this.checkImg();
             this.commentAdd();
             this.commentDelete();
+            this.commentShowMore();
         },
 
         modalShow: function(){
@@ -203,7 +204,7 @@
                 var str = $(this).serialize(),
                     jthis = $(this),
                     idpost = jthis.data('id');                
-                jthis.find('#commentBtn').attr('disabled','disabled');
+                //jthis.find('#commentBtn').attr('disabled','disabled');
 
                 $.ajax({
                     type: "POST",
@@ -215,13 +216,15 @@
                             $('#commentBtn').removeAttr('disabled');
                         }else{
                             console.log("добавил");
+                            console.log(data);
+                            $('#commentBtn').removeAttr('disabled');
                             var source   = $("#entry-template").html();
                             var template = Handlebars.compile(source);
                             var html    = template(data);
 
-                            $('#commentBtn').removeAttr('disabled');
+                            
                             jthis.find('textarea').val('');
-
+                            //app.changeCountComment(1);
                             $(html).insertAfter('#insert');
 
                             app.commentDelete();
@@ -263,6 +266,7 @@
                     success: function(data){
                         if(data == 'ok'){
                             str = 'article[id="'+idpost+'"]';
+                            app.changeCountComment(-1);
                             console.log("Удаляю");
                             $(str).remove();
                         }else{
@@ -274,6 +278,67 @@
             });
         },
 
+        commentShowMore: function(){
+            $('#btn-comment').on('click', function(e){
+
+                var contr = $('.comment-tab').attr('id'),
+                    url = '/poem/web/api/show-comment-ajax',
+                    category;
+                switch(contr){
+                    case 'poem':
+                        category = 'poem';
+                        break;
+                    case 'hokky':
+                        category = 'hokky';
+                        break;
+                    case 'anekdot':
+                        category = 'anekdot';
+                        break;
+                }
+
+                var current = +$('.current').text(),
+                    currentObj = $('.current'),
+                    all = +$('.count-all').text(),
+                    idPost = $('#comment-form').data('id');
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {'category':category, 'offset': current, 'idPost': idPost },
+                    success: function(data){
+                        if(data == 'fail'){
+                            console.log("fail");                            
+                        }else{
+                            obj = jQuery.parseJSON(data);
+                            console.log(data);
+                            if (all-current > 10){
+                                currentObj.text(current+10);                         
+                            }else{
+                                currentObj.text(all);
+                                $('#btn-comment').attr('disabled','disabled'); 
+                            }  
+                        }
+                        $('#commentBtn').removeAttr('disabled');
+                        var source   = $("#entry-template").html(),
+                            template = Handlebars.compile(source),
+                            html    = template(data);
+
+                         $(html).insertAfter('#insertComment');
+                    }
+
+                });
+            });
+        },
+
+        changeCountComment: function(inc){
+            console.log('dsgsdg');
+
+            var current = $('.current'),
+                all = $('.count-all');
+
+            current.text(+current.text()+inc);
+            all.text(+all.text()+inc);
+        },
 
     };
 

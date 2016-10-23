@@ -37,6 +37,7 @@ $this->title = $post->title;
 					'model' => $model,
 					'comments' => $comments,
 					'id_post' => $post->id,
+					'count' => $count,
 				]) ?>
 		</section>
 
