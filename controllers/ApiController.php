@@ -185,7 +185,7 @@ class ApiController extends Controller
             'comment' => $data->comment,
             'date' => $data->date,
             'username' => $ident->username,
-            'img' => Url::home().$ident->img,
+            'img' => $ident->img,
         ]];
     }
 

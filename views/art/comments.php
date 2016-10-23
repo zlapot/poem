@@ -51,7 +51,7 @@ use yii\helpers\Html;
 {{#each data}}
 <article class="comment" id="{{id}}">
 	<div class="comment-img">
-		<img src="{{img}}" alt="...">     
+		<img src="/poem/web/{{img}}" alt="...">     
 	</div>
 	<div class="comment-body">
 		<div class="comment-title">

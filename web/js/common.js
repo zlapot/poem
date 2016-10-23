@@ -309,7 +309,7 @@
                         if(data == 'fail'){
                             console.log("fail");                            
                         }else{
-                            obj = jQuery.parseJSON(data);
+                            //obj = jQuery.parseJSON(data);
                             console.log(data);
                             if (all-current > 10){
                                 currentObj.text(current+10);                         
@@ -323,7 +323,9 @@
                             template = Handlebars.compile(source),
                             html    = template(data);
 
-                         $(html).insertAfter('#insertComment');
+                         $(html).insertBefore('#insertComment');
+
+                         app.commentDelete();
                     }
 
                 });
