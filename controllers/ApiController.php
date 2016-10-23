@@ -258,7 +258,7 @@ class ApiController extends Controller
                     if($data){
                         $json = $this->doneCommentJson($data);
                         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                        return $json;
+                        return ['data' => $json];
                     }else{
                         echo "fail";
                     }

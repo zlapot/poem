@@ -12,6 +12,9 @@ use app\models\Poems;
 use app\models\Anekdots;
 use app\models\Hokkys;
 use app\models\CommentForm;
+use app\models\CommentsPoem;
+use app\models\CommentsHokky;
+use app\models\CommentsAnekdot;
 use yii\data\Pagination;
 use yii\web\Response;
 use yii\helpers\BaseJson;
@@ -142,8 +145,9 @@ class ArtController extends Controller
         ]);
     }
 
-    public function actionPoem($id)
-    {
+
+    private function viewPost($postTableObject, $idPost, $commentTableObject, $commentTableName, $limit, $render)
+    {   
         $model = new CommentForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
@@ -152,123 +156,63 @@ class ArtController extends Controller
             }
         }
 
-        $query = Poems::find()
-                ->from('poems')
-                ->where(['id' => $id])
+        $post = $postTableObject->find()
+                ->where(['id' => $idPost])
                 ->one();
 
-        if(!$query){
-            return $this->render(error);
-        }
+        if(!$post){
+            return $this->render('site/error');
+        }  
+
+        $count = $commentTableObject->find()
+            ->where([
+                'id_poem' => $idPost,
+            ])
+            ->count();        
         
         $comment = (new \yii\db\Query()) 
             ->select([
-                'comments_poem.id_poem', 
-                'comments_poem.id',
-                'comments_poem.comment',
-                'comments_poem.date',
+                $commentTableName.'.id_poem', 
+                $commentTableName.'.id',
+                $commentTableName.'.comment',
+                $commentTableName.'.date',
                 'user.username',
                 'user.img',
                 ])
-            ->where(['comments_poem.id_poem' => $id])
-            ->from('comments_poem')
-            ->leftJoin('user', 'comments_poem.id_user = user.id')
+            ->where([$commentTableName.'.id_poem' => $idPost])
+            ->from($commentTableName)
+            ->leftJoin('user', $commentTableName.'.id_user = user.id')
             ->orderBy([
                 'id' => SORT_DESC,
             ])
-            ->all();
+            ->limit($limit)
+            ->all();        
 
-        return $this->render('poem', [
+        
+        return $this->render($render, [
             'model' => $model,
-            'poem' => $query,
+            'post' => $post,
             'comments' => $comment,
+            'count' => [
+                'all' => $count,
+                'current' => count($comment),
+            ],
         ]);
+    }
+
+    public function actionPoem($id)
+    {
+        return $this->viewPost(new Poems(), $id, new CommentsPoem(), 'comments_poem', 10, 'poem');       
     }
 
     public function actionHokky($id)
     {
-        $model = new CommentForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()){
-            if (!$model->addToHokky($id)){
-                //error
-            }
-        }
-
-        $query = Hokkys::find()
-                ->from('hokkys')
-                ->where(['id' => $id])
-                ->one();
-
-        if(!$query){
-            return $this->render(error);
-        }
-
-        $comment = (new \yii\db\Query()) 
-            ->select([
-                'comments_hokky.id_poem', 
-                'comments_hokky.id',
-                'comments_hokky.comment',
-                'comments_hokky.date',
-                'user.username',
-                'user.img',
-                ])
-            ->where(['comments_hokky.id_poem' => $id])
-            ->from('comments_hokky')
-            ->leftJoin('user', 'comments_hokky.id_user = user.id')
-            ->orderBy([
-                'id' => SORT_DESC,
-            ])
-            ->all();
-
-        return $this->render('hokky', [
-            'model' => $model,
-            'hokky' => $query,
-            'comments' => $comment,
-        ]);
+        return $this->viewPost(new Hokkys(), $id, new CommentsHokky(), 'comments_hokky', 10, 'hokky');
     }
 
     public function actionAnekdot($id)
     {
-        $model = new CommentForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()){
-            if (!$model->addToAnekdot($id)){
-                //error
-            }
-        }
-
-        $query = Anekdots::find()
-                ->from('anekdots')
-                ->where(['id' => $id])
-                ->one();
-
-        if(!$query){
-            return $this->render(error);
-        }
-
-        $comment = (new \yii\db\Query()) 
-            ->select([
-                'comments_anekdot.id_poem', 
-                'comments_anekdot.id',
-                'comments_anekdot.comment',
-                'comments_anekdot.date',
-                'user.username',
-                'user.img',
-                ])
-            ->where(['comments_anekdot.id_poem' => $id])
-            ->from('comments_anekdot')
-            ->leftJoin('user', 'comments_anekdot.id_user = user.id')
-            ->orderBy([
-                'id' => SORT_DESC,
-            ])
-            ->all();
-
-        return $this->render('anekdot', [
-            'model' => $model,
-            'anekdot' => $query,
-            'comments' => $comment,
-        ]);
+        return $this->viewPost(new Anekdots(), $id, new CommentsAnekdot(), 'comments_anekdot', 10, 'anekdot');
     }
 
 }

@@ -9,18 +9,18 @@ use app\models\User;
 if(Yii::$app->user->isGuest)
     $options = ['disabled' => 'disabled', 'class' => 'btn btn-primary'];
 else
-     $options = ['class' => 'btn btn-primary', 'id' => 'commentBtn'];
-
+    $options = ['class' => 'btn btn-primary', 'id' => 'commentBtn'];
 
 ?>
 
 
+
 <?php $form = ActiveForm::begin([
     'id' => 'comment-form', 
-    'options' => ['data-id' => $id_poem],
+    'options' => ['data-id' => $id_post],
     ]); ?>
 
-    <?= $form->field($model, 'idpost')->hiddenInput(['value'=> $id_poem])->label(false) ?>
+    <?= $form->field($model, 'idpost')->hiddenInput(['value'=> $id_post])->label(false) ?>
     <?= $form->field($model, 'comment')->textarea() ?>
 
     <div class="form-group">
@@ -58,3 +58,10 @@ else
 <?php endforeach; ?>
 
 
+<?= Html::tag('div',
+        Html::button(
+            Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).'Загрузить ещё',
+            []
+            ),
+    ['id' => 'insertComment'])
+?>

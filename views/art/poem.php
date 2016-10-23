@@ -6,11 +6,11 @@ use yii\helpers\Url;
 
 $options = ['class' => 'art']; //blur-text
 
-if ($poem->censor == 1){
+if ($post->censor == 1){
     Html::addCssClass($options, 'censor');
 }
 
-$this->title = $poem->title;
+$this->title = $post->title;
 ?>
 
 <main class="main-page-post row comment-container">
@@ -19,14 +19,14 @@ $this->title = $poem->title;
 			<article class="post-poem">
 				<div class="poem-wrap">
 					<header class="poem-header">
-						<?= Html::tag('h3',  Html::encode($poem->title), ['class' => 'poem-title']) ?>
+						<?= Html::tag('h3',  Html::encode($post->title), ['class' => 'poem-title']) ?>
 					</header>
 					<div class="poem-body">
-						<?= Html::tag('div', Html::encode($poem->poem), ['class' => 'poem-poem-without']) ?>						
+						<?= Html::tag('div', Html::encode($post->poem), ['class' => 'poem-poem-without']) ?>						
 					</div>
 					<footer class="poem-footer">
-						<?= Html::tag('div','<span>Автор: </span>'. Html::encode($poem->autor), ['class' => 'poem-autor']) ?>	
-						<?= Html::tag('time','<span>Дата публикации: </span>'. Html::encode($poem->date), ['class' => 'poem-date']) ?>
+						<?= Html::tag('div','<span>Автор: </span>'. Html::encode($post->autor), ['class' => 'poem-autor']) ?>	
+						<?= Html::tag('time','<span>Дата публикации: </span>'. Html::encode($post->date), ['class' => 'poem-date']) ?>
 					</footer>
 				</div>
 			</article>
@@ -36,7 +36,7 @@ $this->title = $poem->title;
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,
-					'id_poem' => $poem->id,
+					'id_post' => $post->id,
 				]) ?>
 		</section>
 

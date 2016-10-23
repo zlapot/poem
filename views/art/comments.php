@@ -16,7 +16,7 @@ use yii\helpers\Html;
     	<?= $this->render('_comment', [
     			'model' => $model,
 				'comments' => $comments,
-				'id_poem' => $id_poem,
+				'id_post' => $id_post,
 			]) ?>
     </div>
     <div role="tabpanel" class="tab-pane" id="vk">

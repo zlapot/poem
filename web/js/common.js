@@ -211,14 +211,15 @@
                     data: str,
                     success: function(data){
                         if(data === 'fail'){
-                            $('.msg').html("Произошла ошибка");
+                            //$('.msg').html("Произошла ошибка");
+                            $('#commentBtn').removeAttr('disabled');
                         }else{
                             console.log("добавил");
                             var source   = $("#entry-template").html();
                             var template = Handlebars.compile(source);
                             var html    = template(data);
 
-                            jthis.find('#commentBtn').removeAttr('disabled');
+                            $('#commentBtn').removeAttr('disabled');
                             jthis.find('textarea').val('');
 
                             $(html).insertAfter('#insert');
@@ -265,7 +266,7 @@
                             console.log("Удаляю");
                             $(str).remove();
                         }else{
-                            $('.msg').html("Произошла ошибка");
+                            //$('.msg').html("Произошла ошибка");
                         }
                     }
                 });

@@ -4,7 +4,7 @@ use yii\helpers\Url;
 
 $options = ['class' => 'art']; //blur-text
 
-if ($hokky->censor == 1){
+if ($post->censor == 1){
     Html::addCssClass($options, 'censor');
 }
 
@@ -15,7 +15,7 @@ if ($hokky->censor == 1){
 	<div class="poems-row">
 		<div class="col-md-4 comment-section">
 			 <?= $this->render('_hokky', [
-	            'hokky' => $hokky,
+	            'hokky' => $post,
 	        ]) ?>
 		</div>
 
@@ -23,7 +23,7 @@ if ($hokky->censor == 1){
 			<?= $this->render('comments', [
 					'model' => $model,
 					'comments' => $comments,
-					'id_poem' => $hokky->id,
+					'id_post' => $post->id,
 				]) ?>
 		</div>
 
