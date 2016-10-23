@@ -224,7 +224,7 @@
 
                             
                             jthis.find('textarea').val('');
-                            //app.changeCountComment(1);
+                            app.changeCountComment(1);
                             $(html).insertAfter('#insert');
 
                             app.commentDelete();
