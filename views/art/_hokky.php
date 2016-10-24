@@ -20,6 +20,11 @@ else
 		<footer class="hokky-footer">
 			<?= Html::tag('div','<span>'.Yii::t('common/main', 'Автор').': '.'</span>'. Html::encode($hokky->autor), ['class' => 'hokky-autor']) ?>	
 			<?= Html::tag('time','<span>'.Yii::t('common/main', 'Дата публикации').': '.'</span>'. Html::encode($hokky->date), ['class' => 'hokky-date']) ?>
+			<?php if(!$isComment): ?>
+				<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+				<script src="//yastatic.net/share2/share.js"></script>
+				<div class="ya-share2 share poems-row" data-services="vkontakte,facebook,odnoklassniki,twitter"></div>	
+			<?php endif; ?>
 		</footer>
 	</div>
 </article>

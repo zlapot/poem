@@ -17,7 +17,7 @@ if ($post->censor == 1){
 			 <?= $this->render('_hokky', [
 	            'hokky' => $post,
 	            'isComment' => false,
-	        ]) ?>
+	        ]) ?>	        
 		</div>
 
 		<div class="col-md-8 comment-tab  circle-border" id="hokky">
