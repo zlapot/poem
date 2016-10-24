@@ -25,8 +25,8 @@ $this->title = $post->title;
 						<?= Html::tag('div', Html::encode($post->poem), ['class' => 'poem-poem-without']) ?>						
 					</div>
 					<footer class="poem-footer">
-						<?= Html::tag('div','<span>Автор: </span>'. Html::encode($post->autor), ['class' => 'poem-autor']) ?>	
-						<?= Html::tag('time','<span>Дата публикации: </span>'. Html::encode($post->date), ['class' => 'poem-date']) ?>
+						<?= Html::tag('div','<span>'.\Yii::t('common/main', 'Автор').': '.'</span>'. Html::encode($post->autor), ['class' => 'poem-autor']) ?>	
+						<?= Html::tag('time','<span>'\Yii::t('common/main', 'Дата публикации').': ''</span>'. Html::encode($post->date), ['class' => 'poem-date']) ?>
 					</footer>
 				</div>
 			</article>

@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'password')->passwordInput() ?>
     
         <div class="form-group">
-            <?= Html::submitButton('Изменить', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(\Yii::t('common/profile', 'Изменить'), ['class' => 'btn btn-primary']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

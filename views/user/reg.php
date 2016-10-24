@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'password')->passwordInput() ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Регистрация', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(\Yii::t('common/auth', 'Регистрация'), ['class' => 'btn btn-primary']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

@@ -3,13 +3,9 @@ use app\models\Lang;
 use yii\widgets\LinkPager;
 use yii\helpers\Html;
 
-$cookies = Yii::$app->request->cookies;
-$language = $cookies->getValue('language', 'eng');
 
-$lanID = Lang::getIndex($language) ? Lang::getIndex($language) : 0; 
-$rule = 'rules'.$lanID;
 
-$this->title = 'Поэзия души и не только';
+$this->title = \Yii::t('common', 'Стихи');
 $i = 0;
 $count = count($poems)-1;
 
@@ -22,7 +18,7 @@ else
 ?>
 
 <main id='main-container' class="main-page-post col-md-9">
-<?= Html::tag('h2', "Поэзия трех дней" , ['class' => 'main-page-title']) ?>
+<?= Html::tag('h2', \Yii::t('common', 'Стихи') , ['class' => 'main-page-title']) ?>
 
 	<?php foreach ($poems as $poem): ?>
 
@@ -42,7 +38,7 @@ else
 	<?=
     Html::tag('div',
       Html::button(
-          Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).'Загрузить ещё',
+          Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).\Yii::t('common/main', 'Загрузить еще'),
           $options
         ),
       ['class' => 'row', 'id' => 'insert'])
@@ -79,7 +75,7 @@ else
           <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
             <script src="//yastatic.net/share2/share.js"></script>
             <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,twitter"></div>
-            <a href="#" class="btn btn-default modal-link" role="button">Комментировать</a>
+            <a href="#" class="btn btn-default modal-link" role="button"><?= \Yii::t('common/main', 'Комментировать') ?></a>
             <button type="button" class="btn btn-primary" data-dismiss="modal">Закрыть</button>
           </div>
         </div>
@@ -97,11 +93,11 @@ else
         </header>
         <div class="poem-body">
           <div class="poem-poem">{{poem}}</div>  
-          <a class="btn btn-dafault btn-comment" href="/poem/web/art/poem?id={{id}}">Показать полностью...</a>      
+          <a class="btn btn-dafault btn-comment" href="/poem/web/art/poem?id={{id}}"><?= \Yii::t('common/main', 'Показать полностью').'...' ?></a>      
         </div>
         <footer class="poem-footer">
-          <div class="poem-autor"><span>Автор: </span>{{autor}}</div> 
-          <time class="poem-date"><span>Дата публикации: </span>{{date}}</time> 
+          <div class="poem-autor"><span><?= \Yii::t('common/main', 'Автор').': ' ?>: </span>{{autor}}</div> 
+          <time class="poem-date"><span><?= \Yii::t('common/main', 'Дата публикации').': ' ?></span>{{date}}</time> 
         </footer>
         
       </div>     

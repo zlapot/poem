@@ -9,7 +9,7 @@ if($pagination->pageCount > 1 && ($pagination->pageCount-1 != $pagination->page)
 else
   $options = ['type'=>"button", 'id'=>"btn-more", 'class'=>"btn btn-primary btn-lg active center-block", 'id'=>"btn-more-hokky", 'disabled'=>'disabled'];
 
-$this->title = 'Хокку';
+$this->title = \Yii::t('common', 'Хокку').': ';
 ?>
 
 <main id='main-container' class="main-page-post col-md-9">
@@ -28,7 +28,7 @@ $this->title = 'Хокку';
         <?=
         Html::tag('div',
           Html::button(
-              Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).'Загрузить ещё',
+              Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).\Yii::t('common/main', 'Загрузить еще'),
               $options
             ),
           ['id' => 'insert'])
@@ -49,11 +49,11 @@ $this->title = 'Хокку';
 <article class="post-hokky col-md-4"> <div class="hokky-wrap">
     <div class="hokky-body">
         <div class="hokky-hokky">{{hokky}}</div>  
-            <a class="btn btn-dafault btn-comment" href="/poem/web/art/hokky?id=9">Коммментировать</a>          
+            <a class="btn btn-dafault btn-comment" href="/poem/web/art/hokky?id={{id}}"><?= \Yii::t('common/main', 'Комментировать') ?></a>          
          </div>
         <footer class="hokky-footer">
-            <div class="hokky-autor"><span>Автор: </span>{{autor}}</div> 
-            <time class="hokky-date"><span>Дата публикации: </span>{{date}}</time> 
+            <div class="hokky-autor"><span><?= \Yii::t('common/main', 'Автор').': ' ?></span>{{autor}}</div> 
+            <time class="hokky-date"><span><?= \Yii::t('common/main', 'Дата публикации').': ' ?></span>{{date}}</time> 
         </footer>
     </div>
 </article>
