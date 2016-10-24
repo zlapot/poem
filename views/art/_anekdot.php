@@ -17,8 +17,12 @@ if ($anekdot->censor == 1){
 <article class="post-anekdot col-md-12">
 	<div class="anekdot-wrap">	
 		<div class="anekdot-body">
-			<?= Html::tag('div', Html::encode($anekdot->anekdot), ['class' => 'anekdot-anekdot']) ?>	
-			<?= Html::a(Yii::t('common/main', 'Коммментировать'), Url::to(['art/anekdot', 'id'=>$anekdot->id]), ['class' => 'btn btn-dafault btn-comment']) ?>			
+			<?= Html::tag('div', Html::encode($anekdot->anekdot), ['class' => 'anekdot-anekdot']) ?>
+			<?php if($isComment): ?>
+			<?= Html::a(Yii::t('common/main', Yii::t('common/main', 'Комментировать')), Url::to(['art/anekdot', 'id'=>$anekdot->id]), ['class' => 'btn btn-dafault btn-comment']) ?>
+			<?php else:
+				echo '</br>';
+			endif; ?>			
 		</div>
 		<footer class="anekdot-footer">
 			<?= Html::tag('div','<span>'.Yii::t('common/main', 'Автор').': '.'</span>'. Html::encode($anekdot->autor), ['class' => 'anekdot-autor']) ?>	

@@ -11,7 +11,6 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 use app\models\Lang;
 
-\Yii::$app->language = 'en';
 
 AppAsset::register($this);
 ?>
@@ -30,13 +29,7 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
-
-    $lang = new Lang();
-    $cookies = Yii::$app->request->cookies;
-    $language = $cookies->getValue('language', 'eng');
-
-    $lanID = $lang->getIndex($language) ? $lang->getIndex($language) : 0; 
-    //$lanID = 0;
+   
 
     NavBar::begin([
         'brandLabel' => 'Бугагагагашки',
@@ -139,7 +132,11 @@ AppAsset::register($this);
         <div class="row">
             <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-            <p class="pull-right"><?= Yii::powered() ?></p>       
+            <div class="pull-right">
+                 <div class="copyZ"> <?= \Yii::t('common/copy', 'Все права защищены. Права на все материалы, представленные здесь, принадлежат их авторам. Ваши вопросы и предложения можете направлять на') ?>
+                <a href="mailto:zlapot@yandex.ru">zlapot@yandex.ru</a>
+            </div>
+            </p>       
         </div>
 
         <div class="row">
@@ -158,15 +155,13 @@ AppAsset::register($this);
             echo Html::beginForm(['site/lang', 'id' => 'form'], 'get', ['class' => 'lang-form']);
             echo Html::tag('div',        
                     Html::tag('div', Html::dropDownList('id', null, $items, []), ['class' => 'styled-select black rounded lang']).
-                    Html::submitButton('Выбрать', ['class' => 'btn btn-default lang']),
+                    Html::submitButton(Yii::t('common/main', 'Выбрать'), ['class' => 'btn btn-default lang']),
                 ['class' => 'form-group']);        
             echo Html::endForm();
             ?> 
                    
             </div>
-            <div class="copy"> <?= \Yii::t('common/copy', 'Все права защищены. Права на все материалы, представленные здесь, принадлежат их авторам. Ваши вопросы и предложения можете направлять на') ?>
-                <a href="mailto:zlapot@yandex.ru">zlapot@yandex.ru</a>
-            </div>
+           
 
         </div>
     </div>

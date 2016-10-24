@@ -16,6 +16,7 @@ if ($post->censor == 1){
 		<section class="col-md-4 comment-section">			      
 	        <?= $this->render('_anekdot', [
 	            'anekdot' => $post,
+	            'isComment' => false,
 	        ]) ?>
 		</section>
 

@@ -11,7 +11,11 @@ else
 	<div class="hokky-wrap">
 		<div class="hokky-body">
 			<?= Html::tag('div', Html::encode($hokky->hokky), ['class' => 'hokky-hokky']) ?>	
-			<?= Html::a(Yii::t('common/main', 'Коммментировать'), Url::to(['art/hokky', 'id'=>$hokky->id]), ['class' => 'btn btn-dafault btn-comment']) ?>			
+			<?php if($isComment): ?>
+			<?= Html::a(Yii::t('common/main', 'Комментировать'), Url::to(['art/hokky', 'id'=>$hokky->id]), ['class' => 'btn btn-dafault btn-comment']) ?>		
+			<?php else:
+				echo '</br>';
+			endif; ?>
 		</div>
 		<footer class="hokky-footer">
 			<?= Html::tag('div','<span>'.Yii::t('common/main', 'Автор').': '.'</span>'. Html::encode($hokky->autor), ['class' => 'hokky-autor']) ?>	

@@ -14,13 +14,14 @@ $this->title = \Yii::t('common', 'Хокку').': ';
 
 <main id='main-container' class="main-page-post col-md-9">
     <section class="row poems-row">
-        <?= Html::tag('h2', "Хокку" , ['class' => 'main-page-title']) ?>
+        <?= Html::tag('h2', Yii::t('common', 'Хокку') , ['class' => 'main-page-title']) ?>
 
         
         <?php foreach ($hokkys as $hokky): ?>
                 <?= $this->render('_hokky', [
                     'hokky' => $hokky,
                     'opt' => $opt,
+                    'isComment' => true,
                 ]) ?>
         <?php endforeach; ?>
         

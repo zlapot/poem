@@ -16,6 +16,7 @@ if ($post->censor == 1){
 		<div class="col-md-4 comment-section">
 			 <?= $this->render('_hokky', [
 	            'hokky' => $post,
+	            'isComment' => false,
 	        ]) ?>
 		</div>
 

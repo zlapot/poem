@@ -11,7 +11,7 @@
 			<?= Html::a(Yii::t('common/main', 'Комментировать'), Url::to(['art/hokky', 'id'=>$hokky->id]), ['class' => 'btn btn-dafault btn-comment']) ?>			
 		</div>
 		<footer class="hokky-footer">
-			<?= Html::tag('div','<span>Автор: </span>'. Html::encode($hokky->autor), ['class' => 'hokky-autor']) ?>	
+			<?= Html::tag('div','<span>'.Yii::t('common/main', 'Автор').": ".'</span>'. Html::encode($hokky->autor), ['class' => 'hokky-autor']) ?>	
 			<?= Html::tag('time','<span>'.Yii::t('common/main', 'Дата публикации').': '.'</span>'. Html::encode($hokky->date), ['class' => 'hokky-date']) ?>
 		</footer>
 	</div>

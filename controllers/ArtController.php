@@ -68,12 +68,12 @@ class ArtController extends Controller
     
     public function actionIndex()
     {
-        
+        $this->redirect('poems');
     }   
 
     public function actionPoems()
     {
-        
+        $this->setLanguage();
         $query = Poems::find()
             ->from('poems');
                 //->all();
@@ -99,6 +99,7 @@ class ArtController extends Controller
 
     public function actionAnekdots()
     {
+        $this->setLanguage();
         $query = Anekdots::find()
             ->from('anekdots');
             //->all();
@@ -123,6 +124,7 @@ class ArtController extends Controller
 
     public function actionHokkys()
     {
+        $this->setLanguage();
         $query = Hokkys::find()
             ->from('hokkys');
             //->all();
@@ -202,17 +204,27 @@ class ArtController extends Controller
 
     public function actionPoem($id)
     {
+        $this->setLanguage();
         return $this->viewPost(new Poems(), $id, new CommentsPoem(), 'comments_poem', 10, 'poem');       
     }
 
     public function actionHokky($id)
     {
+        $this->setLanguage();
         return $this->viewPost(new Hokkys(), $id, new CommentsHokky(), 'comments_hokky', 10, 'hokky');
     }
 
     public function actionAnekdot($id)
     {
+        $this->setLanguage();
         return $this->viewPost(new Anekdots(), $id, new CommentsAnekdot(), 'comments_anekdot', 10, 'anekdot');
+    }
+
+
+    private function setLanguage(){
+        $cookies = Yii::$app->request->cookies;
+        $language = $cookies->getValue('language', 'ru');
+        return \Yii::$app->language = $language;
     }
 
 }

@@ -198,6 +198,8 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
+        $this->setLanguage();
+
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -216,44 +218,13 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        $this->setLanguage();
+
         return $this->render('about');
     }
 
-    
+       
 
-    public function actionAddpoemajax()
-    {
-        $model = new PoemForm();
-
-        if (Yii::$app->request->post()){                     
-            $r = (Yii::$app->request->post());
-
-            echo $r;
-        }else{
-            echo "Error";
-        }
-    }
-
-    public function actionPoemajax()
-    {
-        if (Yii::$app->request->post()){
-            $query = Poems::find()
-                ->from('poems');
-                //->all();
-            $pagination = new Pagination([
-                'defaultPageSize' => 9,
-                'totalCount' => $query->count(),
-            ]);
-            
-            $poems = $query
-                ->offset($pagination->offset)
-                ->limit($pagination->limit)
-                ->all();
-
-            echo \yii\helpers\Json::encode($poems);
-            
-        }
-    }
 
     public function actionLang($id){
         switch($id){
@@ -261,22 +232,16 @@ class SiteController extends Controller
                 $this->checkLanguage('ru');
                 break;
             case 'eng' :
-                $this->checkLanguage('eng');
+                $this->checkLanguage('en');
                 break;
             case 'bib' :
-                $this->checkLanguage('bib');
+                $this->checkLanguage('bb');
                 break;
             case 'ukr' :
-                $this->checkLanguage('ukr');
+                $this->checkLanguage('ua');
                 break;
             case 'imp' :
-                $this->checkLanguage('imp');
-                break;
-            case 'ar' :
-                $this->checkLanguage('ar');
-                break;
-            case 'bas' :
-                $this->checkLanguage('bas');
+                $this->checkLanguage('im');
                 break;
             case 'de' :
                 $this->checkLanguage('de');
@@ -304,6 +269,8 @@ class SiteController extends Controller
     }
 
     private function setLanguage(){
-        return \Yii::$app->language = 'en';
+        $cookies = Yii::$app->request->cookies;
+        $language = $cookies->getValue('language', 'ru');
+        return \Yii::$app->language = $language;
     }
 }

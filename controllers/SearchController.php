@@ -65,6 +65,8 @@ class SearchController extends Controller
 
     public function actionPublic()
     {    
+        $this->setLanguage();
+        
         $model = new Search();        
         $search = Yii::$app->request->post();
         $model->search=$search['public_search'];
@@ -87,6 +89,11 @@ class SearchController extends Controller
         ]);
     }
 
-    
+    private function setLanguage(){
+        $cookies = Yii::$app->request->cookies;
+        $language = $cookies->getValue('language', 'ru');
+        return \Yii::$app->language = $language;
+    }
+}
 
 }

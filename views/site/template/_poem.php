@@ -15,7 +15,7 @@
 			<?= Html::a(Yii::t('common/main', 'Показать полностью').'...', Url::to(['art/poem', 'id'=>$poem->id]), ['class' => 'btn btn-dafault btn-comment']) ?>			
 		</div>
 		<footer class="poem-footer">
-			<?= Html::tag('div','<span>Автор: </span>'. Html::encode($poem->autor), ['class' => 'poem-autor']) ?>	
+			<?= Html::tag('div','<span>'.Yii::t('common/main', 'Автор').": ".'</span>'. Html::encode($poem->autor), ['class' => 'poem-autor']) ?>	
 			<?= Html::tag('time','<span>'.Yii::t('common/main', 'Дата публикации').': '.'</span>'. Html::encode($poem->date), ['class' => 'poem-date']) ?>
 		</footer>
 	</div>

@@ -19,6 +19,7 @@ $this->title = \Yii::t('common', 'Анекдоты');
     <?php foreach ($anekdots as $anekdot): ?>                   
         <?= $this->render('_anekdot', [
             'anekdot' => $anekdot,
+            'isComment' => true,
         ]) ?>
     <?php endforeach; ?>    
 

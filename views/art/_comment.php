@@ -28,7 +28,7 @@ if($count['current'] == $count['all'])
     <?= $form->field($model, 'comment')->textarea() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Отправить',  $options ) ?>
+        <?= Html::submitButton(Yii::t('common/auth', 'Отправить'),  $options ) ?>
     </div>
 <?php ActiveForm::end(); ?>
 

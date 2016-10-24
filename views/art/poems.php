@@ -76,7 +76,7 @@ else
             <script src="//yastatic.net/share2/share.js"></script>
             <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,twitter"></div>
             <a href="#" class="btn btn-default modal-link" role="button"><?= \Yii::t('common/main', 'Комментировать') ?></a>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal"><?= \Yii::t('common/auth', 'Закрыть')?></button>
           </div>
         </div>
       </div>
