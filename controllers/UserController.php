@@ -43,6 +43,7 @@ class UserController extends Controller
 
     public function actionReg()
     {
+        $this->setLanguage();
         $emailActivation = Yii::$app->params['emailActivation'];
         $model = $emailActivation ? new RegForm(['scenario' => 'emailActivation']) : new RegForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()):
@@ -151,7 +152,9 @@ class UserController extends Controller
         ]);
     }
 
-    public function actionProfile(){
+    public function actionProfile()
+    {
+        $this->setLanguage();
 
         $changePassword = new ChangePasswordForm();
         $load = new UploadForm();
@@ -189,6 +192,11 @@ class UserController extends Controller
         ]);
     }
 
+    private function setLanguage(){
+        $cookies = Yii::$app->request->cookies;
+        $language = $cookies->getValue('language', 'ru');
+        return \Yii::$app->language = $language;
+    }
 
 
 }

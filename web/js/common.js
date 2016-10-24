@@ -1,9 +1,10 @@
 (function(){
 
-	var modal = $('#myModal');
-    var pageP = 2,
+	var modal = $('#myModal'),
+        pageP = 2,
         pageA = 2,
-        pageH = 2;
+        pageH = 2,
+        baseUrl = "/poem/web/";
     
 
     var app = {
@@ -19,29 +20,32 @@
             this.commentAdd();
             this.commentDelete();
             this.commentShowMore();
+            this.preventDef();
         },
 
         modalShow: function(){
             $('.bl-post').on('click', function(e){
-                var title,
-                    poem,
-                    autor;
+                
+                var jthis = $(this),
+                    url = jthis.find('.btn-comment-poem').attr('href'),
+                    id = jthis.find('.btn-comment-poem').data('id');
+                    title = jthis.find('.poem-title').text(),
+                    autor = jthis.find('.poem-autor').text(),
+                    poem = null;
+                
+                $.ajax({
+                    type: 'POST',
+                    data: {'id': id},
+                    url: baseUrl + 'api/show-poem',
+                }).done(function(data){                    poem = data;
 
-                var jthis = $(this);
-
-                var url = jthis.find('.btn-comment').attr('href');
-
-                title = jthis.find('.poem-title').text();
-                poem = jthis.find('.poem-poem').html();
-                autor = jthis.find('.poem-autor').text();
-                     
-                modal.find('.modal-title').text(title);
-                modal.find('.modal-poem').html(poem);
-                modal.find('.modal-autor').text(autor);
-                modal.find('.modal-link').attr('href', url);
-                console.log(url);
-                app.changeLink(url);
-                modal.modal('show');
+                    modal.find('.modal-title').text(title);
+                    modal.find('.modal-poem').html(poem);
+                    modal.find('.modal-autor').text(autor);
+                    modal.find('.modal-link').attr('href', url);
+                    app.changeLink(url);
+                    modal.modal('show');
+                });               
             });
         },
 
@@ -49,7 +53,7 @@
             $('#btn-more').on('click', function(e){
                 var jthis = $(this);
                 jthis.attr('disabled','disabled');
-                var url = "/poem/web/api/poem-ajax-json?page="+pageP;
+                var url = baseUrl + "api/poem-ajax-json?page="+pageP;
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -61,6 +65,7 @@
                     var html    = template(data);
 
                      $(html).insertBefore('#insert');
+                     app.preventDef();
                 });
                 
             });
@@ -69,7 +74,7 @@
             $('#btn-more-ank').on('click', function(e){
                 var jthis = $(this);
                 jthis.attr('disabled','disabled');
-                var url = "/poem/web/api/anekdot-ajax-json?page="+pageA;                
+                var url = baseUrl + "api/anekdot-ajax-json?page="+pageA;                
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -89,7 +94,7 @@
             $('#btn-more-hokky').on('click', function(e){
                 var jthis = $(this);
                 jthis.attr('disabled','disabled');
-                var url = "/poem/web/api/hokky-ajax-json?page="+pageH;
+                var url = baseUrl +"api/hokky-ajax-json?page="+pageH;
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -157,9 +162,9 @@
         checkImg: function(){
             $('.body-image').on('click', function(e){
                 var jthis = $(this),
-                    url = "/poem/web/api/install-image",
+                    url = baseUrl +"api/install-image",
                     data = new Object(),
-                    path = '/poem/web/img/avatar/'+ $(e.target).data('image') +'.jpg';
+                    path = baseUrl +'img/avatar/'+ $(e.target).data('image') +'.jpg';
                 data.img = $(e.target).data('image');
                 if(data.img){
                     $.ajax({
@@ -190,13 +195,13 @@
                     url;
                 switch(contr){
                     case 'poem':
-                        url = '/poem/web/api/comment-poem-ajax';
+                        url = baseUrl +'api/comment-poem-ajax';
                         break;
                     case 'hokky':
-                        url = '/poem/web/api/comment-hokky-ajax';
+                        url = baseUrl +'api/comment-hokky-ajax';
                         break;
                     case 'anekdot':
-                        url = '/poem/web/api/comment-anekdot-ajax';
+                        url = baseUrl +'api/comment-anekdot-ajax';
                         break;
                 }
 
@@ -240,7 +245,7 @@
                 e.preventDefault();
 
                 var contr = $('.comment-tab').attr('id'),
-                    url = '/poem/web/api/delete-comment-ajax',
+                    url = baseUrl +'api/delete-comment-ajax',
                     category;
                 switch(contr){
                     case 'poem':
@@ -282,7 +287,7 @@
             $('#btn-comment').on('click', function(e){
 
                 var contr = $('.comment-tab').attr('id'),
-                    url = '/poem/web/api/show-comment-ajax',
+                    url = baseUrl +'api/show-comment-ajax',
                     category;
                 switch(contr){
                     case 'poem':
@@ -342,7 +347,15 @@
             all.text(+all.text()+inc);
         },
 
+        preventDef: function(){
+            $('.btn-comment-poem').on('click', function(e){
+                e.preventDefault();
+            });
+        },
+
     };
+
+
 
     app.init();
 }());

@@ -293,6 +293,21 @@ class ApiController extends Controller
         }
     }   
 
+
+    public function actionShowPoem()
+    {
+         if (Yii::$app->request->isPost){
+            $post = Yii::$app->request->post();
+            if(isset($post['id'])){
+                $poem = Poems::findOne($post['id']);
+                echo $poem->poem;
+            }
+            else{
+                echo "Произошла неизвестная ошибка";
+            }
+         }
+    }
+
     private function showComment($idPost, $commentTableObject, $commentTableName, $limit, $offset)
     {                
         

@@ -20,7 +20,7 @@ if ($poem->censor == 1){
 		</header>
 		<div class="poem-body">
 			<?= Html::tag('div', Html::encode(Poems::cutStr($poem->poem, 350)), ['class' => 'poem-poem']) ?>	
-			<?= Html::a(Yii::t('common/main', 'Показать полностью').'...', Url::to(['art/poem', 'id'=>$poem->id]), ['class' => 'btn btn-dafault btn-comment']) ?>			
+			<?= Html::a(Yii::t('common/main', 'Показать полностью').'...', Url::to(['art/poem', 'id'=>$poem->id]), ['class' => 'btn btn-dafault btn-comment-poem', 'data-id' => $poem->id]) ?>			
 		</div>
 		<footer class="poem-footer">
 			<?= Html::tag('div','<span>'.Yii::t('common/main', 'Автор').': '.'</span>'. Html::encode($poem->autor), ['class' => 'poem-autor']) ?>	

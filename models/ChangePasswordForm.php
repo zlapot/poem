@@ -21,8 +21,8 @@ class ChangePasswordForm extends Model
     public function attributeLabels()
     {
         return [
-            'password' => 'Старый пароль',
-            'newpassword' => 'Новый пароль'
+            'password' => Yii::t('common/profile', 'Старый пароль'),
+            'newpassword' => Yii::t('common/profile', 'Новый пароль'),
         ];
     }
 
