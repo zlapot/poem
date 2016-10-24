@@ -118,8 +118,8 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'Логин',
-            'password' => 'Пароль',
+            'username' => \Yii::t('common/auth', 'Логин'),
+            'password' => \Yii::t('common/auth', 'Пароль'),
         ];
     }
 

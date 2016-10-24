@@ -21,6 +21,8 @@ use yii\helpers\BaseJson;
 use yii\helpers\Json;
 use yii\helpers\Url;
 
+
+
 class SiteController extends Controller
 {
     /**
@@ -77,6 +79,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        //\Yii::$app->language = 'en';
+        $this->setLanguage();
+
         $query = Poems::find()
             ->from('poems');
         $poems = $query
@@ -117,7 +122,9 @@ class SiteController extends Controller
      * @return string
      */
     public function actionLogin()
-    {        
+    {      
+        $this->setLanguage();
+  
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -294,5 +301,9 @@ class SiteController extends Controller
             'value' => $lang
         ]));
         
+    }
+
+    private function setLanguage(){
+        return \Yii::$app->language = 'en';
     }
 }

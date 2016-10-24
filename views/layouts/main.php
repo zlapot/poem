@@ -11,6 +11,7 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 use app\models\Lang;
 
+\Yii::$app->language = 'en';
 
 AppAsset::register($this);
 ?>
@@ -49,40 +50,40 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => $lang->home[$lanID], 'url' => ['/site/index']],
+            ['label' => \Yii::t('common', 'Главная'), 'url' => ['/site/index']],
             [
-                'label' => 'Категории', 'items' => [
-                    ['label' => $lang->poems[$lanID], 'url' => ['/art/poems']],
-                    ['label' => $lang->anecdote[$lanID], 'url' => ['/art/anekdots']],
-                    ['label' => $lang->haiku[$lanID], 'url' => ['/art/hokkys']],
+                'label' => \Yii::t('common', 'Категории'), 'items' => [
+                    ['label' => \Yii::t('common', 'Стихи'), 'url' => ['/art/poems']],
+                    ['label' => \Yii::t('common', 'Анекдоты'), 'url' => ['/art/anekdots']],
+                    ['label' => \Yii::t('common', 'Хокку'), 'url' => ['/art/hokkys']],
                 ]
             ],
             [
-                'label' => $lang->about[$lanID], 'items' => [
-                    ['label' => $lang->about[$lanID], 'url' => ['/site/about']],
-                    ['label' => $lang->connect[$lanID], 'url' => ['/site/contact']],
+                'label' => \Yii::t('common', 'О нас'), 'items' => [
+                    ['label' => \Yii::t('common', 'О нас'), 'url' => ['/site/about']],
+                    ['label' => \Yii::t('common', 'Связь'), 'url' => ['/site/contact']],
                 ]
             ],
             (Yii::$app->user->getIdentity()['role']==20) ? (
             [
-                'label' => $lang->add[$lanID], 'items' => [
-                    ['label' => $lang->addpoem[$lanID], 'url' => ['/moderator/addpoem']],
-                    ['label' => $lang->addanec[$lanID], 'url' => ['/moderator/addanekdot']],
-                    ['label' => $lang->addhaiku[$lanID], 'url' => ['/moderator/addhokky']],
+                'label' => \Yii::t('common', 'Добавить'), 'items' => [
+                    ['label' => \Yii::t('common', 'Стих'), 'url' => ['/moderator/addpoem']],
+                    ['label' => \Yii::t('common', 'Анекдот'), 'url' => ['/moderator/addanekdot']],
+                    ['label' => \Yii::t('common', 'Хокку'), 'url' => ['/moderator/addhokky']],
                 ],
             ]) : (
-                ['label' => 'Профиль', 'url' => ['/user/profile']]
+                ['label' => \Yii::t('common', 'Профиль'), 'url' => ['/user/profile']]
             ),            
 
             Yii::$app->user->isGuest ? (
-                ['label' => $lang->login[$lanID], 'url' => ['/site/login'],
+                ['label' => \Yii::t('common', 'Войти'), 'url' => ['/site/login'],
                     'template' => '<a href="{url}" >{label}<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></button></a>'                                    
                 ]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
                 . Html::submitButton(
-                    $lang->logout[$lanID] .' (' . Yii::$app->user->identity->username . ')',
+                    \Yii::t('common', 'Выйти') .' (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
@@ -94,7 +95,7 @@ AppAsset::register($this);
             <input type="hidden" name="_csrf" value="'.Yii::$app->request->getCsrfToken().'" />
             <div class="search-bar-panel">
             <div class="input-group">
-              <input type="search" class="form-control search-input" placeholder="'.$lang->search[$lanID].'...'.'" name="public_search" maxlength="50">
+              <input type="search" class="form-control search-input" placeholder="'.\Yii::t('common', 'Поиск...').'" name="public_search" maxlength="50">
             </div>
             <button type="submit" class="btn btn-black">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -163,9 +164,7 @@ AppAsset::register($this);
             ?> 
                    
             </div>
-            <div class="copy">Сopyright © 2016 Все права защищены
-                Права на все материалы, представленные здесь, принадлежат их авторам
-                Ваши вопросы и предложения можете направлять на 
+            <div class="copy"> <?= \Yii::t('common/copy', 'Все права защищены. Права на все материалы, представленные здесь, принадлежат их авторам. Ваши вопросы и предложения можете направлять на') ?>
                 <a href="mailto:zlapot@yandex.ru">zlapot@yandex.ru</a>
             </div>
 

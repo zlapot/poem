@@ -14,10 +14,10 @@ $this->title = 'Login';
 <main id='main-container' class="main-page-post col-md-9">
 
     <h1 class="main-page-title"><?= Html::encode($this->title) ?></h1>
-    <section class="site-login row poems-row post-form">       
+    <section class="site-login row poems-row">       
         
 
-        <p>Please fill out the following fields to login:</p>
+        <p><?= \Yii::t('common/auth', 'Пожалуйста, заполните следующие поля для авторизации') ?></p>
 
         <?php $form = ActiveForm::begin([
             'id' => 'login-form',
@@ -34,14 +34,14 @@ $this->title = 'Login';
 
             <?= $form->field($model, 'rememberMe')->checkbox([
                 'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            ]) ?>
+            ])->label(\Yii::t('common/auth', 'Запомнить')) ?>
 
             <div class="form-group">
                 <div class="col-lg-offset-1 col-lg-11">
-                    <?= Html::submitButton('Войти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                    <?= Html::button('Регистрация', ['class'=>'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#modalReg', 'type' => 'button']) ?>
+                    <?= Html::submitButton(\Yii::t('common/auth', 'Войти'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::button(\Yii::t('common/auth', 'Регистрация'), ['class'=>'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#modalReg', 'type' => 'button']) ?>
 
-                    <?= Html::button('Забыли пароль?', ['class'=>'btn btn-link', 'data-toggle' => 'modal', 'data-target' => '#modalReset', 'type' => 'button']) ?>
+                    <?= Html::button(\Yii::t('common/auth', 'Забыли пароль?'), ['class'=>'btn btn-link', 'data-toggle' => 'modal', 'data-target' => '#modalReset', 'type' => 'button']) ?>
                 </div>
                
             </div>
@@ -56,7 +56,7 @@ $this->title = 'Login';
             }
         ?>
 
-        <p class="lead">Аторизация через социальные сети:</p>
+        <p class="lead"><?= \Yii::t('common/auth', 'Авторизация через социальные сети') ?></p>
         <?php echo \nodge\eauth\Widget::widget(['action' => 'site/login']); ?>
 
         

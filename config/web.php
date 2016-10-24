@@ -37,6 +37,17 @@ $config = [
         ],
         'i18n' => [
             'translations' => [
+                'common*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'fileMap' => [
+                        'common' => 'common.php',
+                        'common/auth' => 'auth.php',
+                        'common/copy' => 'copy.php',
+                        'common/main' => 'main.php',
+                        'common/profile' => 'profile.php',
+                    ],
+                ],
                 'eauth' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@eauth/messages',

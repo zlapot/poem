@@ -9,15 +9,15 @@
 	
 	
 	<section class="main-page-post row">		
-		<?= Html::tag('h2', "Профиль пользователя" , ['class' => 'main-page-title']) ?>
+		<?= Html::tag('h2', \Yii::t('common/profile', 'Профиль пользователя') , ['class' => 'main-page-title']) ?>
 		<article class="profile-post">
 			<head>
-				<?= Html::tag('h3', "Информация о пользователе:" , ['class' => 'main-page-title']) ?>
+				<?= Html::tag('h3', \Yii::t('common/profile', 'Информация о пользователе:') , ['class' => 'main-page-title']) ?>
 			</head>
 			<div class="body-profile">
 				<div class="profile-left">
-				<?= Html::tag('div', "<span>Логин: </span>".Html::encode($user->username), ['class'=>'profile-usermane']) ?>
-				<?= Html::tag('div', "<span>Дата регистрации: </span>".gmdate("Y-m-d H:i:s", Html::encode($user->created_at)), ['class'=>'profile-date']) ?>
+				<?= Html::tag('div', "<span>".\Yii::t('common/profile', 'Логин:').' '."</span>".Html::encode($user->username), ['class'=>'profile-usermane']) ?>
+				<?= Html::tag('div', "<span>".\Yii::t('common/profile', 'Дата регистрации').': '."</span>".gmdate("Y-m-d H:i:s", Html::encode($user->created_at)), ['class'=>'profile-date']) ?>
 				</div>
 				<div class="profile-right">
 				<?= Html::img(Url::home().$user->img, ['class' => 'profile-img']) ?>
@@ -26,7 +26,7 @@
 		</article>
 		<article class="profile-post">
 			<head>
-				<?= Html::tag('h3', "Выберите аватар" , ['class' => 'main-page-title']) ?>
+				<?= Html::tag('h3', \Yii::t('common/profile', 'Выберите аватар') , ['class' => 'main-page-title']) ?>
 			</head>
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10 body-image">
@@ -49,7 +49,7 @@
 	<?php if(!$user->service) : ?>
 	<section class="main-page-post row">
 
-		<?= Html::tag('h3', "Изменить пароль:" , ['class' => 'main-page-title']) ?>
+		<?= Html::tag('h3', \Yii::t('common/profile', 'Изменить пароль').":" , ['class' => 'main-page-title']) ?>
 			<?php $form = ActiveForm::begin([
 		        'id' => 'change-form',
 		        'options' => ['class' => 'form-horizontal'],
@@ -67,7 +67,7 @@
 
 	        <div class="form-group">
 	            <div class="col-lg-offset-2 col-lg-10">
-	                <?= Html::submitButton('Изменить пароль', ['class' => 'btn btn-primary', 'name' => 'change-password-button']) ?>	                
+	                <?= Html::submitButton(\Yii::t('common/profile', 'Изменить пароль'), ['class' => 'btn btn-primary', 'name' => 'change-password-button']) ?>	                
 	            </div>
 	           
 	        </div>
@@ -81,7 +81,7 @@
 	
 	<section class="main-page-post row">
 
-		<?= Html::tag('h3', "Загрузить аватар:" , ['class' => 'main-page-title']) ?>
+		<?= Html::tag('h3', \Yii::t('common/profile', 'Загрузить аватар').":" , ['class' => 'main-page-title']) ?>
 		<?php $form = ActiveForm::begin(['id' => 'upload-form', 'options' => ['enctype' => 'multipart/form-data']]) ?>		    
 
 		    <?= $form->field($load, 'imageFile')->widget(FileInput::classname(), [
