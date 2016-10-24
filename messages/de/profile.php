@@ -9,6 +9,8 @@ return [
     'Загрузить аватар' => 'Das Profilbild beladen ',     
     'Загрузить' => 'Beladen',     
     'Изменить пароль' => 'Das Passwort ändern',     
-    'Изменить' => 'Ändern',     
+    'Изменить' => 'Ändern',   
+    'Старый пароль' => 'Das alte Passwort', 
+    'Новый пароль' => 'Das neue Passwort',  
 
 ];

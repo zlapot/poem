@@ -15,6 +15,12 @@ return [
     'Показать полностью' => 'Arata mai mult',
     'Выбрать' => 'Alege',
 
+    'Комментарий' => 'Comentariu',
+    'На сайте' => 'Pe site-ul',
+    'Необходимо заполнить «Комментарий»' => 'Trebuie să completați "Comentariu" ',
+    'ВКонтакте' => 'VK',
+
+
     
     
 

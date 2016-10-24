@@ -39,9 +39,9 @@ class RegForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'Имя пользователя',
-            'email' => 'Эл. почта',
-            'password' => 'Пароль'
+            'username' => Yii::t('common/auth', 'Логин'),
+            'email' => Yii::t('common/auth', 'Эл. почта'),
+            'password' => Yii::t('common/auth', 'Пароль'),
         ];
     }
 

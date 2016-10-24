@@ -14,6 +14,11 @@ return [
     'Комментировать' => 'Kommentieren',
     'Показать полностью' => 'Afficher plus',
     'Выбрать' => 'Wählen',
+
+    'Комментарий' => 'Kommentar',
+    'На сайте' => 'Auf der Seite',
+    'Необходимо заполнить «Комментарий»' => 'Man muss den "Kommentar" ergänzen ',
+    'ВКонтакте' => 'VK',
     
     
     

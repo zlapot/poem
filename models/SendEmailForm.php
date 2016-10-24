@@ -24,7 +24,7 @@ class SendEmailForm extends Model
     public function attributeLabels()
     {
         return [
-            'email' => 'Эл. почта'
+            'email' => \Yii::t('common/auth', 'Эл. почта'),
         ];
     }
     public function sendEmail()

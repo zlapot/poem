@@ -17,7 +17,7 @@ class ResetPasswordForm extends Model
     public function attributeLabels()
     {
         return [
-            'password' => 'Пароль'
+            'password' => Yii::t('common/auth', 'Пароль'),
         ];
     }
     public function __construct($key, $config = [])

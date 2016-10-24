@@ -27,7 +27,7 @@ class CommentForm extends \yii\base\Model
             'id' => 'ID',
             'id_poem' => 'Id Poem',
             'id_user' => 'Id User',
-            'comment' => 'Комментарий',
+            'comment' => Yii::t('common/main', 'Комментарий'),
             'date' => 'Дата',
         ];
     }

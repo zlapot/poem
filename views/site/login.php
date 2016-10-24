@@ -77,7 +77,7 @@ $this->title = 'Login';
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h1 class="modal-title">Регистрация пользователя</h1>
+        <h1 class="modal-title"><?= \Yii::t('common/auth', 'Регистрация пользователя') ?></h1>
       </div>
       <div class="modal-body">
         <?php $form = ActiveForm::begin([
@@ -89,7 +89,7 @@ $this->title = 'Login';
             <?= $form->field($reg, 'password')->passwordInput() ?>
 
             <div class="form-group">
-                <?= Html::submitButton('Регистрация', ['class' => 'btn btn-primary']) ?>
+                <?= Html::submitButton(\Yii::t('common/auth', 'Регистрация'), ['class' => 'btn btn-primary']) ?>
             </div>
         <?php ActiveForm::end(); ?>
         <?php
@@ -101,7 +101,7 @@ $this->title = 'Login';
         ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?= \Yii::t('common/auth', 'Закрыть') ?></button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -112,7 +112,7 @@ $this->title = 'Login';
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h1 class="modal-title">Сбросить пароль</h1>
+        <h1 class="modal-title"><?= \Yii::t('common/auth', 'Сбросить пароль') ?></h1>
       </div>
       <div class="modal-body">
         <div class="main-sendEmail">
@@ -125,7 +125,7 @@ $this->title = 'Login';
                 <?= $form->field($reset, 'email') ?>
             
                 <div class="form-group">
-                    <?= Html::submitButton('Отправить', [ 'class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton(\Yii::t('common/auth', 'Отправить'), [ 'class' => 'btn btn-primary']) ?>
                 </div>
                 <?= Html::tag('div','', ['class' => "msg"]) ?>
             <?php ActiveForm::end(); ?>
@@ -133,7 +133,7 @@ $this->title = 'Login';
         </div><!-- main-sendEmail -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?= \Yii::t('common/auth', 'Закрыть') ?></button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

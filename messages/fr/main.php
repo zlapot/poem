@@ -15,6 +15,11 @@ return [
     'Показать полностью' => 'Afficher plus',
     'Выбрать' => 'Choisir',
 
+    'Комментарий' => 'Le commentaire',
+    'На сайте' => 'Sur le site',
+    'Необходимо заполнить «Комментарий»' => 'Il faut que vous remplissez "Le commentaire"',
+    'ВКонтакте' => 'VK',
+
     
     
     

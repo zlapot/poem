@@ -9,6 +9,9 @@ return [
     'Загрузить аватар' => 'Încarca o poză de profil',     
     'Загрузить' => 'Încarca',     
     'Изменить пароль' => 'Schimba parola',     
-    'Изменить' => 'Schimba',     
+    'Изменить' => 'Schimba',  
+    'Старый пароль' => 'O parolă anterioară',  
+    'Новый пароль' => 'O parolă nouă', 
+
 
 ];

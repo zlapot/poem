@@ -9,6 +9,8 @@ return [
     'Загрузить аватар' => 'Charger l\'image du profil',     
     'Загрузить' => 'Charger',     
     'Изменить пароль' => 'Changer le mot de passe',     
-    'Изменить' => 'Changer',     
+    'Изменить' => 'Changer',
+    'Старый пароль' => 'Le mot de passe précedent', 
+    'Новый пароль' => 'Le mot de passe nouveau',      
 
 ];
