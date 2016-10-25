@@ -47,6 +47,11 @@ class AnekdotForm extends \yii\base\Model
         $anekdot->date = date('d.m.Y H:m');
         $anekdot->utime = date('U');
         $anekdot->censor = $this->censor;
+        $anekdot->isDelete = 0;
+        $anekdot->status = 0;
+
+        if(Yii::$app->user->can('admin') || Yii::$app->user->can('moderator'))
+            $anekdot->status = 1;
 
         $anekdot->save(false);
         return $anekdot ? $anekdot : null;

@@ -47,9 +47,23 @@ class PoemForm extends \yii\base\Model
         $poem->autor = $this->autor;
         $poem->date = date('d.m.Y H:m');
         $poem->censor = $this->censor;
+        $poem->isDelete = 0;
+        $poem->status = 0;
+
+        if(Yii::$app->user->can('admin') || Yii::$app->user->can('moderator'))
+            $poem->status = 1;
 
         $poem->save(false);
         return $poem ? $poem : null;
     } 
+
+    public static function del($id)
+    {
+        $post = Poems::find($id);
+        $post->isDelete = 1;
+
+        $post->save(false);
+        return $post ? $post : null;
+    }
 
 }

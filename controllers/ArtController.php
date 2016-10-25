@@ -75,7 +75,8 @@ class ArtController extends Controller
     {
         $this->setLanguage();
         $query = Poems::find()
-            ->from('poems');
+            ->from('poems')
+            ->where(['status' => 1, 'isDelete' => 0]);
                 //->all();
         $pagination = new Pagination([
             'defaultPageSize' => 10,
@@ -101,6 +102,7 @@ class ArtController extends Controller
     {
         $this->setLanguage();
         $query = Anekdots::find()
+            ->where(['status' => 1, 'isDelete' => 0])
             ->from('anekdots');
             //->all();
         $pagination = new Pagination([
@@ -126,6 +128,7 @@ class ArtController extends Controller
     {
         $this->setLanguage();
         $query = Hokkys::find()
+            ->where(['status' => 1, 'isDelete' => 0])
             ->from('hokkys');
             //->all();
         $pagination = new Pagination([
@@ -159,11 +162,14 @@ class ArtController extends Controller
         }
 
         $post = $postTableObject->find()
-                ->where(['id' => $idPost])
+                ->where(['id' => $idPost, 'status' => 1, 'isDelete' => 0])
                 ->one();
 
         if(!$post){
-            return $this->render('site/error');
+            return $this->render('/site/error', [
+                'name' => "#404: Page not found",
+                'message' => 'Страница не найдена или находится в разработке, обратитесь к администратору ресурса'
+            ]);
         }  
 
         $count = $commentTableObject->find()

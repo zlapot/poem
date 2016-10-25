@@ -3,7 +3,6 @@
 use yii\helpers\html;
 use yii\helpers\Url;
 
-//if ($this->beginCache(Yii::$app->user->id, ['duration' => 360000])):
 ?>
 
 <main class="main-page-content col-md-9">
@@ -48,7 +47,4 @@ use yii\helpers\Url;
 </div>
 
 <?php 
-    //$this->endCache();
-//endif;
-
 ?>

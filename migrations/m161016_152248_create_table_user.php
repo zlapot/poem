@@ -19,6 +19,7 @@ class m161016_152248_create_table_user extends Migration
             'service' => $this->string(),
             'service_id' => $this->string(),
             'img' => $this->string(20),
+            'isDelete' => $this->boolean()->notNull();
         ]);
     }
 

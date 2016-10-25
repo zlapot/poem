@@ -81,9 +81,9 @@ class SiteController extends Controller
     {
         //\Yii::$app->language = 'en';
         $this->setLanguage();
-
+        
         $query = Poems::find()
-            ->from('poems');
+            ->where(['status' => 1, 'isDelete' => 0]);
         $poems = $query
             ->orderBy([
                 'id' => SORT_DESC,
@@ -92,7 +92,7 @@ class SiteController extends Controller
             ->all();
 
         $query = Hokkys::find()
-            ->from('hokkys');
+            ->where(['status' => 1, 'isDelete' => 0]);
         $hokkys = $query
             ->orderBy([
                 'id' => SORT_DESC,
@@ -101,7 +101,7 @@ class SiteController extends Controller
             ->all();
 
         $query = Anekdots::find()
-            ->from('anekdots');
+            ->where(['status' => 1, 'isDelete' => 0]);
         $anekdots = $query
             ->orderBy([
                 'id' => SORT_DESC,

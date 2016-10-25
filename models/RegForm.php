@@ -4,6 +4,7 @@ namespace app\models;
 use yii\base\Model;
 use app\models\User;
 use yii\validators\EmailValidator;
+use yii\helpers\Url;
 use Yii;
 
 class RegForm extends Model
@@ -53,6 +54,8 @@ class RegForm extends Model
         $user->status = $this->status;
         $user->setPassword($this->password);
         $user->generateAuthKey();
+        $user->img = 'img/notava.png';
+
         if($this->scenario === 'emailActivation')
             $user->generateSecretKey();
         return $user->save(false) ? $user : null;

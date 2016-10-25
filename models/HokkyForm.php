@@ -45,8 +45,22 @@ class HokkyForm extends \yii\base\Model
         $hokky->date = date('d.m.Y H:m');
         $hokky->utime = date('U');
         $hokky->censor = $this->censor;
+        $hokky->isDelete = 0;
+        $hokky->status = 0;
+
+        if(Yii::$app->user->can('admin') || Yii::$app->user->can('moderator'))
+            $hokky->status = 1;
 
         $hokky->save(false);
         return $hokky ? $hokky : null;
     } 
+
+    public static function del($id)
+    {
+        $post = Hokkys::find($id);
+        $post->isDelete = 1;
+
+        $post->save(false);
+        return $post ? $post : null;
+    }
 }
