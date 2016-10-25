@@ -41,9 +41,10 @@ class ModeratorController extends Controller
                     [
                         'actions' => ['addpoem', 'addanekdot', 'addhokky'],
                         'allow' => true,
-                        'matchCallback' => function ($rule, $action) {
-                           return  User::isUserAdmin(Yii::$app->user->id);
-                        }
+                        'roles' => ['@'],
+                        //'matchCallback' => function ($rule, $action) {
+                           //return  User::isUserAdmin(Yii::$app->user->id);
+                        //}
                     ],
                 ],
             ],
@@ -70,6 +71,11 @@ class ModeratorController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    public function actionIndex()
+    {
+        $this->redirect(Url::to(['user/profile']), 302);
     }
 
     public function actionAddpoem()

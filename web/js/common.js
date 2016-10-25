@@ -205,11 +205,11 @@
                         break;
                 }
 
-                console.log(url);
+                //console.log(url);
                 var str = $(this).serialize(),
                     jthis = $(this),
                     idpost = jthis.data('id');                
-                //jthis.find('#commentBtn').attr('disabled','disabled');
+                jthis.find('#commentBtn').attr('disabled','disabled');
 
                 $.ajax({
                     type: "POST",
@@ -218,11 +218,12 @@
                     success: function(data){
                         if(data === 'fail'){
                             //$('.msg').html("Произошла ошибка");
-                            $('#commentBtn').removeAttr('disabled');
+                            console.log('fail');
+                            jthis.find('#commentBtn').removeAttr('disabled');
                         }else{
                             console.log("добавил");
                             console.log(data);
-                            $('#commentBtn').removeAttr('disabled');
+                            jthis.find('#commentBtn').removeAttr('disabled');
                             var source   = $("#entry-template").html();
                             var template = Handlebars.compile(source);
                             var html    = template(data);
@@ -237,6 +238,7 @@
                     }
                 });
 
+                jthis.find('#commentBtn').removeAttr('disabled');
             });
         },
 
@@ -338,7 +340,7 @@
         },
 
         changeCountComment: function(inc){
-            console.log('dsgsdg');
+            //console.log('dsgsdg');
 
             var current = $('.current'),
                 all = $('.count-all');

@@ -228,7 +228,6 @@ class ApiController extends Controller
                 }else{
                     echo 'fail';
                 }
-                
             }
         }
         else{

@@ -3,7 +3,7 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'bugagashki',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'modules'=>[
@@ -69,8 +69,9 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
         'eauth' => require('eauth.php'),
         'authManager' => [
-            'class' => 'yii\rbac\PhpManager',            
-            //'class' => 'yii\rbac\DbManager',
+            //'class' => 'yii\rbac\PhpManager',            
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest'],
             
         ],        
         'urlManager' => [
@@ -88,11 +89,6 @@ $config = [
             'class' => 'yii2mod\image\ImageComponent',
         ],
         
-    ],
-    'modules' => [
-        'admin' => [
-            'class' => 'app\modules\admin\Admin',
-        ],
     ],
     'params' => $params,
 ];

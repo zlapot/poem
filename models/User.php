@@ -202,7 +202,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     
     public static function isUserAdmin($id)
     {
-        if (static::findOne(['id' => $id, 'role' => self::ROLE_ADMIN]))
+        if (Yii::$app->user->can('admin') || Yii::$app->user->can('moderator'))
         {
             return true;
         } else {

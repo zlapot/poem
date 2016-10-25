@@ -18,7 +18,6 @@ class m161016_152248_create_table_user extends Migration
             'secret_key' => $this->string(),
             'service' => $this->string(),
             'service_id' => $this->string(),
-            'role' => $this->integer(2),
             'img' => $this->string(20),
         ]);
     }

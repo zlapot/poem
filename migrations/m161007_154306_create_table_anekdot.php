@@ -12,9 +12,16 @@ class m161007_154306_create_table_anekdot extends Migration
             'anekdot' => $this->text()->notNull(),
             'autor' => $this->string(100)->notNull(),
             'date' => $this->string(16)->notNull(),
-            'utime' => $this->integer()->notNull(),
-            'censor' => $this->integer()->notNull(),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
+            'isDelete' => $this=>boolean()->notNull(),
+            'status' => $this=>boolean()->notNull(),
+            'censor' => $this=>boolean()->notNull(),
         ]);
+
+        $this->addForeignKey('fk-anekdot_id_user-user_id', 'anekdots', 'id_user', 'user', 'id');
     }
 
     public function down()

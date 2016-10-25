@@ -11,7 +11,6 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 use app\models\Lang;
 
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -51,23 +50,26 @@ AppAsset::register($this);
                     ['label' => \Yii::t('common', 'Хокку'), 'url' => ['/art/hokkys']],
                 ]
             ],
-            [
-                'label' => \Yii::t('common', 'О нас'), 'items' => [
-                    ['label' => \Yii::t('common', 'О нас'), 'url' => ['/site/about']],
-                    ['label' => \Yii::t('common', 'Связь'), 'url' => ['/site/contact']],
+            
+            (!Yii::$app->user->isGuest) ? (
+                [
+                    'label' => \Yii::t('common', 'Добавить'), 'items' => [
+                        ['label' => \Yii::t('common', 'Стих'), 'url' => ['/moderator/addpoem']],
+                        ['label' => \Yii::t('common', 'Анекдот'), 'url' => ['/moderator/addanekdot']],
+                        ['label' => \Yii::t('common', 'Хокку'), 'url' => ['/moderator/addhokky']],
+                    ],                
                 ]
-            ],
-            (Yii::$app->user->getIdentity()['role']==20) ? (
-            [
-                'label' => \Yii::t('common', 'Добавить'), 'items' => [
-                    ['label' => \Yii::t('common', 'Стих'), 'url' => ['/moderator/addpoem']],
-                    ['label' => \Yii::t('common', 'Анекдот'), 'url' => ['/moderator/addanekdot']],
-                    ['label' => \Yii::t('common', 'Хокку'), 'url' => ['/moderator/addhokky']],
-                ],
-            ]) : (
-                ['label' => \Yii::t('common', 'Профиль'), 'url' => ['/user/profile']]
+            ) : (
+                [
+                    'label' => \Yii::t('common', 'О нас'), 'items' => [
+                        ['label' => \Yii::t('common', 'О нас'), 'url' => ['/site/about']],
+                        ['label' => \Yii::t('common', 'Связь'), 'url' => ['/site/contact']],
+                    ],
+                ]
             ),            
-
+            
+            ['label' => \Yii::t('common', 'Профиль'), 'url' => ['/user/profile']],
+            
             Yii::$app->user->isGuest ? (
                 ['label' => \Yii::t('common', 'Войти'), 'url' => ['/site/login'],
                     'template' => '<a href="{url}" >{label}<button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></button></a>'                                    
