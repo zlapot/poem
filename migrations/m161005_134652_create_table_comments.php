@@ -12,8 +12,11 @@ class m161005_134652_create_table_comments extends Migration
             'id_user' => $this->integer()->notNull(),
             'comment' => $this->string(100)->notNull(),
             'date' => $this->string(16)->notNull(),
-            'utime' => $this->integer()->notNull(),
+            'created_at' => $this->integer()->notNull(),
         ]);
+
+        $this->addForeignKey('fk-com_poem_id_user-user_id', 'comments_poem', 'id_user', 'user', 'id');
+        $this->addForeignKey('fk-com_poem_id_poem-poem_id', 'comments_poem', 'id_poem', 'poems', 'id');
     }
 
     public function down()

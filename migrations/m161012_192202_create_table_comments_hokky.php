@@ -12,8 +12,11 @@ class m161012_192202_create_table_comments_hokky extends Migration
             'id_user' => $this->integer()->notNull(),
             'comment' => $this->string(100)->notNull(),
             'date' => $this->string(16)->notNull(),
-            'utime' => $this->integer()->notNull(),
+            'created_at' => $this->integer()->notNull(),
         ]);
+
+        $this->addForeignKey('fk-com_hokky_id_user-user_id', 'comments_hokky', 'id_user', 'user', 'id');
+        $this->addForeignKey('fk-com_hokky_id_poem-hokky_id', 'comments_hokky', 'id_poem', 'hokkys', 'id');
     }
 
     public function down()
