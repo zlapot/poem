@@ -23,8 +23,8 @@ $this->title = 'Login';
             'id' => 'login-form',
             'options' => ['class' => 'form-horizontal'],
             'fieldConfig' => [
-                'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-                'labelOptions' => ['class' => 'col-lg-1 control-label'],
+                'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
+                'labelOptions' => ['class' => 'col-lg-2 control-label'],
             ],
         ]); ?>
 
@@ -33,11 +33,11 @@ $this->title = 'Login';
             <?= $form->field($model, 'password')->passwordInput() ?>
 
             <?= $form->field($model, 'rememberMe')->checkbox([
-                'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+                'template' => "<div class=\"col-lg-offset-2 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-7\">{error}</div>",
             ])->label(\Yii::t('common/auth', 'Запомнить')) ?>
 
             <div class="form-group">
-                <div class="col-lg-offset-1 col-lg-11">
+                <div class="col-lg-offset-2 col-lg-10">
                     <?= Html::submitButton(\Yii::t('common/auth', 'Войти'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                     <?= Html::button(\Yii::t('common/auth', 'Регистрация'), ['class'=>'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#modalReg', 'type' => 'button']) ?>
 

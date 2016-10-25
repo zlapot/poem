@@ -2,7 +2,8 @@
 
 use yii\helpers\html;
 use yii\helpers\Url;
-//\Yii::$app->language = 'en';
+
+//if ($this->beginCache(Yii::$app->user->id, ['duration' => 360000])):
 ?>
 
 <main class="main-page-content col-md-9">
@@ -46,3 +47,8 @@ use yii\helpers\Url;
 	</aside>
 </div>
 
+<?php 
+    //$this->endCache();
+//endif;
+
+?>
