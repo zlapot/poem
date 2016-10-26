@@ -5,7 +5,7 @@ return [
     'Поиск...' => 'La recherche...',
     'Стихи' => 'Les poèmes',
     'Анекдоты' => 'Les anecdotes',
-    'Хокку' => 'Les haїkus',
+    'Хокку ' => 'Les haїkus',
     'О нас' => 'L\'information de nous',
     'Связь' => 'Connectez-vous avec nous',
     'Добавить' => 'Ajouter',

@@ -65,7 +65,7 @@ AppAsset::register($this);
                 'label' => \Yii::t('common', 'Категории'), 'items' => [
                     ['label' => \Yii::t('common', 'Стихи'), 'url' => ['/art/poems']],
                     ['label' => \Yii::t('common', 'Анекдоты'), 'url' => ['/art/anekdots']],
-                    ['label' => \Yii::t('common', 'Хокку'), 'url' => ['/art/hokkys']],
+                    ['label' => \Yii::t('common', 'Хокку '), 'url' => ['/art/hokkys']],
                 ]
             ],
             
@@ -168,8 +168,8 @@ AppAsset::register($this);
                 'bib' => "Română",
                 'ukr' => 'Українська',
                 'imp' => 'Дореволюционный',                
-                'de' => 'German',
-                'fr' => 'French',                
+                'de' => 'Deutsch',
+                'fr' => 'Français',                
             ];
 
             echo Html::beginForm(['site/lang', 'id' => 'form'], 'get', ['class' => 'lang-form']);

@@ -5,7 +5,7 @@ return [
     'Поиск...' => 'Cautare...',
     'Стихи' => 'Poezii',
     'Анекдоты' => 'Anecdote',
-    'Хокку' => 'Haiku',
+    'Хокку ' => 'Haikuri',
     'О нас' => 'Despre noi',
     'Связь' => 'Conectare cu noi',
     'Добавить' => 'Adăuga',
