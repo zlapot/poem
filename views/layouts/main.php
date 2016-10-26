@@ -49,7 +49,7 @@ AppAsset::register($this);
    
 
     NavBar::begin([
-        'brandLabel' => '<img src="'.Url::home().'img/bugaga.gif" class="logo-site"/>',
+        'brandLabel' => '<img src="'.Url::home().'img/bugaga.gif" class="logo-site" alt="Logo"/>',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
