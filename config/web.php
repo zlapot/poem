@@ -46,6 +46,7 @@ $config = [
                         'common/copy' => 'copy.php',
                         'common/main' => 'main.php',
                         'common/profile' => 'profile.php',
+                        'common/title' => 'title.php',
                     ],
                 ],
                 'eauth' => [

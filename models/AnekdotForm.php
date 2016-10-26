@@ -31,10 +31,10 @@ class AnekdotForm extends \yii\base\Model
         return [
             'id' => 'ID',
             'id_user' => 'Id User',
-            'anekdot' => 'Анекдот',
-            'autor' => 'Автор',
+            'anekdot' => Yii::t('common', 'Анекдот'),
+            'autor' => Yii::t('common/main','Автор'),
             'date' => 'Дата публикации',
-            'censor' => 'Наличие нецензурной лексики',
+            'censor' => Yii::t('common/title', 'Наличие нецензурной лексики'),
         ];
     }
 

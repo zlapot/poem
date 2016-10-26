@@ -130,7 +130,7 @@ AppAsset::register($this);
     <div class="container">
         <?= Breadcrumbs::widget([
             'homeLink' => [
-                'label' => 'Главная',
+                'label' => Yii::t('common', 'Главная'),
                 'url' => Yii::$app->getHomeUrl()
             ],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -150,7 +150,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">        
         <div class="row">
-            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+            <p class="pull-left">&copy; Bugagashki <?= date('Y') ?></p>
 
             <div class="pull-right">
                  <div class="copyZ"> <?= \Yii::t('common/copy', 'Все права защищены. Права на все материалы, представленные здесь, принадлежат их авторам. Ваши вопросы и предложения можете направлять на') ?>

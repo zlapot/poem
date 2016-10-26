@@ -30,11 +30,11 @@ class PoemForm extends \yii\base\Model
         return [
             'id' => 'ID',
             'id_user' => 'Id User',
-            'title' => 'Название',
-            'poem' => 'Стихотворение',
-            'autor' => 'Автор',
+            'title' => Yii::t('common/title','Название'),
+            'poem' => Yii::t('common','Стих'),
+            'autor' => Yii::t('common/main','Автор'),
             'date' => 'Дата публикации',
-            'censor' => 'Наличие нецензурной лексики',
+            'censor' => Yii::t('common/title', 'Наличие нецензурной лексики'),
         ];
     }
 

@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Добавление стихотворения';
-$this->params['breadcrumbs'][] = ['label' => 'Стихотворения', 'url' => ['art/poems']];
+$this->title = Yii::t('common/title', 'Добавление стихотворения');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Стихи'), 'url' => ['art/poems']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <?= Html::submitButton('Опубликовать', ['class' => 'btn btn-primary']) ?>
+                <?= Html::submitButton(Yii::t('common/title', 'Опубликовать'), ['class' => 'btn btn-primary']) ?>
             </div>
         </div>
     <?php ActiveForm::end(); ?>

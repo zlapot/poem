@@ -29,10 +29,10 @@ class HokkyForm extends \yii\base\Model
         return [
             'id' => 'ID',
             'id_user' => 'Id User',
-            'hokky' => 'Хокку',
-            'autor' => 'Автор',
+            'hokky' => Yii::t('common', 'Хокку'),
+            'autor' => Yii::t('common/main','Автор'),
             'date' => 'Дата публикации',
-            'censor' => 'Наличие нецензурной лексики',
+            'censor' => Yii::t('common/title', 'Наличие нецензурной лексики'),
         ];
     }
 
