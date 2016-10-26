@@ -1,4 +1,4 @@
-<div class="col-md-4 offset-right rule">
+<section class="col-md-4 offset-right rule">
 	<p class="title-rule">I bring my apologies for mistakes I did. We bring these rules to people that live in USA , GB and everyone who doesn't 
 	confess other languages as possible ones for speaking. So:</p>
 	<ul class="poem-rule">
@@ -15,4 +15,4 @@
 		AT ALL, MOTHERFUCKERS!!! I can curse. I am your father, Luke!!! </li>
 		<li class="item-rule">Welcome!!</li>
 	</ul>
-</div>
+</section>

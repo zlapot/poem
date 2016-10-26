@@ -8,11 +8,11 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('common', 'Стихи'), 'ur
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<section class="row">
-    <div class="col-md-8 add-form circle-border">
+<main class="row main-page-content">
+    <section class="col-md-8 add-form circle-border">
 
     <?php $form = ActiveForm::begin([
-    'id' => 'poem-form',
+    'id' => 'post-form',
     'options' => ['class' => 'form-horizontal'],
     //'enableAjaxValidation'=>true,
     ]); ?>
@@ -47,10 +47,17 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     <?php ActiveForm::end(); ?>
 
-    </div>
+        <div class="msg-to-user well col-sm-offset-2">
+            <?php 
+                $session = Yii::$app->session;
+                echo $session->getFlash('postAdded'); 
+            ?>
+        </div>
+        
+    </section>
 
     <?= $this->render('rules/rules') ?>
     
     <div id="ajaxreq"></div>
 
-</section><!-- poems -->
+</main><!-- poems -->

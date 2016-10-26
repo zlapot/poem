@@ -1,4 +1,4 @@
-<div class="col-md-4 offset-right rule">
+<section class="col-md-4 offset-right rule">
 	<p class="title-rule">Правила нашого сайту існують спеціально для тих, хто не знає, як поводитися на сайтах.
 	Тому уважно читайте:</p>
 		<ul class="poem-rule">
@@ -16,4 +16,4 @@
 		<li class="item-rule">Закони фізіки, зокрема теорію відносності та термодинамики порушувати не можна.</li>
 		<li class="item-rule">Щиро вітаємо на нашому сайті!! Усі питання до адмінів. Бажаємо успіху!</li>
 	</ul>
-</div>
+</section>

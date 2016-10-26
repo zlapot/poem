@@ -1,4 +1,4 @@
-<div class="col-md-4 offset-right rule">
+<section class="col-md-4 offset-right rule">
 	<p class="title-rule">Les règles du site pour la monde francophonique:</p>
 
 	<ul class="poem-rule">
@@ -34,4 +34,4 @@
 		Bienvenue à notre site.  Sentez-vous comme chez vous et demandez votre question à l'administration
 		</li>
 	</ul>
-</div>
+</section>

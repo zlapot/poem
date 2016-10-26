@@ -1,4 +1,4 @@
-<div class="col-md-4 offset-right rule">
+<section class="col-md-4 offset-right rule">
 	<p class="title-rule">Wir bringen Ihnen die Regeln unsrer Seite (für deutschsprachige Genossen)
 	Wir bringen auch unsere Entschuldigungen für unsre Fehler in Deutsch</p>
 	<ul class="poem-rule">
@@ -17,4 +17,4 @@
 		<li class="item-rule">Herzlich willkommen! Stellen Sie uns eure Fragen.Wir sind sehr froh,
 		auf sie zu antworten</li>
 	</ul>
-</div>
+</section>

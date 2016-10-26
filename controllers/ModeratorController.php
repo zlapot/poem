@@ -85,7 +85,10 @@ class ModeratorController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
             if($model->add()){
-                return $this->redirect(Url::to(['art/poems']), 302);
+                $this->setFlash();
+                return $this->render('addhokky',[
+                    'model' => new PoemForm(),
+                ]);
             }else{
 
             }
@@ -104,7 +107,10 @@ class ModeratorController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
             if($model->add()){
-                return $this->redirect(Url::to(['art/anekdots']), 302);
+                $this->setFlash();
+                return $this->render('addhokky',[
+                    'model' => new AnekdotForm(),
+                ]);
             }else{
 
             }
@@ -123,7 +129,10 @@ class ModeratorController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
             if($model->add()){ 
-                return $this->redirect(Url::to(['art/hokkys']),302);
+                $this->setFlash();
+                return $this->render('addhokky',[
+                    'model' => new HokkyForm(),
+                ]);
             }else{
 
             }
@@ -133,6 +142,12 @@ class ModeratorController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    private function setFlash()
+    {
+        $session = Yii::$app->session;
+        $session->setFlash('postAdded', '*'.Yii::t('common/title', 'Ваша заявка на публикацию была принята, администрация рассмотрит ее в ближайшее время, спасибо за ваш вклад в развитие данного проекта. Просьба придерживаться правил (они есть на нашем сайте).'));
     }
 
     private function setLanguage(){

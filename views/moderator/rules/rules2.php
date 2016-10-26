@@ -1,4 +1,4 @@
-<div class="col-md-4 offset-right rule">
+<section class="col-md-4 offset-right rule">
 	<p class="title-rule">Regulile acestui site pentru tovarăși români:</p>
 	<ul class="poem-rule">
 		<li class="item-rule">Nu utilisați cuvinte obscene</li>
@@ -15,4 +15,4 @@
 		fizice, altfel v-o fac nevalabili la femei!!!</li>
 		<li class="item-rule">Bine ați venit! Vă rugam, puneți întrebarile voastre administratorelor</li>
 	</ul>
-</div>
+</section>

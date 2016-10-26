@@ -266,11 +266,11 @@ class SiteController extends Controller
                 break;
 
             default:
-                $this->goBack();
+                return $this->redirect(Yii::$app->request->referrer);
                 break;
         }
 
-        $this->goBack();
+       return $this->redirect(Yii::$app->request->referrer);
     }
 
     private function cssChange($fileName)
