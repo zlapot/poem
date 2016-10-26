@@ -80,7 +80,7 @@ class ModeratorController extends Controller
 
     public function actionAddpoem()
     {
-
+        $this->setLanguage();
         $model = new PoemForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
@@ -99,6 +99,7 @@ class ModeratorController extends Controller
 
     public function actionAddanekdot()
     {
+        $this->setLanguage();
         $model = new AnekdotForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
@@ -117,6 +118,7 @@ class ModeratorController extends Controller
 
     public function actionAddhokky()
     {
+        $this->setLanguage();
         $model = new HokkyForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
@@ -131,6 +133,12 @@ class ModeratorController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    private function setLanguage(){
+        $cookies = Yii::$app->request->cookies;
+        $language = $cookies->getValue('language', 'ru');
+        return \Yii::$app->language = $language;
     }
 
 }
