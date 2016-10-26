@@ -150,13 +150,11 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">        
         <div class="row">
-            <p class="pull-left">&copy; Bugagashki <?= date('Y') ?></p>
-
-            <div class="pull-right">
-                 <div class="copyZ"> <?= \Yii::t('common/copy', 'Все права защищены. Права на все материалы, представленные здесь, принадлежат их авторам. Ваши вопросы и предложения можете направлять на') ?>
+            <p class="pull-left">&copy; Bugagashki <?= date('Y') ?>
+                <br/> <?= \Yii::t('common/copy', 'Все права защищены. Права на все материалы, представленные здесь, принадлежат их авторам. Ваши вопросы и предложения можете направлять на') ?>
                 <a href="mailto:zlapot@yandex.ru">zlapot@yandex.ru</a>
-            </div>
-            </p>       
+            </p>           
+                 
         </div>
 
         <div class="row">

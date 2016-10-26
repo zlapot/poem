@@ -221,10 +221,7 @@ class SiteController extends Controller
         $this->setLanguage();
 
         return $this->render('about');
-    }
-
-       
-
+    }     
 
     public function actionLang($id){
         switch($id){
@@ -256,6 +253,46 @@ class SiteController extends Controller
         }
         
         return $this->redirect(Url::to(['site/index']), 302);
+    }
+
+    public function actionChangeCss($id)
+    {
+        switch ($id) {
+            case 'commonflat':
+                $this->cssChange($id);
+                break;
+            case 'common':
+                $this->cssChange($id);
+                break;
+
+            default:
+                $this->goBack();
+                break;
+        }
+
+        $this->goBack();
+    }
+
+    private function cssChange($fileName)
+    {
+        $session = Yii::$app->session;
+        if ($session->isActive){
+            $_SESSION['css'] = 'css/'.$fileName.'.css';
+            $cookies = Yii::$app->response->cookies;
+            $cookies->add(new \yii\web\Cookie([
+                'name' => 'css',
+                'value' =>  $_SESSION['css'],
+            ]));
+            
+        }else{
+            $session->open();
+            $_SESSION['css'] = 'css/'.$fileName.'.css';
+            $cookies = Yii::$app->response->cookies;
+            $cookies->add(new \yii\web\Cookie([
+                'name' => 'css',
+                'value' =>  $_SESSION['css'],
+            ]));
+        }
     }
 
     private function checkLanguage($lang){
