@@ -39,7 +39,7 @@ class HokkyForm extends \yii\base\Model
     public function add()
     {
         $hokky = new Hokkys();
-        $hokky->id_user = 1;
+        $hokky->id_user = Yii::$app->user->id;
         $hokky->hokky = $this->hokky;
         $hokky->autor = $this->autor;
         $hokky->date = date('d.m.Y H:m');

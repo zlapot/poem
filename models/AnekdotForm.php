@@ -41,7 +41,7 @@ class AnekdotForm extends \yii\base\Model
     public function add()
     {
         $anekdot = new Anekdots();
-        $anekdot->id_user = 1;
+        $anekdot->id_user = Yii::$app->user->id;;
         $anekdot->anekdot = $this->anekdot;
         $anekdot->autor = $this->autor;
         $anekdot->date = date('d.m.Y H:m');
@@ -56,4 +56,13 @@ class AnekdotForm extends \yii\base\Model
         $anekdot->save(false);
         return $anekdot ? $anekdot : null;
     } 
+
+    public static function del($id)
+    {
+        $post = Anekdots::find($id);
+        $post->isDelete = 1;
+
+        $post->save(false);
+        return $post ? $post : null;
+    }
 }

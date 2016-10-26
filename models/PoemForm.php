@@ -41,7 +41,7 @@ class PoemForm extends \yii\base\Model
     public function add()
     {
         $poem = new Poems();
-        $poem->id_user = 1;
+        $poem->id_user = Yii::$app->user->id;;
         $poem->title = $this->title;
         $poem->poem = $this->poem;
         $poem->autor = $this->autor;
