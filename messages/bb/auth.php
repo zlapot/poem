@@ -8,7 +8,7 @@ return [
     'Регистрация' => 'Înregistrare', 
     'Забыли пароль?' => 'Ați uitat-o pe parolă?', 
     'Авторизация через социальные сети' => 'Autorizare prin rețeaua de socializare', 
-    'Пожалуйста, заполните следующие поля для авторизации' => 'Vă rugăm,completați aceasta pentru să v-înregistrați',    
+    'Пожалуйста, заполните следующие поля для авторизации' => 'Vă rugăm, completați aceasta pentru să v-înregistrați',    
 
     'Регистрация пользователя' => 'Înregistrare utilizatorului',
     'Эл. почта' => 'E-mail',

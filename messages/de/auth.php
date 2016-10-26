@@ -8,7 +8,7 @@ return [
     'Регистрация' => 'Registration', 
     'Забыли пароль?' => 'Haben Sie das Passwort vergessen?', 
     'Авторизация через социальные сети' => 'Autorisierung durch die soziale Netzwerke', 
-    'Пожалуйста, заполните следующие поля для авторизации' => 'Bitte,ergänzen Sie diese Autorisierungsfelder',    
+    'Пожалуйста, заполните следующие поля для авторизации' => 'Bitte, ergänzen Sie diese Autorisierungsfelder',    
 
     'Регистрация пользователя' => 'Benutzeranmeldung',
     'Эл. почта' => 'E-mail',

@@ -20,6 +20,12 @@ return [
     'Необходимо заполнить «Комментарий»' => 'Il faut que vous remplissez "Le commentaire"',
     'ВКонтакте' => 'VK',
 
+    'Комментариев: ' => 'Comentaires: ',
+    'из '=>'de ',
+    'Написал: ' => 'Écrit par: ',
+    'Дата: ' => 'Date: ',
+    
+
     
     
     

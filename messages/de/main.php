@@ -20,6 +20,11 @@ return [
     'Необходимо заполнить «Комментарий»' => 'Man muss den "Kommentar" ergänzen ',
     'ВКонтакте' => 'VK',
     
+    'Комментариев: ' => 'Kommentarien: ',
+    'из '=>'von ',
+    'Написал: ' => 'Der Autor: ',
+    'Дата: ' => 'Datum: ',
+    
     
     
 

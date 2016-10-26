@@ -11,6 +11,23 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 use app\models\Lang;
 
+$session = Yii::$app->session;
+
+if ($session->isActive){
+    if(isset($_SESSION['css'])){
+        $cssFile = $_SESSION['css'];
+    }else{
+        $cookies = Yii::$app->request->cookies;
+        $cssFile = $cookies->getValue('css', 'css/commonflat.css');
+        $session['css'] = $cssFile;
+    }
+}else{
+    $session->open();
+    $cookies = Yii::$app->request->cookies;
+    $cssFile = $cookies->getValue('css', 'css/commonflat.css');
+    $session['css'] = $cssFile;
+}
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -22,6 +39,7 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?= Html::cssFile(Url::home().$cssFile) ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -123,8 +141,8 @@ AppAsset::register($this);
 
 
 <?= Html::tag('div', 
-        Html::button('', ['class'=>'flat', 'data-css' => Url::home().'css/commonflat.css']).
-        Html::button('', ['class'=>'red', 'data-css' => Url::home().'css/common.css']),
+        Html::a('', Url::to(['site/change-css', 'id' => 'commonflat']), ['class'=>'flat', 'data-css' => Url::home().'css/commonflat.css']).
+        Html::a('', Url::to(['site/change-css', 'id' => 'common']), ['class'=>'red', 'data-css' => Url::home().'css/common.css']),
     ['id' => 'cssCheched'])
 ?>
 
