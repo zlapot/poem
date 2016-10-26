@@ -4,8 +4,10 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\RegForm */
 /* @var $form ActiveForm */
+
+$this->title  = Yii::t('common/auth', 'Регистрация')
 ?>
-<div class="main-reg">
+<div class="main-reg container">
 
     <?php $form = ActiveForm::begin(); ?>
 

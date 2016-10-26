@@ -3,6 +3,7 @@
 use yii\helpers\html;
 use yii\helpers\Url;
 
+$this->title = "Bugagashki";
 ?>
 
 <main class="main-page-content col-md-9">

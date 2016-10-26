@@ -3,7 +3,8 @@
 	use yii\helpers\Url;	
 	use yii\bootstrap\ActiveForm;
 	use kartik\file\FileInput;
-
+	
+$this->title = Yii::t('common/profile', 'Профиль пользователя');
 ?>
 <main class="main-page-content col-md-9">
 	

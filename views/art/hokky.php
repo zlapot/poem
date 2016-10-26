@@ -8,7 +8,7 @@ if ($post->censor == 1){
     Html::addCssClass($options, 'censor');
 }
 
-//$this->title = "title";
+$this->title = Yii::t('common', 'Хокку');
 ?>
 
 <main class="main-page-post row comment-container">

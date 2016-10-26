@@ -9,7 +9,7 @@ if($pagination->pageCount > 1 && ($pagination->pageCount-1 != $pagination->page)
 else
   $options = ['type'=>"button", 'id'=>"btn-more", 'class'=>"btn btn-primary btn-lg active center-block", 'id'=>"btn-more-hokky", 'disabled'=>'disabled'];
 
-$this->title = \Yii::t('common', 'Хокку').': ';
+$this->title = \Yii::t('common', 'Хокку');
 ?>
 
 <main id='main-container' class="main-page-post col-md-9">

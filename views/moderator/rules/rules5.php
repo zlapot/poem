@@ -1,5 +1,5 @@
 <div class="col-md-4 offset-right rule">
-	<p class="title-rule">Regulile acestui site pentru tovarăși romănești. Vă rog,mă scuzați,dacă veți
+	<p class="title-rule">Regulile acestui site pentru tovarăși romănești. Vă rog, mă scuzați,dacă veți
 	vedea greșeli</p>
 	<ul class="poem-rule">
 		<li class="item-rule">Nu utilisați obsceni cuvânte</li>
@@ -14,6 +14,6 @@
 		<li class="item-rule">Îi mulțumim pe participanți cu propozițiile raționale</li>
 		<li class="item-rule">Nu întrerupeți legii teoriei de relativitate, de termodinamică si toatei 
 		fizicei, altfel v-o fac nevalabili la femei!!!</li>
-		<li class="item-rule">Bine ați venit! Vă rugam,puneți întrebarile voastre administratorelor</li>
+		<li class="item-rule">Bine ați venit! Vă rugam, puneți întrebarile voastre administratorelor</li>
 	</ul>
 </div>
