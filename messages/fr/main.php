@@ -2,7 +2,7 @@
 
 return [
 
-    'Новые стихи' => 'Les nouvelles poèmes', 
+    'Новые стихи' => 'Les nouveaux poèmes', 
     'Новые хокку' => 'Les nouveaux haïkus', 
     'Новые анекдоты' => 'Les nouvelles anecdotes', 
     'Больше стихов' => 'Voir plus', 

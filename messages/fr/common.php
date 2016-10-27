@@ -9,7 +9,7 @@ return [
     'О нас' => 'L\'information de nous',
     'Связь' => 'Connectez-vous avec nous',
     'Добавить' => 'Ajouter',
-    'Стих' => 'Une poème',
+    'Стих' => 'Un poème',
     'Хокку' => 'Un haїku',
     'Анекдот' => 'Une anecdote',
     'Категории' => 'Catégories',

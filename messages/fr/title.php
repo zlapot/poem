@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Добавление стихотворения'=>'L\'ajout d\'une poème',
+    'Добавление стихотворения'=>'L\'ajout d\'un poème',
     'Добавление анекдота'=>'L\'ajout d\'une anecdote',
     'Добавление хокку'=>'L\'ajout d\'un haïku',   
     'Наличие нецензурной лексики'=>'La presence des mots obscènes',
