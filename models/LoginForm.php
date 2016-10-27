@@ -92,7 +92,8 @@ class LoginForm extends Model
                 $user->generateAuthKey();
                 $user->secret_key = 0;
                 $user->service = $prof['service'];
-                $user->service_id = $prof['id'];     
+                $user->service_id = $prof['id'];  
+                $user->img = 'img/notava.png';   
 
                 return $user->save(false) ? $user : null;
             }

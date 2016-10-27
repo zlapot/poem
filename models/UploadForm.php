@@ -6,8 +6,6 @@ use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;
 use app\models\User;
-use yii\imagine\Image;
-use Imagine\Image\Box;
 
 class UploadForm extends Model
 {

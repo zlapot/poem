@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "anekdots".
@@ -23,6 +24,13 @@ class Anekdots extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'anekdots';
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className()
+        ];
     }
 
     /**

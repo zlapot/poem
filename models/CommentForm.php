@@ -37,7 +37,7 @@ class CommentForm extends \yii\base\Model
         $comment->id_user = Yii::$app->user->id;
         $comment->id_poem = $id;
         $comment->date = date('d.m.Y H:m');
-        $comment->utime = date('U');
+        $comment->created_at = date('U');
         $comment->comment = $this->comment;
         
         $comment->save(false);

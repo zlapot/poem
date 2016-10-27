@@ -9,8 +9,8 @@ class AnekdotForm extends \yii\base\Model
     public $autor;
     public $anekdot;
     public $censor = false;
-
     
+
     public function rules()
     {
         return [
@@ -45,7 +45,6 @@ class AnekdotForm extends \yii\base\Model
         $anekdot->anekdot = $this->anekdot;
         $anekdot->autor = $this->autor;
         $anekdot->date = date('d.m.Y H:m');
-        $anekdot->utime = date('U');
         $anekdot->censor = $this->censor;
         $anekdot->isDelete = 0;
         $anekdot->status = 0;

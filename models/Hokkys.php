@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "hokkys".
  *
@@ -25,6 +25,12 @@ class Hokkys extends \yii\db\ActiveRecord
         return 'hokkys';
     }
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className()
+        ];
+    }
     /**
      * @inheritdoc
      */

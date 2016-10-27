@@ -43,7 +43,6 @@ class HokkyForm extends \yii\base\Model
         $hokky->hokky = $this->hokky;
         $hokky->autor = $this->autor;
         $hokky->date = date('d.m.Y H:m');
-        $hokky->utime = date('U');
         $hokky->censor = $this->censor;
         $hokky->isDelete = 0;
         $hokky->status = 0;

@@ -86,7 +86,7 @@ class ModeratorController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
             if($model->add()){
                 $this->setFlash();
-                return $this->render('addhokky',[
+                return $this->render('addpoem',[
                     'model' => new PoemForm(),
                 ]);
             }else{
@@ -108,7 +108,7 @@ class ModeratorController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
             if($model->add()){
                 $this->setFlash();
-                return $this->render('addhokky',[
+                return $this->render('addanekdot',[
                     'model' => new AnekdotForm(),
                 ]);
             }else{
