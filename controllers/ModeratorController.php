@@ -31,7 +31,7 @@ class ModeratorController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'addpoem', 'addanekdot', 'addhokky'],
+                'only' => ['logout', 'addpoem', 'addanekdot', 'addhokky', 'index', 'editanekdot', 'edithokky', 'editpoem', 'newanekdot', 'newhokky', 'newpoem'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -45,6 +45,14 @@ class ModeratorController extends Controller
                         //'matchCallback' => function ($rule, $action) {
                            //return  User::isUserAdmin(Yii::$app->user->id);
                         //}
+                    ],
+                    [
+                        'actions' => ['editanekdot', 'edithokky', 'editpoem', 'newanekdot', 'newhokky', 'newpoem'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                           return  User::isUserAdmin(Yii::$app->user->id);
+                        }
                     ],
                 ],
             ],
@@ -142,6 +150,123 @@ class ModeratorController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionNewpoem()
+    {
+        $query = Poems::find()
+            ->where(['status' => 0, 'isDelete' => 0])
+            ->count();
+
+        $pagination1 = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $query,
+        ]);
+
+        $query = Poems::find()
+            ->where(['status' => 1, 'isDelete' => 0])
+            ->count();
+
+        $pagination2 = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $query,
+        ]);
+        
+        $newpost = $this->query(new Poems(), $pagination1, 0);
+        $publpost = $this->query(new Poems(), $pagination1, 1);
+        
+        return $this->render('newpoem', [
+            'newpost' => $newpost,
+            'pagination1' => $pagination1,
+            'publpost' => $publpost,
+            'pagination2' => $pagination2,
+        ]);
+    }
+
+    public function actionNewanekdot()
+    {
+        $query = Anekdots::find()
+            ->where(['status' => 0, 'isDelete' => 0])
+            ->count();
+
+        $pagination1 = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $query,
+        ]);
+
+        $query = Anekdots::find()
+            ->where(['status' => 1, 'isDelete' => 0])
+            ->count();
+
+        $pagination2 = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $query,
+        ]);
+        
+        $newpost = $this->query(new Anekdots(), $pagination1, 0);
+        $publpost = $this->query(new Anekdots(), $pagination1, 1);
+        
+        return $this->render('newpoem', [
+            'newpost' => $newpost,
+            'pagination1' => $pagination1,
+            'publpost' => $publpost,
+            'pagination2' => $pagination2,
+        ]);
+    }
+
+    public function actionNewhokky()
+    {
+        $query = Hokkys::find()
+            ->where(['status' => 0, 'isDelete' => 0])
+            ->count();
+
+        $pagination1 = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $query,
+        ]);
+
+        $query = Hokkys::find()
+            ->where(['status' => 1, 'isDelete' => 0])
+            ->count();
+
+        $pagination2 = new Pagination([
+            'defaultPageSize' => 10,
+            'totalCount' => $query,
+        ]);
+        
+        $newpost = $this->query(new Hokkys(), $pagination1, 0);
+        $publpost = $this->query(new Hokkys(), $pagination1, 1);
+        
+        return $this->render('newpoem', [
+            'newpost' => $newpost,
+            'pagination1' => $pagination1,
+            'publpost' => $publpost,
+            'pagination2' => $pagination2,
+        ]);
+    }
+
+    public function actionAddanekdot($id)
+    {
+        $model = new AnekdotForm::find($id);
+
+        return $this->render('editanekdot',[
+            'model' => $model,
+        ]);
+        
+    }
+
+    private function query($model, $pagination, $status)
+    {  
+        $post = $model->find()
+            ->where(['status' => $status, 'isDelete' => 0])
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
+            ->all();
+
+        return $post;
     }
 
     private function setFlash()

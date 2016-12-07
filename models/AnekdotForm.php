@@ -9,6 +9,7 @@ class AnekdotForm extends \yii\base\Model
     public $autor;
     public $anekdot;
     public $censor = false;
+    public $status = false;
     
 
     public function rules()
@@ -20,6 +21,7 @@ class AnekdotForm extends \yii\base\Model
             [['anekdot'], 'string'],
             [['autor'], 'string', 'max' => 100],
             [['censor'], 'safe'],
+            [['status'], 'safe'],
         ];
     }
 
@@ -54,7 +56,29 @@ class AnekdotForm extends \yii\base\Model
 
         $anekdot->save(false);
         return $anekdot ? $anekdot : null;
+    }
+
+    public function edit($id)
+    {
+        $anekdot = Anekdots::find($id);
+        $anekdot->anekdot = $this->anekdot;
+        $anekdot->autor = $this->autor;
+        $anekdot->censor = $this->censor;
+        $anekdot->isDelete = 0;
+        $anekdot->status = $this->status;
+      
+        $anekdot->save(false);
+        return $anekdot ? $anekdot : null;
     } 
+
+    public function publ($id)
+    {
+        $anekdot = Anekdots::find($id);
+        $anekdot->status = 1;
+
+        $anekdot->save(false);
+        return $anekdot ? $anekdot : null;
+    }
 
     public static function del($id)
     {

@@ -10,6 +10,7 @@ class PoemForm extends \yii\base\Model
     public $autor;
     public $poem;
     public $censor = false;
+    public $status = false;
 
     public function rules()
     {
@@ -19,6 +20,7 @@ class PoemForm extends \yii\base\Model
             [['poem'], 'string'],
             [['title', 'autor'], 'string', 'max' => 100],
             ['censor', 'safe'],
+            ['status', 'safe'],
         ];
     }
 
@@ -48,10 +50,33 @@ class PoemForm extends \yii\base\Model
         $poem->date = date('d.m.Y H:m');
         $poem->censor = $this->censor;
         $poem->isDelete = 0;
-        $poem->status = 0;
+        $poem->status = $this->status;
 
         if(Yii::$app->user->can('admin') || Yii::$app->user->can('moderator'))
             $poem->status = 1;
+
+        $poem->save(false);
+        return $poem ? $poem : null;
+    } 
+
+    public function edit($id)
+    {
+        $poem = new Poems::find($id);
+        $poem->title = $this->title;
+        $poem->poem = $this->poem;
+        $poem->autor = $this->autor;
+        $poem->censor = $this->censor;
+        $poem->isDelete = 0;
+        $poem->status = $this->status;
+
+        $poem->save(false);
+        return $poem ? $poem : null;
+    } 
+
+    public function publ($id)
+    {
+        $poem = new Poems::find($id);
+        $poem->status = $this->status;
 
         $poem->save(false);
         return $poem ? $poem : null;

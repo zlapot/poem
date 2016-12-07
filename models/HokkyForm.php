@@ -10,6 +10,7 @@ class HokkyForm extends \yii\base\Model
     public $autor;
     public $hokky;
     public $censor = false;
+    public $status = false;
    
     public function rules()
     {
@@ -20,6 +21,7 @@ class HokkyForm extends \yii\base\Model
             [['hokky'], 'string'],
             [['autor'], 'string', 'max' => 100],
             [['censor'], 'safe'],
+            [['status'], 'safe'],
         ];
     }
 
@@ -53,6 +55,28 @@ class HokkyForm extends \yii\base\Model
         $hokky->save(false);
         return $hokky ? $hokky : null;
     } 
+
+    public function edit($id)
+    {
+        $hokky = Hokkys::find($id);
+        $hokky->hokky = $this->hokky;
+        $hokky->autor = $this->autor;
+        $hokky->censor = $this->censor;
+        $hokky->isDelete = 0;
+        $hokky->status = $this->status;
+       
+        $hokky->save(false);
+        return $hokky ? $hokky : null;
+    } 
+
+    public function publ($id)
+    {
+        $hokky = Hokkys::find($id);
+        $hokky->status = $this->status;
+       
+        $hokky->save(false);
+        return $hokky ? $hokky : null;
+    }
 
     public static function del($id)
     {

@@ -20,6 +20,10 @@
 @color-hokky-even: rgba(85, 85, 85, 1);
 @color-font-even: rgba(238, 238, 238, 1);
 
+@tablet: 992px;
+@mobile: 768px;
+@desktop: 1200px;
+
 @margin-from-title: 15px;
 @margin-from-post: 35px;
 @margin-footer: 10px;
@@ -383,3 +387,26 @@ body{
 }
 
 // Navbar END
+
+// Footer
+
+.footer{
+        padding: @margin-from-title;
+    }
+
+// Footer END
+
+// for Mobile
+
+@media (max-width: @mobile){
+    .post-poem, .post-hokky, .post-anekdot{
+        margin: 0;
+        padding-top: @margin-from-title;
+    }
+
+    .comment-section, .comment-tab{
+        margin: 0;
+    }
+
+    
+}
