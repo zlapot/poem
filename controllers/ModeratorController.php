@@ -206,7 +206,7 @@ class ModeratorController extends Controller
         $newpost = $this->query(new Anekdots(), $pagination1, 0);
         $publpost = $this->query(new Anekdots(), $pagination1, 1);
         
-        return $this->render('newpoem', [
+        return $this->render('newanekdot', [
             'newpost' => $newpost,
             'pagination1' => $pagination1,
             'publpost' => $publpost,
@@ -237,7 +237,7 @@ class ModeratorController extends Controller
         $newpost = $this->query(new Hokkys(), $pagination1, 0);
         $publpost = $this->query(new Hokkys(), $pagination1, 1);
         
-        return $this->render('newpoem', [
+        return $this->render('newhokky', [
             'newpost' => $newpost,
             'pagination1' => $pagination1,
             'publpost' => $publpost,
@@ -245,16 +245,52 @@ class ModeratorController extends Controller
         ]);
     }
 
+    public function actionEditpoem($id){
+        $model = Poems::findOne($id);
+
+        return $this->render('addpoem', [
+            'model' => $model
+        ]);  
+    }
+
+    public function actionEdithokky($id){
+        $model = Hokkys::findOne($id);
+
+        return $this->render('addhokky', [
+            'model' => $model
+        ]);  
+    }
+
+    public function actionEditanekdot($id){
+        $model = Anekdots::findOne($id);
+
+        return $this->render('addanekdot', [
+            'model' => $model
+        ]);  
+    }
+/*
     public function actionAddanekdot($id)
     {
-        $model = new AnekdotForm::find($id);
+        $model = new AnekdotForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            if($model->add()){
+                $this->setFlash();
+                return $this->render('addanekdot',[
+                    'model' => new AnekdotForm(),
+                ]);
+            }else{
+
+            }
+        
+        $post = new AnekdotForm::find($id);
 
         return $this->render('editanekdot',[
-            'model' => $model,
+            'model' => $post,
         ]);
         
     }
-
+*/
     private function query($model, $pagination, $status)
     {  
         $post = $model->find()
@@ -267,6 +303,14 @@ class ModeratorController extends Controller
             ->all();
 
         return $post;
+    }
+
+    private function edit($model, $view){        
+        
+        return $this->render($view, [
+            'model' => $model
+        ]);      
+
     }
 
     private function setFlash()

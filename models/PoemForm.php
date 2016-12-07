@@ -61,7 +61,7 @@ class PoemForm extends \yii\base\Model
 
     public function edit($id)
     {
-        $poem = new Poems::find($id);
+        $poem = Poems::findOne($id);
         $poem->title = $this->title;
         $poem->poem = $this->poem;
         $poem->autor = $this->autor;
@@ -75,7 +75,7 @@ class PoemForm extends \yii\base\Model
 
     public function publ($id)
     {
-        $poem = new Poems::find($id);
+        $poem = Poems::findOne($id);
         $poem->status = $this->status;
 
         $poem->save(false);
@@ -84,7 +84,7 @@ class PoemForm extends \yii\base\Model
 
     public static function del($id)
     {
-        $post = Poems::find($id);
+        $post = Poems::findOne($id);
         $post->isDelete = 1;
 
         $post->save(false);

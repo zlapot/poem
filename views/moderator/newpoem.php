@@ -24,79 +24,71 @@ else
 
 
 <main id='main-container' class="main-page-post col-md-9">
-<?= Html::tag('h2', \Yii::t('common', 'Стихи') , ['class' => 'main-page-title']) ?>
+
+	<?= Html::tag('h2', \Yii::t('common', 'Стихи') , ['class' => 'main-page-title']) ?>
 
 
-<ul class="nav nav-tabs flat-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#new" aria-controls="new" role="tab" data-toggle="tab">Новые стихи</a></li>
-    <li role="presentation"><a href="#publ" aria-controls="publ" role="tab" data-toggle="tab">Опубликованные</a></li>
- </ul>
+	<ul class="nav nav-tabs flat-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#new" aria-controls="new" role="tab" data-toggle="tab">Новые стихи</a></li>
+	    <li role="presentation"><a href="#publ" aria-controls="publ" role="tab" data-toggle="tab">Опубликованные</a></li>
+	</ul>
 
-  <!-- Tab panes -->
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="new">
+	  <!-- Tab panes -->
+	<div class="tab-content">
+	    <div role="tabpanel" class="tab-pane active" id="new">
 
-    	<?php foreach ($newpost as $post): ?>
+	    	<?php foreach ($newpost as $post): ?>				
+					
+					<div class="moder_wrap col-md-6">
+						<?= $this->render('templ/_poem', [
+							'poem' => $post,
+						]) ?>
+						<div class="moder-btn">
+						<?= Html::a("Редактировать", Url::to(['moderator/editpoem', 'id' => $post->id]), ['class' => 'btn btn-primary', 'role' => 'button']) ?>
+						<?= Html::a("Удалить", Url::to(['api/delete-post', 'id' => $post->id]), ['class' => 'btn btn-danger', 'role' => 'button']) ?>
+						</div>
+					</div>
 
+		        
+			<?php endforeach; ?>
 
-			<?php if($i%2 === 0) echo '<div class="row poems-row">' ?>
-				
-				<div class="moder_wrap">
-					<?= $this->render('/art/_poem', [
-						'poem' => $post,
-					]) ?>
-					<?= Html::a("Редактировать", Url::to(['moderator/editpoem', 'id' => $post->id]), ['class' => 'btn btn-primary', 'role' => 'button']) ?>
-					<?= Html::a("Удалить", Url::to(['api/delete-post', 'id' => $post->id]), ['class' => 'btn btn-danger', 'role' => 'button']) ?>
-				</div>
+			<?=
+			    Html::tag('div',
+			      	Html::button(
+			          	Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).\Yii::t('common/main', 'Загрузить еще'),
+			          	$options
+			        ),
+			    ['class' => 'row', 'id' => 'insert'])
+		  	?>
+		 	<?= LinkPager::widget(['pagination' => $pagination1]) ?> 
+		    	
+	    </div>
+	    <div role="tabpanel" class="tab-pane" id="publ">
+	    	<?php foreach ($publpost as $post): ?>
+									
+					<div class="moder_wrap col-md-6">
+						<?= $this->render('templ/_poem', [
+							'poem' => $post,
+						]) ?>
+						<div class="moder-btn">
+						<?= Html::a("Редактировать", Url::to(['moderator/editpoem', 'id' => $post->id]), ['class' => 'btn btn-primary', 'role' => 'button']) ?>
+						<?= Html::a("Удалить", Url::to(['api/delete-post', 'id' => $post->id]), ['class' => 'btn btn-danger', 'role' => 'button']) ?>
+						</div>
+					</div>
+		        
+			<?php endforeach; ?>
 
-	        <?php 
-	        	if($i%2 === 1 || $i==$countN) echo '</div>';
-	        	$i++; 
-	        ?>
-		<?php endforeach; ?>
-
-		<?=
-		    Html::tag('div',
-		      	Html::button(
-		          	Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).\Yii::t('common/main', 'Загрузить еще'),
-		          	$options
-		        ),
-		    ['class' => 'row', 'id' => 'insert'])
-	  	?>
-	 	<?= LinkPager::widget(['pagination' => $pagination1]) ?> 
-	    	
-    </div>
-    <div role="tabpanel" class="tab-pane" id="publ">
-    	<?php foreach ($publpost as $post): ?>
-
-
-			<?php if($i%2 === 0) echo '<div class="row poems-row">' ?>
-				
-				<div class="moder_wrap col-md-6">
-					<?= $this->render('/art/_poem', [
-						'poem' => $post,
-					]) ?>
-					<?= Html::a("Редактировать", Url::to(['moderator/editpoem', 'id' => $post->id]), ['class' => 'btn btn-primary', 'role' => 'button']) ?>
-					<?= Html::a("Удалить", Url::to(['api/delete-post', 'id' => $post->id]), ['class' => 'btn btn-danger', 'role' => 'button']) ?>
-				</div>
-
-	        <?php 
-	        	if($i%2 === 1 || $i==$countP) echo '</div>';
-	        	$i++; 
-	        ?>
-		<?php endforeach; ?>
-
-		<?=
-		    Html::tag('div',
-		      	Html::button(
-		          	Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).\Yii::t('common/main', 'Загрузить еще'),
-		          	$options
-		        ),
-		    ['class' => 'row', 'id' => 'insert'])
-	  	?>
-	 	<?= LinkPager::widget(['pagination' => $pagination2]) ?> 
-    </div>
-</div>
+			<?=
+			    Html::tag('div',
+			      	Html::button(
+			          	Html::tag('span', '', ['class'=>"glyphicon glyphicon-refresh", 'aria-hidden'=>"true"]).\Yii::t('common/main', 'Загрузить еще'),
+			          	$options
+			        ),
+			    ['class' => 'row', 'id' => 'insert'])
+		  	?>
+		 	<?= LinkPager::widget(['pagination' => $pagination2]) ?> 
+	    </div>
+	</div>
 
 
 </main>
