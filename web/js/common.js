@@ -219,11 +219,11 @@
                         if(data === 'fail'){
                             //$('.msg').html("Произошла ошибка");
                             console.log('fail');
-                            jthis.find('#commentBtn').removeAttr('disabled');
+                            //jthis.find('#commentBtn').removeAttr('disabled');
                         }else{
                             console.log("добавил");
                             console.log(data);
-                            jthis.find('#commentBtn').removeAttr('disabled');
+                            //jthis.find('#commentBtn').removeAttr('disabled');
                             var source   = $("#entry-template").html();
                             var template = Handlebars.compile(source);
                             var html    = template(data);
@@ -238,7 +238,8 @@
                     }
                 });
 
-                jthis.find('#commentBtn').removeAttr('disabled');
+                setTimeout(function(){ jthis.find('#commentBtn').removeAttr('disabled'); }, 1000);
+                //jthis.find('#commentBtn').removeAttr('disabled');
             });
         },
 

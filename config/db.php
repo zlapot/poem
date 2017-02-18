@@ -3,8 +3,8 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=poem',
-    'username' => 'root',
-    'password' => '',
+    'username' => 'user',
+    'password' => 'password',
     'charset' => 'utf8',
 ];
 

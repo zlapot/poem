@@ -30,8 +30,8 @@ class CommentsAnekdot extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_poem', 'id_user', 'comment', 'date', 'utime'], 'required'],
-            [['id_poem', 'id_user', 'utime'], 'integer'],
+            [['id_poem', 'id_user', 'comment', 'date', 'created_at'], 'required'],
+            [['id_poem', 'id_user', 'created_at'], 'integer'],
             [['comment'], 'string', 'max' => 100],
             [['date'], 'string', 'max' => 16],
         ];
@@ -48,7 +48,7 @@ class CommentsAnekdot extends \yii\db\ActiveRecord
             'id_user' => 'Id User',
             'comment' => 'Comment',
             'date' => 'Date',
-            'utime' => 'Utime',
+            'created_at' => 'Utime',
         ];
     }
 }

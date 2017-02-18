@@ -31,8 +31,8 @@ class Poems extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'title', 'poem', 'autor', 'date', 'censor'], 'required'],
-            [['id_user', 'censor'], 'integer'],
+            [['id_user', 'title', 'poem', 'autor', 'date', 'created_at', 'isDelete', 'status', 'censor'], 'required'],
+            [['id_user', 'created_at', 'isDelete', 'status', 'censor'], 'integer'],
             [['poem', 'date'], 'string'],
             [['title', 'autor'], 'string', 'max' => 100],
         ];
@@ -50,6 +50,9 @@ class Poems extends \yii\db\ActiveRecord
             'poem' => 'Poem',
             'autor' => 'Autor',
             'date' => 'Date',
+			'created_at' => 'Utime',
+			'isDelete' => 'isDelete',
+			'status' => 'Status',
             'censor' => 'Censor',
         ];
     }

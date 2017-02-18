@@ -31,8 +31,8 @@ class Hokkys extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'hokky', 'autor', 'date', 'utime', 'censor'], 'required'],
-            [['id_user', 'utime', 'censor'], 'integer'],
+            [['id_user', 'hokky', 'autor', 'date', 'created_at', 'isDelete', 'status', 'censor'], 'required'],
+            [['id_user', 'created_at', 'isDelete', 'status', 'censor'], 'integer'],
             [['hokky'], 'string'],
             [['autor'], 'string', 'max' => 100],
             [['date'], 'string', 'max' => 16],
@@ -50,7 +50,9 @@ class Hokkys extends \yii\db\ActiveRecord
             'hokky' => 'Hokky',
             'autor' => 'Autor',
             'date' => 'Date',
-            'utime' => 'Utime',
+            'created_at' => 'Utime',
+			'isDelete' => 'isDelete',
+			'status' => 'Status',
             'censor' => 'Censor',
         ];
     }

@@ -18,7 +18,7 @@ class PoemsSearch extends Poems
     public function rules()
     {
         return [
-            [['id', 'id_user', 'censor'], 'integer'],
+            [['id', 'id_user', 'created_at', 'isDelete', 'status', 'censor'], 'integer'],
             [['title', 'poem', 'autor', 'date'], 'safe'],
         ];
     }

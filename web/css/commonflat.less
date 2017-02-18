@@ -27,6 +27,7 @@
 @margin-from-title: 15px;
 @margin-from-post: 35px;
 @margin-footer: 10px;
+@mobile-fix-padding: 1px;
 
 *{
     margin: 0;
@@ -398,10 +399,10 @@ body{
 
 // for Mobile
 
-@media (max-width: @mobile){
+@media (max-width: @tablet){
     .post-poem, .post-hokky, .post-anekdot{
         margin: 0;
-        padding-top: @margin-from-title;
+        padding-top: @mobile-fix-padding;
     }
 
     .comment-section, .comment-tab{

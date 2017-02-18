@@ -20,8 +20,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'utime')->textInput() ?>
-
     <?= $form->field($model, 'censor')->textInput() ?>
 
     <div class="form-group">

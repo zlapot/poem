@@ -18,7 +18,7 @@ class CommentsAnekdotSearch extends CommentsAnekdot
     public function rules()
     {
         return [
-            [['id', 'id_poem', 'id_user', 'utime'], 'integer'],
+            [['id', 'id_poem', 'id_user', 'created_at'], 'integer'],
             [['comment', 'date'], 'safe'],
         ];
     }
@@ -62,7 +62,7 @@ class CommentsAnekdotSearch extends CommentsAnekdot
             'id' => $this->id,
             'id_poem' => $this->id_poem,
             'id_user' => $this->id_user,
-            'utime' => $this->utime,
+            'created_at' => $this->created_at,
         ]);
 
         $query->andFilterWhere(['like', 'comment', $this->comment])

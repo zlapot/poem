@@ -52,7 +52,8 @@ class ApiController extends Controller
     {
         //if (Yii::$app->request->get()){
             $query = Poems::find()
-                ->from('poems');
+                ->from('poems')				
+				->where(['status' => 1, 'isDelete' => 0]);
                 //->all();
             $pagination = new Pagination([
                 'defaultPageSize' => 9,
@@ -62,6 +63,9 @@ class ApiController extends Controller
             $poems = $query
                 ->offset($pagination->offset)
                 ->limit($pagination->limit)
+				->orderBy([
+					'id' => SORT_DESC,
+				])
                 ->all();
 
 
@@ -77,7 +81,8 @@ class ApiController extends Controller
     {
         if (Yii::$app->request->isPost){
             $query = Poems::find()
-                ->from('poems');
+                ->from('poems')				
+				->where(['status' => 1, 'isDelete' => 0]);
                 //->all();
             $pagination = new Pagination([
                 'defaultPageSize' => 10,
@@ -87,6 +92,9 @@ class ApiController extends Controller
             $poems = $query
                 ->offset($pagination->offset)
                 ->limit($pagination->limit)
+				->orderBy([
+					'id' => SORT_DESC,
+				])
                 ->all();
 
             foreach ($poems as $poem) {
@@ -107,7 +115,8 @@ class ApiController extends Controller
     {
         if (Yii::$app->request->isPost){
             $query = Anekdots::find()
-                ->from('anekdots');
+                ->from('anekdots')					
+				->where(['status' => 1, 'isDelete' => 0]);
                 //->all();
             $pagination = new Pagination([
                 'defaultPageSize' => 9,
@@ -117,6 +126,9 @@ class ApiController extends Controller
             $poems = $query
                 ->offset($pagination->offset)
                 ->limit($pagination->limit)
+				->orderBy([
+					'id' => SORT_DESC,
+				])
                 ->all();
             
             //echo \yii\helpers\Json::encode($poems);
@@ -133,7 +145,8 @@ class ApiController extends Controller
     {
         if (Yii::$app->request->isPost){
             $query = Hokkys::find()
-                ->from('hokkys');
+                ->from('hokkys')				
+				->where(['status' => 1, 'isDelete' => 0]);
                 //->all();
             $pagination = new Pagination([
                 'defaultPageSize' => 9,
@@ -143,6 +156,9 @@ class ApiController extends Controller
             $poems = $query
                 ->offset($pagination->offset)
                 ->limit($pagination->limit)
+				->orderBy([
+					'id' => SORT_DESC,
+				])
                 ->all();
             
             //echo \yii\helpers\Json::encode($poems);

@@ -31,6 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'autor',
             // 'date:ntext',
             // 'censor',
+			'isDelete',
+			'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

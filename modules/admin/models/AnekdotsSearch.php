@@ -18,7 +18,7 @@ class AnekdotsSearch extends Anekdots
     public function rules()
     {
         return [
-            [['id', 'id_user', 'utime', 'censor'], 'integer'],
+            [['id', 'id_user', 'created_at', 'isDelete', 'status', 'censor'], 'integer'],
             [['anekdot', 'autor', 'date'], 'safe'],
         ];
     }
@@ -61,7 +61,7 @@ class AnekdotsSearch extends Anekdots
         $query->andFilterWhere([
             'id' => $this->id,
             'id_user' => $this->id_user,
-            'utime' => $this->utime,
+            'created_at' => $this->created_at,
             'censor' => $this->censor,
         ]);
 
