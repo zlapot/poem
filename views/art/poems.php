@@ -1,5 +1,5 @@
 <?php
-use app\models\Lang;
+
 use yii\widgets\LinkPager;
 use yii\helpers\Html;
 
@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = \Yii::t('common', 'Стихи');
 $i = 0;
-$count = count($poems)-1;
+$count = count($model)-1;
 
 
 if($pagination->pageCount > 1 && ($pagination->pageCount-1 != $pagination->page))
@@ -20,7 +20,7 @@ else
 <main id='main-container' class="main-page-post col-md-9">
 <?= Html::tag('h2', \Yii::t('common', 'Стихи') , ['class' => 'main-page-title']) ?>
 
-	<?php foreach ($poems as $poem): ?>
+	<?php foreach ($model as $poem): ?>
 
 
 		<?php if($i%2 === 0) echo '<div class="row poems-row">' ?>
@@ -60,27 +60,27 @@ else
 	<div id="ajaxreq"></div>
 
 <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-link="/poem/web/art/poems">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-          </div>
-          <div class="modal-body">
-            <div class="modal-poem"></div>
-            <div class="modal-autor"></div>
-          </div>
-          <div class="modal-footer">
-          <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-            <script src="//yastatic.net/share2/share.js"></script>
-            <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,twitter"></div>
-            <a href="#" class="btn btn-default modal-link" role="button"><?= \Yii::t('common/main', 'Комментировать') ?></a>
-            <button type="button" class="btn btn-primary" data-dismiss="modal"><?= \Yii::t('common/auth', 'Закрыть')?></button>
-          </div>
-        </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-link="/poem/web/art/poems">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-poem"></div>
+        <div class="modal-autor"></div>
+      </div>
+      <div class="modal-footer">
+        <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+        <script src="//yastatic.net/share2/share.js"></script>
+        <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,twitter"></div>
+        <a href="#" class="btn btn-default modal-link" role="button"><?= \Yii::t('common/main', 'Комментировать') ?></a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><?= \Yii::t('common/auth', 'Закрыть')?></button>
       </div>
     </div>
+  </div>
+</div>
 
 <script id="entry-template" type="text/x-handlebars-template">
   <div class="row poems-row">   

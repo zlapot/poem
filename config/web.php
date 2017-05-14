@@ -82,6 +82,7 @@ $config = [
                 [
                     'pattern' => '<controller>/<action>',
                     'route' => '<controller>/<action>',
+                    'suffix' => '.asp',
                 ],                
             ],
 

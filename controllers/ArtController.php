@@ -23,6 +23,8 @@ use yii\helpers\Url;
 
 class ArtController extends Controller
 {
+
+     public $defaultAction = 'poems';
     /**
      * @inheritdoc
      */
@@ -40,12 +42,6 @@ class ArtController extends Controller
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
         ];
     }
 
@@ -58,42 +54,24 @@ class ArtController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
         ];
     }
+   
 
-    
     public function actionIndex()
     {
-        $this->redirect('poems');
+        //$this->redirect('poems');
     }   
 
     public function actionPoems()
     {
         $this->setLanguage();
-        $query = Poems::find()
-            ->from('poems')
-            ->where(['status' => 1, 'isDelete' => 0]);
-                //->all();
-        $pagination = new Pagination([
-            'defaultPageSize' => 10,
-            'totalCount' => $query->count(),
-        ]);
-
-        $poems = $query
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->orderBy([
-                'id' => SORT_DESC,
-            ])
-            ->all();
+        
+        $data = Poems::getAll();
 
         return $this->render('poems', [
-            'poems' => $poems,
-            'pagination' => $pagination,
+            'model' => $data['model'],
+            'pagination' => $data['pagination'],
         ]);
        
     }
@@ -151,7 +129,7 @@ class ArtController extends Controller
     }
 
 
-    private function viewPost($postTableObject, $idPost, $commentTableObject, $commentTableName, $limit, $render)
+    private function viewPost($postTableObject, $idPost, $commentTableObject, $commentTableName, $limit, $view)
     {   
         $model = new CommentForm();
 
@@ -197,7 +175,7 @@ class ArtController extends Controller
             ->all();        
 
         
-        return $this->render($render, [
+        return $this->render($view, [
             'model' => $model,
             'post' => $post,
             'comments' => $comment,

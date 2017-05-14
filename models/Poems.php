@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\data\Pagination;
 
 /**
  * This is the model class for table "poems".
@@ -18,6 +19,11 @@ use yii\behaviors\TimestampBehavior;
  */
 class Poems extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1;
+    const STATUS_DISABLE = 0;
+    const DELETED_ON = 1;
+    const DELETED_OFF = 0;
+
     /**
      * @inheritdoc
      */
@@ -71,6 +77,28 @@ class Poems extends \yii\db\ActiveRecord
         return $str."… ";
     } 
 
-      
+    public static function getAll($pageSize = 10)
+    {
+        $query = self::find()
+            ->where(['status' => self::STATUS_ACTIVE, 'isDelete' => self::DELETED_OFF]);
+                
+        $pagination = new Pagination([
+            'defaultPageSize' => $pageSize,
+            'totalCount' => $query->count(),
+        ]);
+
+        $poems = $query
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->orderBy([
+                'id' => SORT_DESC,
+            ])
+            ->all();
+
+        return $data = [
+            'model' => $poems,
+            'pagination' => $pagination,
+        ];
+    }
 
 }

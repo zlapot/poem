@@ -6,13 +6,8 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\Poems;
 use app\models\Search;
 use yii\data\Pagination;
-use yii\web\Response;
-use yii\helpers\BaseJson;
-use yii\helpers\Json;
-
 class SearchController extends Controller
 {
     /**
@@ -31,13 +26,7 @@ class SearchController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+            ]
         ];
     }
 
@@ -49,18 +38,18 @@ class SearchController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
+            ]
         ];
     }
 
-    
+    public function init()
+    {        
+        
+    }
+
     public function actionIndex()
     {
-        
+        // TODO 
     }   
 
     public function actionPublic()
@@ -68,24 +57,14 @@ class SearchController extends Controller
         $this->setLanguage();
         
         $model = new Search();        
-        $search = Yii::$app->request->post();
-        $model->search=$search['public_search'];
+        $model->search = Yii::$app->request->post('public_search');       
 
-        $query = $model->Searching($model->search);
+        $data = $model->Searching();             
 
-        $pagination = new Pagination([
-            'defaultPageSize' => 9,
-            'totalCount' => $query->count(),
-        ]);
-        
-        $poems = $query
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
-        
+
         return $this->render('/art/poems', [
-            'poems' => $poems,
-            'pagination' => $pagination,
+            'model' => $data['model'],
+            'pagination' => $data['pagination'],
         ]);
     }
 
@@ -96,4 +75,3 @@ class SearchController extends Controller
     }
 }
 
-}

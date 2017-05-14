@@ -34,3 +34,4 @@ phpunit.phar
 
 *.zip
 *.7z
+.fmsettings
